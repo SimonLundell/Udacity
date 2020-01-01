@@ -51,3 +51,5 @@ print(v.times_scalar(c))
 #print(my_vector)
 #print(my_vector==my_vector2)
 #print(my_vector==my_vector3)
+
+#Testing some stuff
