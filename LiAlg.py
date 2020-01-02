@@ -28,9 +28,17 @@ class Vector(object):
         new_coordinates = [c*x for x in self.coordinates]
         return Vector(new_coordinates)
     
-    def magnitude(self, v):
-        calc_magnitude = [sqrt((x*x) + (y*y) + (z*z)) for x,y,z in zip(self.coordinates, v.coordinates)]
-        return calc_magnitude
+    def magnitude(self):
+        coordinates_squared = [x*x for x in self.coordinates]
+        return sqrt(sum(coordinates_squared))
+
+    def normalized(self):
+        try:
+            magnitude = self.magnitude()
+            return self.times_scalar(1./magnitude)
+
+        except ZeroDivisionError:
+            raise Exception('Cannot normalize the zero vector')
 
     def __str__(self):
         return 'Vector: {}' .format(self.coordinates)
@@ -38,8 +46,17 @@ class Vector(object):
     def __eq__(self, v):
         return self.coordinates == v.coordinates
 
-v = Vector([1, 1, 2])
-print(v.magnitude(v))
+v = Vector([-0.221, 7.437])
+print(v.magnitude())
+
+v = Vector([8.813, -1.331, -6.247])
+print(v.magnitude())
+
+v = Vector([5.581, -2.136])
+print(v.normalized())
+
+v = Vector([1.996, 3.108, -4.554])
+print(v.normalized())
 
 #v = Vector([8.218, -9.341])
 #w = Vector([-1.129, 2.111])
