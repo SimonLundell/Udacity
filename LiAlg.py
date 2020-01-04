@@ -10,7 +10,7 @@ class Vector():
     # Creates vector based on an input list of coordinates and also sets the dimensions of the space
     # that the vector lives in.
     
-    CANNOT_NORMALIZE_ZERO_VECTOR_MSG = str('Cannot normalize the zero vector')
+    CANNOT_NORMALIZE_ZERO_VECTOR_MSG = 'Cannot normalize the zero vector'
 
     def __init__(self, coordinates):
         try:
@@ -57,7 +57,7 @@ class Vector():
         try:
             u1 = self.normalized()
             u2 = v.normalized()
-            angle_in_radians = acos(u1.dot_product(u2))
+            angle_in_radians = acos(round(u1.dot_product(u2), 5))
 
             if in_degrees:
                 degrees_per_radian = 180. / pi
@@ -70,6 +70,18 @@ class Vector():
                 raise Exception('Cannot compute an angle with the zero vector')
             else:
                 raise e
+
+    def is_orthogonal_to(self, v, tolerance=1e-10):
+        return abs(self.dot_product(v)) < tolerance
+
+    def is_parallel_to(self, v):
+        return ( self.is_zero() or 
+                v.is_zero() or 
+                self.angle(v) == 0 or 
+                self.angle(v) == pi )
+
+    def is_zero(self, tolerance=1e-10):
+        return self.magnitude() < tolerance
         
     def __str__(self):
         return 'Vector: {}' .format(self.coordinates)
@@ -77,6 +89,27 @@ class Vector():
     def __eq__(self, v):
         return self.coordinates == v.coordinates
 
+print('1st')
+v = Vector([-7.579, -7.88])
+w = Vector([22.737, 23.64])
+print('Is orthogonal: ', v.is_orthogonal_to(w), 'Is parallel: ', v.is_parallel_to(w))
+
+print('2nd')
+v = Vector([-2.029, 9.97, 4.172])
+w = Vector([-9.231, -6.639, -7.245])
+print('Is orthogonal: ', v.is_orthogonal_to(w), 'Is parallel: ', v.is_parallel_to(w))
+
+print('3rd')
+v = Vector([-2.328, -7.284, -1.214])
+w = Vector([-1.821, 1.072, -2.94])
+print('Is orthogonal: ', v.is_orthogonal_to(w), 'Is parallel: ', v.is_parallel_to(w))
+
+print('4th')
+v = Vector([2.118, 4.827])
+w = Vector([0, 0])
+print('Is orthogonal: ', v.is_orthogonal_to(w), 'Is parallel: ', v.is_parallel_to(w))
+
+"""
 v = Vector([7.887, 4.138])
 w = Vector([-8.802, 6.776])
 print(v.dot_product(w))
@@ -92,7 +125,7 @@ print(v.angle(w))
 v = Vector([7.35, 0.221, 5.188])
 w = Vector([2.751, 8.259, 3.985])
 print(v.angle(w, in_degrees=True))
-"""
+
 v = Vector([-0.221, 7.437])
 print(v.magnitude())
 
