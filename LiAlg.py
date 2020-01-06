@@ -136,7 +136,7 @@ class Vector(object):
     def __eq__(self, v):
         return self.coordinates == v.coordinates
 
-
+"""
 print 'Cross Product'
 v = Vector([8.462, 7.893, -8.187])
 w = Vector([6.984, -5.975, 4.778])
@@ -152,7 +152,7 @@ v = Vector([1.5, 9.547, 3.691])
 w = Vector([-6.007, 0.124, 5.772])
 print v.tri_area(w)
 
-"""
+
 print '#1'
 v = Vector([3.039, 1.879])
 w = Vector([0.825, 2.036])
