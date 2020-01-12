@@ -22,7 +22,7 @@ class Vector(object):
         except ValueError:
             raise ValueError('The coordinates must be nonempty')
 
-        except TypError:
+        except TypeError:
             raise TypeError('The coordinates must be an iterable')
 
     def plus(self, v):
@@ -31,7 +31,7 @@ class Vector(object):
 
     def minus(self, v):
         new_coordinates = [x-y for x,y in zip(self.coordinates, v.coordinates)]
-        return new_coordinates
+        return Vector(new_coordinates)
 
     def times_scalar(self, c):
         new_coordinates = [Decimal(c)*x for x in self.coordinates]
@@ -171,10 +171,11 @@ vort = v.orthogonal_to(w)
 print 'Parallel: ', vpar
 print 'Orthogonal: ', vort
 
-
 print('1st')
-v = Vector([-7.579, -7.88])
-w = Vector([22.737, 23.64])
+v = Vector([5, 5])
+w = Vector([0, 0])
+print v
+print w
 print('Is orthogonal: ', v.is_orthogonal_to(w), 'Is parallel: ', v.is_parallel_to(w))
 
 print('2nd')
@@ -224,8 +225,8 @@ v = Vector([8.218, -9.341])
 w = Vector([-1.129, 2.111])
 print(v.plus(w))
 
-v = Vector([7.119, 8.215])
-w = Vector([-8.223, 0.878])
+v = Vector([2, 2])
+w = Vector([2, 2])
 print(v.minus(w))
 
 v = Vector([1.671, -1.012, -0.318])

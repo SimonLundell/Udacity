@@ -32,7 +32,7 @@ class Line(object):
             k2 = ell.constant_term
 
             x_numerator = D*k1-B*k2
-            y_numerator = C*k1+A*k2
+            y_numerator = -C*k1+A*k2
             one_over_denom = Decimal('1')/(A*D-B*C)
 
             return Vector([x_numerator, y_numerator]).times_scalar(one_over_denom)
@@ -43,27 +43,6 @@ class Line(object):
             else:
                 return None
     
-    def __eq__(self, ell):
-        
-        if self.normal_vector.is_zero():
-            if not ell.normal_vector.is_zero():
-                return False
-            else:
-                diff = self.constant_term - ell.constant_term
-                return MyDecimal(diff).is_near_zero()
-        elif ell.normal_vector.is_zero():
-            return False
-        
-        if not self.is_parallel_to(ell):
-            return False
-        
-        x0 = self.basepoint
-        y0 = ell.basepoint
-        basepoint_difference = x0.minus(y0)
-
-        n = self.normal_vector
-        return basepoint_difference.is_orthogonal_to(n)
-
     def set_basepoint(self):
         try:
             n = self.normal_vector
@@ -71,10 +50,13 @@ class Line(object):
             basepoint_coords = ['0']*self.dimension
 
             initial_index = Line.first_nonzero_index(n.coordinates)
+           # print initial_index
+           # print n.coordinates
             initial_coefficient = n.coordinates[initial_index]
-
             basepoint_coords[initial_index] = c/initial_coefficient
             self.basepoint = Vector(basepoint_coords)
+           # print self.basepoint
+            return self.basepoint
 
         except Exception as e:
             if str(e) == Line.NO_NONZERO_ELTS_FOUND_MSG:
@@ -85,7 +67,6 @@ class Line(object):
     def is_parallel_to(self, v):
         n1 = self.normal_vector
         n2 = v.normal_vector
-
         return n1.is_parallel_to(n2)
 
     def __str__(self):
@@ -94,6 +75,7 @@ class Line(object):
 
         def write_coefficient(coefficient, is_initial_term=False):
             coefficient = round(coefficient, num_decimal_places)
+            print coefficient
             if coefficient % 1 == 0:
                 coefficient = int(coefficient)
 
@@ -111,13 +93,14 @@ class Line(object):
                 output += '{}'.format(abs(coefficient))
 
             return output
-
+         
         n = self.normal_vector
 
         try:
-            initial_index = Line.first_nonzero_index(n)
-            terms = [write_coefficient(n[i], is_initial_term=(i==initial_index)) + 'x_{}'.format(i+1)
-                     for i in range(self.dimension) if round(n[i], num_decimal_places) != 0]
+            initial_index = Line.first_nonzero_index(n.coordinates)
+            terms = [write_coefficient(n.coordinates[i], is_initial_term=(i==initial_index)) + 'x_{}'.format(i+1)
+                     for i in range(self.dimension) if round(n.coordinates[i], num_decimal_places) != 0]
+                
             output = ' '.join(terms)
 
         except Exception as e:
@@ -132,6 +115,30 @@ class Line(object):
         output += ' = {}'.format(constant)
 
         return output
+
+    def __eq__(self, ell):
+                
+        if self.normal_vector.is_zero():
+            if not ell.normal_vector.is_zero():
+                return False
+            else:
+                diff = self.constant_term - ell.constant_term
+                return MyDecimal(diff).is_near_zero()
+        elif ell.normal_vector.is_zero():
+            return False
+                
+        if not self.is_parallel_to(ell):
+            return False
+
+        x0 = self.basepoint
+        y0 = ell.basepoint
+        basepoint_difference = x0.minus(y0) 
+        n = self.normal_vector
+        #print 'eq1', basepoint_difference
+        #print 'eq2', n
+        #return basepoint_difference, n
+        return basepoint_difference.is_orthogonal_to(n)
+        #return ([0, 0])
 
 
     @staticmethod
@@ -148,4 +155,10 @@ class MyDecimal(Decimal):
 
 ell1 = Line(normal_vector=Vector(['4.046', '2.836']), constant_term='1.21')
 ell2 = Line(normal_vector=Vector(['10.115', '7.09']), constant_term='3.025')
-print 'intersection 1: ', ell1.intersection_with(ell2)
+print ell1.intersection_with(ell2)
+ell1 = Line(normal_vector=Vector(['7.204', '3.182']), constant_term='8.68')
+ell2 = Line(normal_vector=Vector(['8.172', '4.114']), constant_term='9.883')
+print ell1.intersection_with(ell2)
+ell1 = Line(normal_vector=Vector(['1.182', '5.562']), constant_term='6.744')
+ell2 = Line(normal_vector=Vector(['1.773', '8.343']), constant_term='9.525')
+print ell1.intersection_with(ell2)
