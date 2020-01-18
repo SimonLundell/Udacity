@@ -127,7 +127,7 @@ class Plane(object):
 class MyDecimal(Decimal):
     def is_near_zero(self, eps=1e-10):
         return abs(self) < eps
-
+"""
 ell1 = Plane(normal_vector=Vector(['-0.412', '3.806', '0.728']), constant_term='-3.46')
 ell2 = Plane(normal_vector=Vector(['1.03', '-9.515', '-1.82']), constant_term='8.65')
 print ell1.is_parallel_to(ell2)
@@ -142,7 +142,7 @@ ell1 = Plane(normal_vector=Vector(['-7.926', '8.625', '-7.212']), constant_term=
 ell2 = Plane(normal_vector=Vector(['-2.642', '2.875', '-2.404']), constant_term='-2.443')
 print ell1.is_parallel_to(ell2)
 print ell1==ell2
-"""
+
 ell1 = Plane(normal_vector=Vector(['4.046', '2.836']), constant_term='1.21')
 ell2 = Plane(normal_vector=Vector(['10.115', '7.09']), constant_term='3.025')
 print ell1.intersection_with(ell2)

@@ -1,7 +1,7 @@
 from decimal import Decimal, getcontext
 from copy import deepcopy
 
-from vector import Vector
+from LiAlg import Vector
 from plane import Plane
 
 getcontext().prec = 30
@@ -46,7 +46,7 @@ class LinearSystem(object):
 
         for i,p in enumerate(self.planes):
             try:
-                indices[i] = p.first_nonzero_index(p.normal_vector)
+                indices[i] = p.first_nonzero_index((p.normal_vector).coordinates)
             except Exception as e:
                 if str(e) == Plane.NO_NONZERO_ELTS_FOUND_MSG:
                     continue
@@ -89,16 +89,21 @@ p0 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
 p1 = Plane(normal_vector=Vector(['0','1','0']), constant_term='2')
 p2 = Plane(normal_vector=Vector(['1','1','-1']), constant_term='3')
 p3 = Plane(normal_vector=Vector(['1','0','-2']), constant_term='2')
-
+"""
+p0 = Plane(normal_vector=Vector(['0','1','1']), constant_term='1')
+p1 = Plane(normal_vector=Vector(['0','1','0']), constant_term='2')
+p2 = Plane(normal_vector=Vector(['0','1','-1']), constant_term='3')
+p3 = Plane(normal_vector=Vector(['0','0','-2']), constant_term='2')
+"""
 s = LinearSystem([p0,p1,p2,p3])
 
+print s
 print s.indices_of_first_nonzero_terms_in_each_row()
 print '{},{},{},{}'.format(s[0],s[1],s[2],s[3])
-print len(s)
-print s
+print '# of equations in the system: {}'.format(len(s))
 
 s[0] = p1
-print s
+print s[0]
 
 print MyDecimal('1e-9').is_near_zero()
 print MyDecimal('1e-11').is_near_zero()
