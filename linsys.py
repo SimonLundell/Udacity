@@ -24,11 +24,58 @@ class LinearSystem(object):
 
         except AssertionError:
             raise Exception(self.ALL_PLANES_MUST_BE_IN_SAME_DIM_MSG)
+    
 
+    def compute_triangular_form(self):
+        system = deepcopy(self)
+        
+        m = len(system)
+        n = system.dimension
+        j = 0
+
+        for i in range(m):
+            while j < n:
+                c = MyDecimal(system[i].normal_vector.coordinates[j])
+                if c.is_near_zero():
+                    swap_ok = system.swap_with_row_below_for_nonzero_coefficient_if_able(i, j)
+                    if not swap_ok:
+                        j += 1
+                        continue
+                
+                system.clear_coefficients_below(i, j)
+                
+                j += 1
+                break
+
+        return system
+                    
+    def swap_with_row_below_for_nonzero_coefficient_if_able(self, row, col):
+        num_equations = len(self)
+
+        for k in range(row+1, num_equations):
+            coefficient = MyDecimal(self[k].normal_vector.coordinates[col])
+            if not coefficient.is_near_zero():
+                self.swap_rows(row, k)
+                return True
+
+        return False
+
+    def clear_coefficients_below(self, row, col):
+        
+        num_equations = len(self)
+        beta = MyDecimal(self[row].normal_vector.coordinates[col])
+        
+        for k in range(row+1, num_equations):
+            n = self[k].normal_vector
+            gamma = n.coordinates[col]
+            alpha = -gamma/beta
+            
+            self.add_multiple_times_row_to_row(alpha, row, k)
 
     def swap_rows(self, row1, row2):
         self[row1], self[row2] = self[row2], self[row1]
-
+        return self 
+    
     def multiply_coefficient_and_row(self, coefficient, row):
         n = self[row].normal_vector
         k = self[row].constant_term
@@ -37,6 +84,8 @@ class LinearSystem(object):
         new_constant_term = k * coefficient
 
         self[row] = Plane(normal_vector = new_normal_vector, constant_term = new_constant_term)
+
+        return self
 
 
     def add_multiple_times_row_to_row(self, coefficient, row_to_add, row_to_be_added_to):
@@ -52,6 +101,8 @@ class LinearSystem(object):
         added_constant = new_k1 + k2
 
         self[row_to_be_added_to] = Plane(normal_vector = added_row, constant_term = added_constant)
+        
+        return self
 
 
     def indices_of_first_nonzero_terms_in_each_row(self):
@@ -100,6 +151,45 @@ class MyDecimal(Decimal):
     def is_near_zero(self, eps=1e-10):
         return abs(self) < eps
 
+
+p1 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
+p2 = Plane(normal_vector=Vector(['0','1','1']), constant_term='2')
+s = LinearSystem([p1,p2])
+t = s.compute_triangular_form()
+if not (t[0] == p1 and
+        t[1] == p2):
+    print 'test case 1 failed'
+
+
+p1 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
+p2 = Plane(normal_vector=Vector(['1','1','1']), constant_term='2')
+s = LinearSystem([p1,p2])
+t = s.compute_triangular_form()
+if not (t[0] == p1 and
+        t[1] == Plane(constant_term='1')):
+    print 'test case 2 failed'
+
+p1 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
+p2 = Plane(normal_vector=Vector(['0','1','0']), constant_term='2')
+p3 = Plane(normal_vector=Vector(['1','1','-1']), constant_term='3')
+p4 = Plane(normal_vector=Vector(['1','0','-2']), constant_term='2')
+s = LinearSystem([p1,p2,p3,p4])
+t = s.compute_triangular_form()
+if not (t[0] == p1 and
+        t[1] == p2 and
+        t[2] == Plane(normal_vector=Vector(['0','0','-2']), constant_term='2') and
+        t[3] == Plane()):
+    print 'test case 3 failed'
+
+p1 = Plane(normal_vector=Vector(['0','1','1']), constant_term='1')
+p2 = Plane(normal_vector=Vector(['1','-1','1']), constant_term='2')
+p3 = Plane(normal_vector=Vector(['1','2','-5']), constant_term='3')
+s = LinearSystem([p1,p2,p3])
+t = s.compute_triangular_form()
+if not (t[0] == Plane(normal_vector=Vector(['1','-1','1']), constant_term='2') and
+        t[1] == Plane(normal_vector=Vector(['0','1','1']), constant_term='1') and
+        t[2] == Plane(normal_vector=Vector(['0','0','-9']), constant_term='-2')):
+    print 'test case 4 failed'
 """
 p0 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
 p1 = Plane(normal_vector=Vector(['0','1','0']), constant_term='2')
@@ -118,7 +208,7 @@ print s[0]
 
 print MyDecimal('1e-9').is_near_zero()
 print MyDecimal('1e-11').is_near_zero()
-"""
+
 p0 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
 p1 = Plane(normal_vector=Vector(['0','1','0']), constant_term='2')
 p2 = Plane(normal_vector=Vector(['1','1','-1']), constant_term='3')
@@ -176,3 +266,4 @@ if not (s[0] == Plane(normal_vector=Vector(['-10','-10','-10']), constant_term='
         s[2] == Plane(normal_vector=Vector(['-1','-1','1']), constant_term='-3') and
         s[3] == p3):
     print 'test case 9 failed'
+"""
