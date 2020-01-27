@@ -25,6 +25,21 @@ class LinearSystem(object):
         except AssertionError:
             raise Exception(self.ALL_PLANES_MUST_BE_IN_SAME_DIM_MSG)
     
+    def compute_rref(self):
+        tf = self.compute_triangular_form()
+        
+        m = len(tf)
+        n = tf.indices_of_first_nonzero_terms_in_each_row()
+
+        for i in range(m)[::-1]:
+            j = n[i]
+            if j < 0:
+                continue
+            tf.scale_row_to_make_coefficient_equal_one(i, j)
+            tf.clear_coefficients_above(i, j)
+
+        return tf
+
 
     def compute_triangular_form(self):
         system = deepcopy(self)
@@ -48,7 +63,12 @@ class LinearSystem(object):
                 break
 
         return system
-                    
+    
+    def scale_row_to_make_coefficient_equal_one(self, row, col):
+        n = self[row].normal_vector
+        beta = Decimal('1.0') / n.coordinates[col]
+        self.multiply_coefficient_and_row(beta, row)
+
     def swap_with_row_below_for_nonzero_coefficient_if_able(self, row, col):
         num_equations = len(self)
 
@@ -70,6 +90,13 @@ class LinearSystem(object):
             gamma = n.coordinates[col]
             alpha = -gamma/beta
             
+            self.add_multiple_times_row_to_row(alpha, row, k)
+    
+    def clear_coefficients_above(self, row, col):
+        for k in range(row)[::-1]:
+            n = self[k].normal_vector
+            alpha = -(n.coordinates[col])
+
             self.add_multiple_times_row_to_row(alpha, row, k)
 
     def swap_rows(self, row1, row2):
@@ -155,6 +182,51 @@ class MyDecimal(Decimal):
 p1 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
 p2 = Plane(normal_vector=Vector(['0','1','1']), constant_term='2')
 s = LinearSystem([p1,p2])
+r = s.compute_rref()
+if not (r[0] == Plane(normal_vector=Vector(['1','0','0']), constant_term='-1') and
+        r[1] == p2):
+    print 'test case 1 failed'
+
+print r
+
+p1 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
+p2 = Plane(normal_vector=Vector(['1','1','1']), constant_term='2')
+s = LinearSystem([p1,p2])
+r = s.compute_rref()
+if not (r[0] == p1 and
+        r[1] == Plane(constant_term='1')):
+    print 'test case 2 failed'
+print 'test2', r
+
+p1 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
+p2 = Plane(normal_vector=Vector(['0','1','0']), constant_term='2')
+p3 = Plane(normal_vector=Vector(['1','1','-1']), constant_term='3')
+p4 = Plane(normal_vector=Vector(['1','0','-2']), constant_term='2')
+s = LinearSystem([p1,p2,p3,p4])
+r = s.compute_rref()
+if not (r[0] == Plane(normal_vector=Vector(['1','0','0']), constant_term='0') and
+        r[1] == p2 and
+        r[2] == Plane(normal_vector=Vector(['0','0','-2']), constant_term='2') and
+        r[3] == Plane()):
+    print 'test case 3 failed'
+print r
+
+p1 = Plane(normal_vector=Vector(['0','1','1']), constant_term='1')
+p2 = Plane(normal_vector=Vector(['1','-1','1']), constant_term='2')
+p3 = Plane(normal_vector=Vector(['1','2','-5']), constant_term='3')
+s = LinearSystem([p1,p2,p3])
+r = s.compute_rref()
+if not (r[0] == Plane(normal_vector=Vector(['1','0','0']), constant_term=Decimal('23')/Decimal('9')) and
+        r[1] == Plane(normal_vector=Vector(['0','1','0']), constant_term=Decimal('7')/Decimal('9')) and
+        r[2] == Plane(normal_vector=Vector(['0','0','1']), constant_term=Decimal('2')/Decimal('9'))):
+    print 'test case 4 failed'
+
+print r
+
+"""
+p1 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
+p2 = Plane(normal_vector=Vector(['0','1','1']), constant_term='2')
+s = LinearSystem([p1,p2])
 t = s.compute_triangular_form()
 if not (t[0] == p1 and
         t[1] == p2):
@@ -190,7 +262,7 @@ if not (t[0] == Plane(normal_vector=Vector(['1','-1','1']), constant_term='2') a
         t[1] == Plane(normal_vector=Vector(['0','1','1']), constant_term='1') and
         t[2] == Plane(normal_vector=Vector(['0','0','-9']), constant_term='-2')):
     print 'test case 4 failed'
-"""
+
 p0 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
 p1 = Plane(normal_vector=Vector(['0','1','0']), constant_term='2')
 p2 = Plane(normal_vector=Vector(['1','1','-1']), constant_term='3')
@@ -266,4 +338,36 @@ if not (s[0] == Plane(normal_vector=Vector(['-10','-10','-10']), constant_term='
         s[2] == Plane(normal_vector=Vector(['-1','-1','1']), constant_term='-3') and
         s[3] == p3):
     print 'test case 9 failed'
+"""
+
+"""
+        num_equations = len(tf)
+        d = tf.dimension
+        #print 'd', d
+        i = num_equations
+        #print 'i', i
+        j = 1
+        
+        for k in range(j, num_equations):
+            print 'k outer', k
+            while j < i:
+                print 'i', i
+                print 'j', j
+                print 'k', k
+                beta = MyDecimal(tf[i-j].normal_vector.coordinates[d-j])
+                print beta
+                for p in range(j, num_equations):
+                    print 'inner p', p
+                    print 'inner i', i
+                    n = tf[i-p].normal_vector
+                    gamma = MyDecimal(n.coordinates[d-j])
+                    if gamma.is_near_zero():
+                        continue    
+                    else:
+                        alpha = -beta/gamma
+                    
+                    tf.add_multiple_times_row_to_row(alpha, i-j, j-k)
+                
+                j += 1
+        print 'rref', tf
 """
