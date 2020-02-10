@@ -151,25 +151,55 @@ class LinearSystem(object):
 
     def compute_solution(self):
         try:
-            return self.do_gaussian_elimination_and_extract_solution()
+            return self.do_gaussian_elimination_and_parametrize_solution()
 
         except Exception as e:
-            if (str(e) == self.NO_SOLUTIONS_MSG or
-                    str(e) == self.INF_SOLUTIONS_MSG):
+            if str(e) == self.NO_SOLUTIONS_MSG:
                 return str(e)
             else:
                 raise e
 
-    def do_gaussian_elimination_and_extract_solution(self):
+    def do_gaussian_elimination_and_parametrize_solution(self):
         rref = self.compute_rref()
 
         rref.raise_exception_if_contradictory_equation()
-        rref.raise_exception_if_too_few_pivots()
+        
+        direction_vectors = rref.extract_direction_vectors_for_parametrization()
+        basepoint = rref.extract_basepoint_for_parametrization()
 
-        num_variables = rref.dimension
-        solution_coordinates = [rref.planes[i].constant_term for i in range(num_variables)]
+        return Parametrization(basepoint, direction_vectors)
 
-        return Vector(solution_coordinates)
+    def extract_direction_vectors_for_parametrization(self):
+        num_variables = self.dimension
+        pivot_indices = self.indices_of_first_nonzero_terms_in_each_row()
+        free_variable_indices = set(range(num_variables)) - set(pivot_indices)
+
+        direction_vectors = []
+
+        for free_var in free_variable_indices:
+            vector_coords = [0] * num_variables
+            vector_coords[free_var] = Decimal(1)
+            for i,p in enumerate(self.planes):
+                pivot_var = pivot_indices[i]
+                if pivot_var < 0:
+                    break
+                vector_coords[pivot_var] = -p.normal_vector.coordinates[free_var]
+            direction_vectors.append(Vector(vector_coords))
+        
+        return direction_vectors
+
+    def extract_basepoint_for_parametrization(self):
+        num_variables = self.dimension
+        pivot_indices = self.indices_of_first_nonzero_terms_in_each_row()
+
+        basepoint_coords = [0] * num_variables
+
+        for i,p in enumerate(self.planes):
+            pivot_var = pivot_indices[i]
+            if pivot_var < 0:
+                break
+            basepoint_coords[pivot_var] = p.constant_term
+        return Vector(basepoint_coords)
 
     def raise_exception_if_contradictory_equation(self):
         for p in self.planes:
@@ -223,9 +253,58 @@ class MyDecimal(Decimal):
     def is_near_zero(self, eps=1e-10):
         return abs(self) < eps
 
+class Parametrization(object):
 
+    BASEPT_AND_DIR_VECTORS_MUST_BE_IN_SAME_DIM_MSG = (
+            'The baspoint and the direction vectors should all live in the same dimension')
 
+    def __init__(self, basepoint, direction_vectors):
 
+        self.basepoint = basepoint
+        self.direction_vectors = direction_vectors
+        self.dimension = self.basepoint.dimension
+
+        try:
+            for v in direction_vectors:
+                assert v.dimension == self.dimension
+
+        except AssertionError:
+            raise Exception(BASEPT_AND_DIR_VECTORS_MUST_BE_IN_SAME_DIM_MSG)
+ 
+    def __str__(self):
+
+        output = ''
+        for coord in range(self.dimension):
+            output += 'x_{} = {} '.format(coord + 1,
+                                          round(self.basepoint.coordinates[coord], 3))
+            for free_var, vector in enumerate(self.direction_vectors):
+                output += '+ {} t_{}'.format(round(vector.coordinates[coord], 3),
+                                             free_var + 1)
+            output += '\n'
+    
+        return output
+
+p1 = Plane(normal_vector=Vector(['0.786', '0.786', '0.588']), constant_term='-0.714')
+p2 = Plane(normal_vector=Vector(['-0.131', '-0.131', '0.244']), constant_term='0.319')
+s = LinearSystem([p1, p2])
+c = s.compute_solution()
+print c
+
+p1 = Plane(normal_vector=Vector(['8.631', '5.112', '-1.816']), constant_term='-5.113')
+p2 = Plane(normal_vector=Vector(['4.315', '11.132', '-5.27']), constant_term='-6.775')
+p3 = Plane(normal_vector=Vector(['-2.158', '3.01', '-1.727']), constant_term='-0.831')
+s = LinearSystem([p1, p2, p3])
+c = s.compute_solution()
+print c
+
+p1 = Plane(normal_vector=Vector(['0.935', '1.76', '-9.365']), constant_term='-9.955')
+p2 = Plane(normal_vector=Vector(['0.187', '0.352', '-1.873']), constant_term='-1.991')
+p3 = Plane(normal_vector=Vector(['0.374', '0.704', '-3.746']), constant_term='-3.982')
+p4 = Plane(normal_vector=Vector(['-0.561', '-1.056', '5.619']), constant_term='5.973')
+s = LinearSystem([p1, p2, p3, p4])
+c = s.compute_solution()
+print c
+"""
 p1 = Plane(normal_vector=Vector(['5.862', '1.178', '-10.366']), constant_term='-8.15')
 p2 = Plane(normal_vector=Vector(['-2.931', '-0.589', '5.183']), constant_term='-4.075')
 s = LinearSystem([p1, p2])
@@ -246,7 +325,7 @@ p4 = Plane(normal_vector=Vector(['2.167', '-13.543', '-18.883']), constant_term=
 s = LinearSystem([p1, p2, p3, p4])
 c = s.compute_solution()
 print c
-"""
+
 
 p1 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
 p2 = Plane(normal_vector=Vector(['0','1','1']), constant_term='2')
@@ -409,34 +488,3 @@ if not (s[0] == Plane(normal_vector=Vector(['-10','-10','-10']), constant_term='
     print 'test case 9 failed'
 """
 
-"""
-        num_equations = len(tf)
-        d = tf.dimension
-        #print 'd', d
-        i = num_equations
-        #print 'i', i
-        j = 1
-        
-        for k in range(j, num_equations):
-            print 'k outer', k
-            while j < i:
-                print 'i', i
-                print 'j', j
-                print 'k', k
-                beta = MyDecimal(tf[i-j].normal_vector.coordinates[d-j])
-                print beta
-                for p in range(j, num_equations):
-                    print 'inner p', p
-                    print 'inner i', i
-                    n = tf[i-p].normal_vector
-                    gamma = MyDecimal(n.coordinates[d-j])
-                    if gamma.is_near_zero():
-                        continue    
-                    else:
-                        alpha = -beta/gamma
-                    
-                    tf.add_multiple_times_row_to_row(alpha, i-j, j-k)
-                
-                j += 1
-        print 'rref', tf
-"""
