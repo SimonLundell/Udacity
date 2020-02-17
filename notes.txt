@@ -1,0 +1,22 @@
+A Note on Notation
+
+In the previous video (and in the next) you saw the following equation:
+
+x′=x+x˙x' = x + \dot{x}x′=x+x˙
+
+Translated into plain speech, this says
+
+    the x position after motion (x′x'x′) is equal to the x position before motion (xxx) plus the velocity in the x direction (x˙\dot{x}x˙).
+
+If you read through that statement, you might notice that it doesn't quite make sense because it doesn't take into account the duration of motion. If I drive for 10 seconds I go farther than if I only drive for 1 second!
+
+In the previous video we are assuming that the duration of motion (typically called Δt\Delta tΔt) is equal to 1 second. The "complete" version of the equation above would be
+
+x′=x+x˙Δtx' = x + \dot{x} \Delta tx′=x+x˙Δt
+Symbol 	Meaning
+xxx 	x position before motion
+x′x'x′ 	x position after motion
+x˙\dot{x}x˙ 	velocity in x direction
+Δt\Delta tΔt 	duration of motion "delta t"
+
+
