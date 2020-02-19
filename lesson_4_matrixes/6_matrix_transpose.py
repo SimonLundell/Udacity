@@ -37,6 +37,29 @@ def dot_product(vector_one, vector_two):
         y = y + x
     return y
 
+def identity_matrix(n):
+    
+    identity = []
+    
+    # TODO: Write a nested for loop to iterate over the rows and
+    # columns of the identity matrix. Remember that identity
+    # matrices are square so they have the same number of rows
+    # and columns
+    
+    # Make sure to assign 1 to the diagonal values and 0 everywhere
+    # else
+    
+    for i in range(n):
+        x = []
+        for j in range(n):
+            if i == j:
+                x.append(1)
+            else:
+                x.append(0)
+        identity.append(x)
+    
+    print(identity)
+    return identity
 
 def matrix_multiplication(matrixA, matrixB):
     product = []
@@ -67,6 +90,12 @@ def matrix_multiplication(matrixA, matrixB):
 
 ### TODO: Run the code in the cell below. If there is no
 ###       output, then your answers were as expected
+m = [[5, 9, 2, 4],
+     [3, 8, 5, 6],
+     [1, 0, 0, 15]]
+
+assert matrix_multiplication(m, identity_matrix(4)) == m
+assert matrix_multiplication(identity_matrix(3), m) == m
 
 assert matrix_multiplication([[5, 3, 1],
                               [6, 2, 7]],
