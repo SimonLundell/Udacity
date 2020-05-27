@@ -1,0 +1,24 @@
+More Complex Motion
+
+Now, what if I gave you a more complex motion example?
+
+And I told you that our car starts at the same point, at the 0m mark, and it’s moving 50m/s forward, but it’s also slowing down at a rate of 20m/s^2. This means it’s acceleration = -20m/s^2.
+
+Car moving at 50m/s and slowing down over time.
+Acceleration
+
+So, if the car has a -20 m/s^2 acceleration, this means that:
+
+    If the car starts at a speed of 50m/s
+    At the next second, it will be going 50-20 or 30m/s and,
+    At the next second it will be going 30-20 or 10m/s.
+
+This slowing down is also continuous, which means it happens gradually over time.
+New Model, New State
+
+For the next two quizzes, I want you to keep in mind this question: Where will the car be after 3 seconds?
+
+I also want to ask you:
+
+    What variables do you need to solve this problem? In other words, what values should be included in the state? And...
+    What motion model should we use to solve this problem?

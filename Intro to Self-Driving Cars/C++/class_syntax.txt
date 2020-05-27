@@ -1,0 +1,13 @@
+class function declaration syntax
+
+output_datatype functionname(datatype variable1, 
+datatype variable2, ..., datatype variablen)
+
+class function definition syntax
+
+output_datatype Classname::functionname(datatype variable1, 
+datatype variable2, ..., datatype variablen) {
+
+    code defining the function;
+}
+

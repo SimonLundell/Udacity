@@ -1,0 +1,11 @@
+Objects
+
+Objects hold a state; they hold a group of variables/properties and functions.
+
+You can imagine an Object like a box, and within that box are variables that define the state of an object and often functions that tell us what the object can do!
+
+Ex:
+
+Car is the object, it can contain:
+variables - Position, velocity etc.
+functions - move(self), turn_left(self) etc.

@@ -1,0 +1,12 @@
+Thus far, you've been writing code within the Udacity classroom. But you will also want to be able to run your programs locally on your own computer. This brings up another difference between Python and C++. You learned about the first major difference at the beginning of the C++ lesson; Python is dynamically typed while C++ is statically typed. Another major difference is that Python is an interpreted language whereas C++ is a compiled language.
+
+When you write code in Python or C++, your computer can't actually understand the code that you are writing. But we humans can read and understand these languages, so they are convenient for us to code in.
+
+Your code needs to be translated into a language that your CPU understands. Interpreted languages and compiled languages get translated in different ways. When you run a Python program, there is a translator (ie an interpreter), that reads a line of your code, translates a line of code for the CPU, and then executes your code line on the CPU. Then the next line gets translated and executed. Then the next, etc. The reality is a bit more complex, but that is the gist of an interpreted language like Python.
+
+A compiled language, on the other hand, translates all of your code into the CPU's language. And then your code gets executed. So when running a C++ program, there is an extra step where you first compile your code and then a second step where you execute your code. Python, on the other hand, only has the execution step.
+
+The C++ code you have been writing in the classroom actually is being compiled first and then executed, but it's happening behind the scenes. If you want to run your C++ programs locally on your computer, you're going to need to first compile the code and then execute it yourself.
+
+In the next part of the lesson, you will get your own computer ready for compiling and executing C++ programs.
+

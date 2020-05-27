@@ -1,0 +1,159 @@
+Common Errors and Error Messages
+
+As you to start to write your own C++ code, you might end up with some errors when you try to run your code. C++ errors can be very long and difficult to read even with something simple like a missing semi-colon. In this section, you are going to see some common errors you might run into when writing your C++ code. The goal is to become comfortable debugging your own code.
+
+Here is a simple program that you saw in the beginning of the lesson. The program defines an integer x, assigns the value 5, and finally prints the results to terminal.
+
+#include <iostream>
+
+int main ()
+{
+
+    int x;
+    x = 5;
+
+    std::cout << x << std::endl;
+
+    return 0;
+}
+
+Semi-colon Errors
+
+What happens if you forget to end a line with a semi-colon?
+
+#include <iostream>
+
+int main ()
+{
+
+    int x
+    x = 5;
+
+    std::cout << x;
+
+    return 0;
+}
+
+main.cpp:6:7: error: expected ';' at end of declaration
+        int x
+             ^
+             ;
+1 error generated.
+
+This error message says that code line 6 at the 7th character in main.cpp should have ended in a semi-colon. Every command in C++ needs to end with a semi-colon.
+Declaring and Defining Variable Errors
+
+What about forgetting to declare a variable?
+
+#include <iostream>
+
+int main ()
+{
+    x = 5;
+
+    std::cout << x;
+
+    return 0;
+}
+
+main.cpp:6:2: error: use of undeclared identifier 'x'
+        x = 5;
+        ^
+main.cpp:8:15: error: use of undeclared identifier 'x'
+        std::cout << x << std::endl;
+                     ^
+2 errors generated.
+
+This produced two errors: one for each time the x variable appeared. The error says that on line 6 at the 2nd character, the variable x needs to be declared. The same error occurs at line 8, character 15.
+
+The undeclared identifier errors means that the variable needs a data type definition like int x;.
+Namespace Errors
+
+What happens if you forget to include std in the line std::cout?
+
+#include <iostream>
+
+int main ()
+{
+
+    int x;
+    x = 5;
+
+    cout << x;
+
+    return 0;
+}
+
+main.cpp:9:2: error: use of undeclared identifier 'cout'; did you mean
+      'std::cout'?
+        cout << x;
+        ^~~~
+        std::cout
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iostream:54:33: note: 
+      'std::cout' declared here
+extern _LIBCPP_FUNC_VIS ostream cout;
+                                ^
+1 error generated.
+
+All eleven lines refer to just one error! If you read the error line by line, however, you can get a lot of useful information. The most important part comes at the beginning where you're told that line 9, character 2 has an undeclared identifier cout. The error message tries to help by mentioning you probably meant to use std::cout.
+
+The rest of the error tells points you to the file where std::cout was originally defined.
+Library Include Errors
+
+What happens if you forget to include the standard library file that defines std::cout?
+
+
+int main ()
+{
+
+    int x;
+    x = 5;
+
+    std::cout << x;
+
+    return 0;
+}
+
+main.cpp:7:2: error: use of undeclared identifier 'std'
+        std::cout << x;
+        ^
+1 error generated.
+
+The error says that C++ does not recognize what std means on line 7, character 2.
+
+The definition of std is in the iostream file of the standard library, which needs to be included at the top of the program with the line #include <iostream>. Otherwise, your program won't recognize what std means.
+Putting it All Together
+
+So far, you've seen what happens when your program outputs one error at a time. What about when there are multiple errors?
+
+int main ()
+{
+
+    x = 5;
+
+    cout << x;
+
+    return 0
+}
+
+main.cpp:4:2: error: use of undeclared identifier 'x'
+        x = 5;
+        ^
+main.cpp:6:2: error: use of undeclared identifier 'cout'
+        cout << x;
+        ^
+main.cpp:6:10: error: use of undeclared identifier 'x'
+        cout << x;
+                ^
+main.cpp:8:10: error: expected ';' after return statement
+        return 0
+                ^
+                ;
+4 errors generated.
+
+You get a list of errors starting from the top of your program and working down.
+
+Undeclared identifier implies a variable or function needs a definition. And the semi-colon errors reminds you that all C++ commands need to end in a semi-colon.
+
+When you run your code, you might end up with a very long list of errors that can be difficult to decipher. Usually, the first line of the error has the most important information, so start by looking at the top of the output. If you cannot figure out what an error means, try copying the error text and pasting it into a search engine. Oftentimes, there are resources online explaining what the error is and how to fix it.
+

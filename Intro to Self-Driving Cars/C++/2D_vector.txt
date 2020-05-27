@@ -1,0 +1,97 @@
+Two Dimensional Vectors
+
+Next, you are going to use vectors to store matrices. Much like how Python uses a list of lists to store matrices, for the C++ lessons you will use a vector of vectors. The syntax for declaring two-dimensional vectors is a bit tricky.
+
+Say you're using Python and want to store a 3 by 5 matrix. You could do something like this:
+
+matrixexample = [[2, 1, 5], [7, 9, 2], [16, 5, 9], [5, 2, 1], [1, 2, 4]]
+
+In C++, you are going to create a similar structure by appending vectors to vectors. Here is a comparison of Python and C++ code to see what this looks like:
+Explanation of the Code
+
+First, the line
+
+vector < vector <int> > twodvector;
+
+declares an empty two dimensional vector named twodvector. A couple of things to notice:
+
+    like with all variables in C++, you have to declare what type of values will go into the vector. In this case, integers will go into the twodvector variable.
+    Notice the spaces between brackets < vector <int> >. Your program probably won't run if the spacing is not done correctly.
+
+Then a one dimensional vector called singlerow is declared. The singlerow vector has the form [2, 2, 2].
+
+vector<int> singlerow (3,2);
+
+Then the singlerow vector is appended to the twodvector five times:
+
+    for (int i = 0; i < 5; i++) {
+        twodvector.push_back(singlerow);
+    }
+
+You end up with the same two-dimensional structure just like in the Python code. If you were to run this C++ code, the terminal would print out:
+
+2 2 2 
+2 2 2 
+2 2 2 
+2 2 2 
+2 2 2 
+
+Alternative Initialization
+
+Here is another way you could have set up the vector from the previous example:
+
+vector < vector <int> > twodvector (5, vector <int> (3, 2));
+
+The syntax is a little bit more complicated. But if you start from the inside of the parenthesis and work your way out, you see that you have already seen all of the functionality.
+
+The line:
+
+vector <int> (3, 2) 
+
+would set up an integer vector like {2, 2, 2}. So even though you don't see the inner vector, the code is essentially doing something like this:
+
+vector < vector <int> > twodvector (5, {2, 2, 2});
+
+So then the code copies {2, 2, 2} five times into the twodvector variable:
+
+{{2, 2, 2},
+{2, 2, 2},
+{2, 2, 2},
+{2, 2, 2},
+{2, 2, 2}}
+
+Just keep in mind that only Python represents vectors or matrices with square brackets []. Newer versions of C++ can use squiggly brackets to represent vectors {}, but older implementations of C++ do not have an equivalent representation.
+
+A line of code like the following would not run in C++:
+
+vector < vector <int> > twodvector (5, [2, 2, 2]);
+
+2D Vectors and For Loops
+
+Because 2D vectors are just vectors inside a vector, a 2D vector has the same methods as a 1D vector.
+
+That way the cout code from the example works:
+
+for (int row = 0; row < twodvector.size(); row++) {
+        for (int column = 0; column < twodvector[0].size(); column++) {
+            cout << twodvector[row][column] << " ";
+        }
+        cout << endl;
+
+When you type twodvector.size(), that will give you the size of the outside vector. The outside vector had five elements, which represents the number of rows in the matrix being represented:
+
+{2 2 2} 
+{2 2 2} 
+{2 2 2} 
+{2 2 2} 
+{2 2 2}
+
+When you write twodvector[0].size(), you are taking the first element of the outside vector, [2 2 2], and asking for the size of that vector, which in this case is three. So essentially the for loop is saying:
+
+for (int row = 0; row < 5; row++) {
+        for (int column = 0; column < 3; column++) {
+            cout << twodvector[row][column] << " ";
+        }
+        cout << endl;
+
+

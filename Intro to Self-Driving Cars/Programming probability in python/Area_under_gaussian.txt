@@ -1,0 +1,23 @@
+Area Under the Curve
+
+As a reminder, the y-axis of a continuous probability distribution shows the probability density function. The x-axis represents a continuous variable like height, velocity, etc. For reference, here is a Gaussian distribution that we were looking at earlier with mean = 50 and standard deviation = 10.
+
+But the probability density function on the y-axis is not a direct measurement of probability. The area under the probability density function is the probability.
+
+Like if you wanted to know the probability that the temperature was between 45 and 60 degrees Fahrenheit, you'd need to calculate the area under the curve from 45 to 60 degrees:
+Area Under the Curve 45 to 60
+
+Area Under the Curve from 45 to 60
+Area Under the Gaussian Probability Density Function
+
+Yet, how can you calculate the area under a curve like the Gaussian distribution? If you are familiar with calculus, the area under a curve is called an integral. However, taking the integral of the Gaussian probability density function is not an easy task!
+
+Instead, you could use something called the standard normal table. This table contains data for calculating the area underneath a Gaussian probability density function. How to use these tables goes beyond the scope of this course; it's generally taught in an introductory statistics course like Udacity's Statistics 101.
+
+Lucky for us, Python has a library that can calculate the area underneath the Gaussian probability density function. In the next section, you'll learn how to use this library.
+
+What is the area under the Gaussian probability distribution function from x = -infinity to x = +infinity? (Hint: You do not need to calculate anything to figure out the answer)
+
+Answer: 1
+
+Yes that's correct! To ask the question another way, "What is the probability that the temperature is somewhere between negative infinity and positive infinity?" The answer is 1 because the temperature will always have some value.

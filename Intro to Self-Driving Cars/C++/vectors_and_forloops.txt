@@ -1,0 +1,72 @@
+Vectors and For Loops
+
+Much of the time, you will be using for loops to manipulate vectors. Once you are comfortable using for loops with vectors, you can do things like:
+
+    populate a vector with values
+    do math with vectors
+
+Here is a program that initializes a vector and then uses a for loop to populate the vector with values. Then another for loop reads out the vector values.
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+
+    vector<float> example;
+
+    for (int i = 0; i < 5; i++) {
+        example.push_back(i*5.231);
+    }
+
+    for (int i = 0; i < example.size(); i++) {
+        cout << example[i] << endl;
+    }
+
+    return 0;
+}
+
+The output looks like this:
+
+0
+5.231
+10.462
+15.693
+20.924
+
+
+Using i++ Versus ++i
+
+So far, you've learned to write C++ for loops like the following:
+
+for (int i = 0; i < 10; i++) {}
+
+This syntax matches closely to the Python for loop syntax; however, you can also write a for loop like this:
+
+for (int i = 0; i < 10; ++i) {}
+
+What is the difference and why do both ways work?
+
+In practice, both i++ and ++i will give you the same results; these are a shorthand way of writing i = i + 1. The difference between the two is subtle.
+
+int i = 5;
+int x = i++; // x = 5, i = 6 (called postfix)
+int x = ++i; // x = 6, i = 6 (called prefix)
+
+In both cases, the i variable increases by 1. In the postfix case, i++, int x = i is evaluated first and then i = i + 1 occurs.
+
+In the prefix case, ++i, i = i + 1 occurs first and then int x = i executes.
+
+Many code guidelines recommend using ++i over i++. In reality neither one is more efficient than the other when using integer variables.
+
+However, there is a difference when you write a C++ class that overloads the ++ operator. You saw operational overloading in the Python matrix project; the code overloaded mathematical signs to carry out matrix addition, subtraction, multiplication, etc.
+
+When overloading the postfix operator, C++ needs to keep track of two values. In the example, the values would be 5 and 6. For the prefix operator, C++ only needs to keep track of one value: 6. Hence, when overloading the ++ operator, it's generally more efficient to use prefix than the postfix.
+
+Overloading is an advanced C++ topic that isn't covered in depth here. If you'd like to learn more, here are a few resources:
+
+Stackoverflow
+
+IBM Knowledge Center
+

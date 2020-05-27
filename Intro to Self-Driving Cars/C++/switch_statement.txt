@@ -1,0 +1,90 @@
+Switch
+
+A switch statement is very similar to an if clause. In fact, you can write a program that does the exact same thing with either a switch statement or a series of if-else clauses.
+
+Then why bother using a switch statement? For reasons we won't detail here, switch statements can oftentimes be faster to execute. Many programming languages have a switch statement including Java, Javascript, PHP, C++ among others; Python is an exception.
+
+Since there is no Python switch statement, we will compare a set of if-else C++ clauses with a C++ switch statement.
+
+Click on the image to zoom in.
+
+The output of the code would be
+
+Not Moving - Neutral
+Your car is currently in gear: N
+
+Let's break down what is happening in the switch statement:
+
+    char gear_status = 'N';
+
+    switch(gear_status) {
+        case 'D' :
+            std::cout << "Driving Forward" << std::endl;
+            break;
+        case 'N' :
+            std::cout << "Not Moving - Neutral" << std::endl;
+            break;
+        case 'P' :
+            std::cout << "Not Moving - Parked" << std::endl;
+            break;
+        case 'R':
+            std::cout << "Driving in Reverse" << std::endl;
+            break;
+    }
+
+Each time case appears, the code checks to see if the gear_status variables matches the case. Once gear_status finds a matching case, the code inside the case runs.
+
+In C++, the switch statement was designed to run the code in the matching case and then all of the cases below. You need the break lines of code if you want your code to leave the switch after executing the matching case.
+
+In other words, if the code were written without using break,
+
+#include <iostream>
+
+int main() {
+
+    char gear_status = 'N';
+
+    switch(gear_status) {
+        case 'D' :
+            std::cout << "Driving Forward" << std::endl;
+        case 'N' :
+            std::cout << "Not Moving - Neutral" << std::endl;
+        case 'P' :
+            std::cout << "Not Moving - Parked" << std::endl;
+        case 'R':
+            std::cout << "Driving in Reverse" << std::endl;
+    }
+
+    std::cout << "Your car is currently in gear: " << gear_status << std::endl;
+
+    return 0;
+}
+
+the code would still skip the 'D' case. But once the code found a match with the 'N' case, the code in the 'N', 'P', and 'R' cases would execute.
+Switch Limitations
+
+If-else statements are much more flexible than switch statements. In fact, the case clauses in switch statements can only make comparisons between integer values. Switch cases can also compare characters like in the example code because C++ is actually converting the characters to integers.
+
+On the other hand, if statements can make comparisons between floating point numbers as well as between integers.
+
+The general form of a switch statement looks like this:
+
+    int variable = integer;
+
+    switch(variable) {
+        case 1:
+            code statements;
+            break;
+        case 2 :
+            code statements;
+            break;
+        case 3:
+            code statements;
+            break;
+        case 4:
+            code statements;
+            break;
+        case etc ... 
+    }
+
+

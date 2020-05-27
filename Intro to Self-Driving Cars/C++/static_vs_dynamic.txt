@@ -1,0 +1,97 @@
+Python is Dynamic, C++ is Static
+Dynamically Typed versus Statically Typed
+
+On the surface, Python and C++ have a lot in common; for instance, you'll see that if statements, for loops, and basic mathematical expressions are quite similar.
+
+But under the hood, Python and C++ have fundamental differences. One major difference is that C++ is statically typed whereas Python is dynamically typed.
+
+Take a look at this Python code:
+
+
+vehicle_doors = 4
+vehicle_speed = 3.0
+vehicle_acceleration = 1.5
+vehicle_on = True
+vehicle_gear = 'D'
+vehicle_doors = vehicle_doors + 1
+
+Python automatically figures out that vehicle_doors is an integer, vehicle_speed is a float, and vehicle_on is a boolean variable. Variable assignment is dynamic. In Python, you do not need to specify the type of value that will go into a variable.
+
+Did you notice the typo "vehicle_dors" instead of "vehicle_doors"? That is legitimate python code, and it won't produce an error.
+
+In C++, none of the above code would work. You need to declare the variable type before you define a value; therefore, C++ is a statically typed language. Below is a C++ version of the code:
+
+
+int vehicle_doors;
+float vehicle_speed;
+float vehicle_acceleration;
+char vehicle_gear;
+bool vehicle_on;
+
+vehicle_doors = 4;
+vehicle_speed = 3.0;
+vehicle_acceleration = 1.5;
+vehicle_gear = 'D';
+vehicle_on = True;
+
+vehicle_doors = vehicle_doors + 1;
+
+If you had typed: vehicle_dors = vehicle_doors + 1;, you would get an error. That is because the vehicle_dors variable was never defined.
+Declaring Variables in a Statically Typed Language
+
+In this quiz, you will write integer variable declarations in C++. Read through the code below and fill in the TODO sections:
+// include all libraries needed
+#include <iostream>
+
+/* 	
+*	These are C++ comments. There are two ways to write comments in C++.
+*	Using the slash with an asterisk is one way.
+*/ 
+
+// Here is another way to write comments in C++
+
+/* In general, C++ code is run from a file called main.cpp
+* The implementation goes into a function called main().
+* The main() function almost always returns a zero, which provides evidence that 
+* the program ran to its end.
+*/
+
+// define main function
+int main() {
+    
+    int integer_one;
+    integer_one = 5;
+    
+    // TODO: Define a variable called integer_two and assign a value of 9.
+    int integer_two;
+    integer_two = 9;
+    
+    // TODO: Calculate the sum of integer_one and integer_two 
+    // and assign the result to integer_sum
+    
+    int integer_sum;
+    integer_sum = integer_one + integer_two;
+    
+    
+    // outputs the results to standard out
+    std::cout << integer_sum;
+    
+    return 0;
+}
+14
+
+Variable Assignment Python vs C++
+
+What if the quiz had been in Python instead of C++? Remember, Python is a dynamically typed language whereas C++ is statically typed. In Python, you can assign values and Python automatically figures out what type of variable you wanted to use; however, when programming in C++, you need to declare the variable type prior to assignment.
+C++ Tip
+
+In the C++ quiz, you might have written a statement like:
+
+int integer_two;
+integer_two = 9;
+
+You can also define and assign a variable in one line of code like this:
+
+int integer_two = 9;
+
+

@@ -1,0 +1,30 @@
+Programming Probability Distributions
+Introduction
+
+It's time to get more experience programming in Python. Probability distributions involve algebraic functions and visualizing those functions.
+
+You'll start out by making a few basic functions to calculate and visualize continuous uniform probability distributions.
+
+Then, you'll program a more complex distribution: a non-uniform discrete probability distribution.
+
+Next, you'll use those skills to explore how a self-driving car, or really any robot, might represent its location probabilities in a discrete, 1-D world. Then you'll expand into probabilities in a 2-D world. You're going to implement the 2-D world using something called a class, which is a sort of programming template. You'll learn more about classes in the exercises.
+
+Finally, you'll become familiar with a probability distribution that is especially important to self-driving cars: the normal distribution.
+Skills
+
+Here is a summary of the skills you'll work on in these excercises:
+Python Skills
+
+    Writing a function in python
+    Initializing 1-Dimensional and 2-Dimensional arrays
+    Creating visualizations
+    Classes in Python
+
+Probability Skills
+
+    Calculating probabilities for a continuous uniform distribution
+    Calculating probabilities for a discrete non-uniform distribution
+    Location probabilities on a 1-D grid
+    Location probabilities on a 2-D grid
+
+
