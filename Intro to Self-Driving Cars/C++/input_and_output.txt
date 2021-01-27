@@ -1,0 +1,44 @@
+Input and Output
+
+There is one last topic to discuss before moving onto the C++ Object Oriented Programming Lesson.
+
+You have already seen how to call a function and then output the results to the terminal using cout. As an example:
+
+std::cout << distance(3, 4, 5);
+
+But how do you get user input from the terminal? Or how do you input data from a file into your program or write out your results to a file?
+cin
+
+Much like the Standard Library provides a function for outputting to the terminal, the library also provides a function for reading in data from the terminal.
+
+This code demonstrates how to use cin:
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+
+    int integerone; 
+    int integertwo;
+
+    // declare array and assign values
+    cout << "Enter an integer between 1 and 100" << endl;
+    cin >> integerone;
+
+    cout << "Enter another integer between 1 and 100" << endl;
+    cin >> integertwo;
+
+    // output the difference
+    cout << "The difference between your two numbers is: ";
+    cout << integerone - integertwo << endl;
+
+
+    return 0;
+}
+
+To see how this code works, you will need to put the code into a .cpp file and run the program locally. The classroom playground does not allow for user input.
+
+Next, you will learn how to input data from an external file.
+

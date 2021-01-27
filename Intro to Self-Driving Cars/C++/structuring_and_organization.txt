@@ -1,0 +1,121 @@
+Structuring your Functions
+
+In the last lesson, you learned two different ways for declaring and defining functions:
+
+    declaring functions above main() and defining functions below main
+    declaring and defining functions simultaneously above main
+
+As your C++ programs get longer and more complex, you might want to separate your code into multiple files. Keeping function definitions and declarations separate will help you with splitting and organizing your code.
+
+For example, take a look at this code from the functions quiz in the previous lesson.
+
+#include <iostream>
+
+float distance(float velocity, float acceleration, float time_elapsed);
+
+int main() {
+
+    std::cout << distance(3, 4, 5) << std::endl;  
+    std::cout << distance(7.0, 2.1, 5.4) << std::endl;
+
+    return 0;   
+}
+
+float distance(float velocity, float acceleration, float time_elapsed) {
+    return velocity*time_elapsed + 0.5*acceleration*time_elapsed*time_elapsed;
+}
+
+Instead of putting everything into a main.cpp like in the previous quiz, the code could be organized into two files. Check out the code below and hit the "Test Run" button.
+main.cpp Currently Selected
+
+    main.cppCurrently Selected
+    distance.cpp 
+
+#include <iostream>
+
+float distance(float velocity, float acceleration, float time_elapsed);
+
+int main() {
+
+    std::cout << distance(3, 4, 5) << std::endl;  
+    std::cout << distance(7.0, 2.1, 5.4) << std::endl;
+    
+    return 0;   
+}
+65
+68.418
+
+Behind the scenes, both main.cpp and distance.cpp are being compiled. This is happening on the backend of the classroom, so you are not seeing the compilation happen.
+
+But if you were to run this program locally, you could open a terminal and navigate to the folder containing both files. Typing something like
+
+g++ main.cpp distance.cpp
+./a.out
+
+would compile both files together and then execute the program.
+
+Because you have defined your function in a separate file outside of main.cpp, you can more easily re-use the function in other parts of your code.
+
+Notice that you still had to declare the distance function at the top of main.cpp to be able to use the function.
+Header Files
+
+The function declaration
+
+float distance(float velocity, float acceleration, float time_elapsed);
+
+is oftentimes put into its own file as well. The declaration is kept in what's called a header file because the header is the information above the main() function. Header files generally have either a .h or .hpp extension. Here is the same code above but with the function declaration in a header file. If you click the "Test Run" button, you'll see that this code works as well:
+main.cpp Currently Selected
+
+    main.cppCurrently Selected
+    distance.cpp
+    distance.h 
+
+#include <iostream>
+#include "distance.h"
+
+int main() {
+
+    std::cout << distance(3, 4, 5) << std::endl;  
+    std::cout << distance(7.0, 2.1, 5.4) << std::endl;
+    
+    return 0;   
+}
+65
+68.418
+
+The code line
+
+#include "distance.h"
+
+will paste the contents of distance.h into main.cpp.
+
+Now let's say you wanted to reuse your distance function in a different file. All you have to do is declare the function at the top of your new file with an include statement:
+
+#include "distance.h"
+
+and you can use the function in another part of your program.
+
+Organizing your code into different .cpp files separates out the implementation from the declaration. Furthermore, using header files means that you do not have to remember what the function declaration looked like because you can include it with the simple syntax of
+
+#include "distance.h"
+
+To compile the code, you only need to compile the .cpp files but not the .h file:
+
+g++ main.cpp distance.cpp
+
+File Naming
+
+Naming conventions dictate that the header file and associated cpp file have the same name. Therefore it's clear that distance.h contains the header declarations for distance.cpp. You'll also notice that the function name itself was called distance(). So the function name, .cpp and .h files all match.
+
+These are naming conventions, so your C++ code will still compile if you do not follow these conventions; however, it's highly recommended to stick with these conventions.
+Include syntax
+
+You might be wondering why there are two different types of include statements:
+
+#include <iostream>
+#include "distance.h"
+
+The include statement with quotes tells the program to look for the distance.h file in the current directory.
+
+The <> syntax will depend on your C++ environment. Generally, environments are set up to look for the file where the C++ libraries are stored like the Standard Library.
+

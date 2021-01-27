@@ -1,0 +1,85 @@
+C++ Libraries
+
+You have learned how to declare variables, write functions, and use control statements. Those are the basic building blocks of any programming language, and you are ready to write programs in C++.
+
+But, what if you want to store a string in a variable or do more advanced math like taking the square root of a number? Just like Python, C++ also uses pre-built libraries to help make programming easier. In python, you use these libraries with an
+
+import
+
+statement.
+
+In C++, you use
+
+#include
+
+You have already been using a file called "iostream" from the C++ Standard Library. The "iostream" file contains functions and classes for outputting to a terminal and also reading in from a terminal.
+
+You were able to take advantage of these pre-built functions by including the appropriate file like so:
+
+#include <iostream>
+
+That include statement essentially pastes the iostream file to the top of your code and gives you access to all of its functions and classes.
+
+As your programs become more complex, you will rely more and more on C++ libraries.
+C++ Standard Library
+
+The C++ Standard Library has a lot of functions and classes like a definition for a string, arrays, tuples, functions for reading in and outputting files, random number generators, definitions for complex number variables, mathematical functions and many other functions as well.
+
+And the C++ Standard Library comes with a C++ installation.
+
+Besides this list of files in the Standard Library, search engines are your best friend for finding functionality and libraries in C++. For example, if you are not sure how to do something in C++ like using strings, open a search engine and type "C++ string syntax". You will find many examples online of how to use strings in C++ and quickly find an example like the following:
+Example: Strings
+
+To use the part of the library that defines strings, you would include a line at the top of your main.cpp file like:
+
+#include <string>
+
+#include <string>
+
+int main() {
+   std::string stringvariable = "stringvalue";
+   return 0;
+}
+
+Example: Math
+
+Here is another example from the standard library.
+
+#include <iostream>
+#include <cmath>
+
+int main ()
+{
+   // calculate 
+    std::cout << pow(3.4, 4);
+}
+
+The pow() function is raising 3.4 to the fourth power.
+
+Cmath includes logarithmic and exponential functions, power functions, and trigonometric functions. You can see a full list here.
+Include Syntax
+
+When you learned about structuring functions, you saw two different include statements:
+
+#include <iostream>
+#include "distance.h"
+
+Here is a quiz to help you remember the difference between using quotes and using brackets:
+Quiz Question
+
+What is the difference between using double quotes versus brackets in an include statement?
+
+In fact, you could also write,
+
+#include "iostream"
+#include "distance.h"
+
+but using quotes instead of brackets is less efficient. When using quotes, your program will first look for the iostream file in the main.cpp directory. When the program cannot find the file, the program will search where the standard library files are kept.
+Other Useful Libraries
+
+As previously mentioned, the C++ Standard Library generally comes with a C++ installation; however, there are many other useful C++ libraries that you install separately. Each library will have its own installation procedure and usually comes with instructions. Again, search engines are your best friends when trying to find and install libraries.
+
+This link contains a list of many open source C++ libraries. In the list, you will see all kinds of libraries for math, gaming, computer vision, machine learning, as well as many other topics.
+
+In the next lesson, you will learn to use the C++ vector library.
+

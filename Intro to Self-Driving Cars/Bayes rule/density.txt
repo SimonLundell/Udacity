@@ -1,0 +1,5 @@
+Density is the f(x) for a probability distribution over a graph (the underlying area).
+Density is always non-negative (0 or above). But different from probability is that it is NOT:
+- always positive
+- always continuous
+- always smaller or equal to 1

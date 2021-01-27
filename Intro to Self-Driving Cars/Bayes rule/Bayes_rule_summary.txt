@@ -1,0 +1,46 @@
+Review
+
+Before we dive into code that utilizes Bayes' rule, let's review what we've learned in the previous lesson.
+
+We've seen that Bayes' rule allows us to improve a prior probability by incorporating new evidence (from observed data or tests) and forming a new posterior probability. It does this through a series of mathematical steps.
+
+To describe the steps, I'll be using the notation HHH for hypothesis (ex. the likelihood that a car is in a certain location or that a person has cancer, etc.), and TTT for observed test/sensor data (ex. a car sees the color green or a positive medical test result is returned). For example, P(T∣¬H)P(T|\neg H)P(T∣¬H) is the probability of sensor reading occurring given that the hypothesis has not occurred.
+
+A note on notation
+
+As you work through these problems, you may see other notation, P(H∣T)P(H| T)P(H∣T), or P(X∣U)P(X| U)P(X∣U), or P(A∣B)P(A| B)P(A∣B) (and so on) where one letter indicates a hypothesis and the other indicates observed data. Different notation; same concept, and as long as you are familiar with the concept, you should be well equipped to deal with changing notation!
+1. Prior probabilities
+
+The first step in Bayes' rule is to determine any prior probabilities. Ask yourself, based on previous data, how likely is a hypothesis, or specific event, H to happen?
+
+    Determine P(H)P(H)P(H)
+    Once you have P(H)P(H)P(H), you can derive P(¬H)P(\neg H)P(¬H)
+
+2. Conditional/test probabilities
+
+You should also know, through sensor or test data collection, how likely a certain test or sensor reading is to occur given that the hypothesis H has or has not occurred.
+
+    Determine P(T∣H)P(T|H)P(T∣H) and P(T∣¬H)P(T|\neg H)P(T∣¬H)
+    Once you have P(T∣H)P(T|H)P(T∣H), you can derive P(¬T∣H)P(\neg T|H)P(¬T∣H)
+
+Steps 1 and 2 give you all the information you need to perform Bayes' rule, and form a prediction about how likely a hypothesis is to be true given certain observed, related data.
+3. Joint Probabilities
+
+The next step is to calculate the four joint probabilities of the prior and the test probabilities. Two examples are given below.
+
+    P(T,H)=P(T∣H)⋅P(H)P(T, H) = P(T|H)\cdot P(H)P(T,H)=P(T∣H)⋅P(H)
+    Likewise, P(T,¬H)=P(T∣¬H)⋅P(¬H)P(T, \neg H) = P(T|\neg H)\cdot P(\neg H)P(T,¬H)=P(T∣¬H)⋅P(¬H)
+
+4. Total probabilities
+
+You'll then need to determine the total probability of a test result or sensor reading, so that you can use this value to normalize the posterior probability (which is the last step of Bayes' rule. The total probability of a test result is the sum of the joint probabilities in which that test result occurs. An example is given below.
+
+    P(T)=P(T,H)+P(T,¬H)P(T) = P(T, H) + P(T, \neg H)P(T)=P(T,H)+P(T,¬H)
+
+5. Posterior probability (last step)
+
+The last step is to determine the probability of an event given a sensor reading or certain test data. And this is given by Bayes' rule. An example is shown below.
+
+    P(H∣T)=P(T∣H)⋅P(H)P(T)P(H|T) = \frac{P(T|H)\cdot P(H)} {P(T)}P(H∣T)=P(T)P(T∣H)⋅P(H)​
+
+

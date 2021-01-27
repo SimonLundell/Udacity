@@ -1,0 +1,35 @@
+Discrete Variables
+
+As mentioned before, there are two main categories of probability distributions: discrete probability distributions and continuous probability distributions. To see the difference, let's talk about discrete variables and continuous variables.
+
+The word discrete implies that a variable can only take on certain values. Usually this ends up meaning that the variable is countable like:
+
+    Number of times a coin landed on heads
+    How many times a dice landed on 1, 2, 3, 4 5 or 6
+
+You wouldn't say that a dice landed midway between 3 and 4 like 3.4. Or that the coin landed on heads and a half. And oftentimes these discrete variables lend themselves to counting like:
+
+    How many times did the coin land on heads?
+    How many times did the dice land on five?
+
+Of course, in a real-world experiment, the coin has some tiny tiny chance of landing on its side or the dice on an edge. But the case would still be discrete; you'd create an category like "side" or "edge" to account for those cases.
+
+The chart shows the probability that none of the three flips was heads, one of the three flips was heads, two of the three flips were heads, or all three flips were heads. Notice the x-axis represents the number of times that heads showed up and the y-axis represents the probability of the result.
+
+Discrete probability distributions can also be represented in tables:
+Heads Count 	Probability
+0 	0.125
+1 	0.375
+2 	0.375
+3 	0.125
+
+Based on the above visualization, you can see a few interesting characteristics about discrete probability distributions:
+
+    For all values on the x-axis, the y value is greater than or equal to 0.
+    For each x, the probability p(x) is equal to the y value
+    The sum of all y values is 1; there's a 100% chance that something will occur.
+
+Here is what we mean by the sum of all y values is 1. When flipping a coin three times, there is a 100% chance that you will either get zero heads, 1 heads, 2 heads or 3 heads (ignoring the very very small chance that the coin lands on its side).
+
+In the next part of the lesson, you will get practice working with a discrete probability distribution.
+

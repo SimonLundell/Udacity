@@ -1,0 +1,22 @@
+Continuous Variables
+
+In contrast, a variable like temperature is continuous. Temperature can take on any decimal value like -5.6 or 100.41 degrees.
+
+Weight, height, temperature, longitude, and latitude are continuous variables. All of these variables could be decimal values. These variables have something else in common; you'd use some sort of instrument to measure them like a thermometer, a ruler, a scale or in the case of longitude, a chronometer.
+
+Notice as well that you can't really associate counts with these variables. With a discrete variable like coins, you could count the number of times the coin landed on heads.
+
+The probability distributions for discrete variables and continuous variables are different. In this lesson, you are going to learn the differences and similarities between the two.
+
+However, height is normally a continuous variable, but if we decide to always round it to its nearest integer, it becomes a discrete variable.
+
+In continuous probability, every outcome has probability 0 due to you will never be able to reach the accuracy defined in infinate space
+
+for example spinning a pen around a circle, probability of pen landing on 180.0000000000...n is 0.
+
+But if we define a clear interval we can set a probability:
+0<x<180 -> P = 1/2
+260<x<290 -> P = 1/12
+179<x<180 -> P = 1/360
+
+

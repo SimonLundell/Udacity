@@ -1,0 +1,73 @@
+Outputting to Text Files
+
+Much like how you can input data from a file, you can also output data to a file. Say you have a matrix and you want to save the results to a text file. You'll see that the code for outputting the matrix to a file looks quite similar to the code for outputting the matrix to the terminal.
+
+You will need to run this code locally in order to see the outputted text file.
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+
+    // create the vector that will be outputted
+    vector < vector <int> > matrix (5, vector <int> (3, 2));
+    vector<int> row;
+
+    // open a file for outputting the matrix
+    ofstream outputfile;
+    outputfile.open ("matrixoutput.txt");
+
+    // output the matrix to the file
+    if (outputfile.is_open()) {
+        for (int row = 0; row < matrix.size(); row++) {
+            for (int column = 0; column < matrix[row].size(); column++) {
+                if (column != matrix[row].size() - 1) {
+                    outputfile << matrix[row][column] << ", ";
+                }
+                else {
+                    outputfile << matrix[row][column];
+                }
+            }
+            outputfile << endl; 
+        }
+    }
+
+    outputfile.close();
+
+    return 0;
+}
+
+You can see that you need to create an ofstream object and then use the object to create a new file.
+
+    ofstream outputfile;
+    outputfile.open ("matrixoutput.txt");
+
+The rest of the code iterates through the matrix and outputs the matrix in the format you specify in the code:
+
+    if (outputfile.is_open()) {
+        for (int row = 0; row < matrix.size(); row++) {
+            for (int column = 0; column < matrix[row].size(); column++) {
+                if (column != matrix[row].size() - 1) {
+                    outputfile << matrix[row][column] << ", ";
+                }
+                else {
+                    outputfile << matrix[row][column];
+                }
+            }
+            outputfile << endl; 
+        }
+    }
+
+The if statement is checking whether or not the end of the row is reached. If the current value is the end of a row, it's not necessary to put a comma separator after the number:
+
+                if (column != matrix[row].size() - 1) {
+                    outputfile << matrix[row][column] << ", ";
+                }
+                else {
+                    outputfile << matrix[row][column];
+                }
+
+

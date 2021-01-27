@@ -1,0 +1,36 @@
+Vector Methods
+
+Vectors have a handful of useful functions, which you can see here. In this part of the lesson, you will go over the ones you will be using in the object oriented programming lesson.
+assign
+
+Assign helps you quickly populate a vector with fixed values. For example this code,
+
+vector<int> intvariable;
+intvariable.assign(10,16);
+
+is going to populate the vector with ten integers all having the value of 16.
+
+The assign method lets you override your current vector with a new vector.
+
+Remember, you've already seen a similar way to initialize values in a vector:
+
+vector<int> intvariable(10,16);
+
+The difference is that the assign method lets you override your current vector with new values.
+push_back
+
+Pushback adds an element to the end of the vector:
+
+vector<int> intvariable;
+intvariable.push_back(25);
+
+size
+
+Size returns the size of the vector.
+
+intvariable.size();
+
+Practice with Vector Methods
+
+Before getting practice with these vector methods, move on to the next section to learn about accessing vectors with for loops. In the next section, you'll combine the methods you just learned with for loops.
+

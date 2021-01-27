@@ -1,0 +1,27 @@
+Sebastian travels a lot.
+
+P(gone) = 0.6
+P(home) = 0.4
+
+Priors:
+It rains a lot where he goes, but not at home:
+P(rain|home) = 0.01
+P(rain|gone) = 0.3
+
+Thus:
+P(rain|<home) = P(rain|gone) = 0.3
+P(<rain|home) = 0.99
+P(<rain|gone) = 0.7
+
+
+Sebastian wakes up and sees rain, what is P(home|rain)?
+
+We can see the probability of Sebastian being at home and the probability of seeing rain while at homeP(rain, home): P(home) * P(rain|home) = 0.4 * 0.01 = 0.004
+
+Similarly we can see the probability of seeing rain while not at home P(rain, <home) = P(<home) * P(rain|<home) = 0.6 * 0.3 = 0.18
+
+Normalizer is then 0.18 + 0.004 = 0.184
+
+P(home|rain) = P(rain,home) /  normalizer = 0.004 / 0.184 = 0.0217
+
+(also, P(<home|rain) = P(rain,<home) / normalizer = 0.18 / 0.184 = 0.9783

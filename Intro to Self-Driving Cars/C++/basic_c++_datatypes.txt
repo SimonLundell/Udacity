@@ -1,0 +1,39 @@
+Basic C++ Data Types
+
+Now you know how to declare a variable in a statically typed language like C++. The C++ language has a handful of basic data types that you can use directly in your programs. These include integers, floats, and characters. Here is a table showing the most important basic data types that you will be using in the lesson:
+data type 	declaration
+integer 	int
+floating point 	float
+double floating point 	double
+character 	char
+boolean 	bool
+valueless 	void
+
+Some of these data types might look a bit unfamiliar. Here are some examples of each type:
+
+integer
+
+integers are whole numbers like -20 5 700 -19
+
+floating point
+
+floating points are real numbers containing decimals like 5.109 199.25 -1.278
+
+double floating point
+
+A double floating point can hold more decimals than a floating point; the tradeoff is that a double floating point requires more memory. The next part of the lesson goes into more detail about floating points versus double floating points.
+
+character
+
+The char type definition is for ASCII characters. ASCII represent the English language Roman alphabet and common mathematical symbols. A char variable can only hold one letter at a time; you cannot use a char type definition to represent a string.
+
+examples of characters: a U l & @
+
+boolean
+
+Booleans are variables containing either true or false.
+
+valueless
+
+The void type definition is used for special cases. You cannot declare a void variable in C++. You'll find that void is used when a function does not return anything; a function might print something out to the terminal but not return a value.
+
