@@ -1,0 +1,23 @@
+Returning smart pointers from functions
+
+With return values, the same logic that we have used for passing smart pointers to functions applies: 
+Return a smart pointer, both unique or shared, if the caller needs to manipulate or access the pointer properties. 
+In case the caller just needs the underlying object, a raw pointer should be returned.
+
+Smart pointers should always be returned by value. This is not only simpler but also has the following advantages:
+
+    The overhead usually associated with return-by-value due to the expensive copying process is significantly mitigated by the built-in 
+    move semantics of smart pointers. They only hold a reference to the managed object, which is quickly switched from destination to 
+    source during the move process.
+
+    Since C++17, the compiler used Return Value Optimization (RVO) to avoid the copy usually associated with return-by-value. 
+    This technique, together with copy-elision, is able to optimize even move semantics and smart pointers (not in call cases though, 
+    they are still an essential part of modern C++).
+
+    When returning a shared_ptr by value, the internal reference counter is guaranteed to be properly incremented. 
+    This is not the case when returning by pointer or by reference.
+
+The topic of smart pointers is a complex one. In this course, we have covered many basics and some of the more advanced concepts. 
+However, there are many more aspects to consider and features to use when integrating smart pointers into your code. 
+The full set of smart pointer rules in the C++ guidelines is a good start to dig deeper into one of the most powerful 
+features of modern C++.

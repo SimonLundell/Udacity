@@ -1,0 +1,31 @@
+#include <iostream>
+#include <memory>
+
+class MyClass
+{
+private:
+    int _member;
+
+public:
+    MyClass(int val) : _member{val} {}
+    void printVal() { std::cout << ", managed object " << this << " with val = " << _member << std::endl; }
+};
+void f(std::shared_ptr<MyClass> ptr)
+{
+    std::cout << "shared_ptr (ref_cnt= " << ptr.use_count() << ") " << &ptr;
+    ptr->printVal();
+}
+
+int main()
+{
+    std::shared_ptr<MyClass> sharedPtr = std::make_shared<MyClass>(23); // shared isntead of unique
+    std::cout << "shared_ptr (ref_cnt= " << sharedPtr.use_count() << ") " << &sharedPtr;
+    sharedPtr->printVal();
+
+    f(sharedPtr); // passed by value (so a copy is made, which is ok for a shared pointer)
+
+    std::cout << "shared_ptr (ref_cnt= " << sharedPtr.use_count() << ") " << &sharedPtr;
+    sharedPtr->printVal();
+
+    return 0;
+}  

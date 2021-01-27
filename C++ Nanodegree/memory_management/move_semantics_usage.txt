@@ -1,0 +1,11 @@
+When are move semantics used?
+
+Now that we have seen how move semantics work, let us take a look at situations where they actually apply.
+
+One of the primary areas of application are cases, where heavy-weight objects need to be passed around in a program. 
+Copying these without move semantics can cause series performance issues. 
+The idea in this scenario is to create the object a single time and then "simply" move it around using rvalue references and move semantics.
+
+A second area of application are cases where ownership needs to be transferred (such as with unique pointers, as we will soon see). 
+The primary difference to shared references is that with move semantics we are not sharing anything but instead we are ensuring through a 
+smart policy that only a single object at a time has access to and thus owns the resource.

@@ -1,0 +1,30 @@
+A note on neural networks
+
+Earlier in this lesson, when we talked about machine learning and neural networks, we defined neural networks to be a set of algorithms that can learn to recognize patterns in data and sort that data into groups. The example we gave was sorting yellow and blue seas shells into two groups based on their color and shape; a neural network could learn to separate these shells based on their different traits and in effect a neural network could learn how to draw a line between the two kinds of shells. Deep neural networks are similar, only they can draw multiple and more complex lines in the sand, so to speak. Deep neural networks layer separation layers on top of one another to separate complex data into groups.
+
+Separated sea shells.
+Convolutional Neural Networks (CNN's)
+
+The type of deep neural network that is most powerful in image processing tasks is called a Convolutional Neural Network (CNN). CNN's consist of layers that process visual information. A CNN first takes in an input image and then passes it through these layers. There are a few different types of layers, but we'll touch on the ones we've been learning about (and even programming on our own!): convolution, and fully-connected layers.
+Convolutional layer
+
+    A convolutional layer takes in an image array as input.
+    A convolutional layer can be thought of as a set of image filters (which you've been learning about).
+    Each filter extracts a specific kind of feature (like an edge).
+    The output of a given convolutional layer is a set of feature maps, which are differently filtered versions of the input image.
+
+Fully-connected layer
+
+A fully-connected layer's job is to connect the input it sees to a desired form of output. As an example, say we are sorting images into two classes: day and night, you could give a fully-connected layer a set of feature maps and tell it to use a combination of these features (multiplying them, adding them, combining them, etc.) to output a prediction: whether a given image is likely taken during the "day" or "night." This output prediction is sometimes called the output layer.
+
+Simple convolutional neural network (CNN)
+Classification from scratch
+(Day and Night example)
+
+In this course, you've seen how to extract color and shape features from an image and you've seen how to use these features to classify any given image. In these examples, it's been up to you to decide what features/filters/etc. are useful and what classification method to use. You'll even be asked about learning from any classification errors you make.
+
+This is very similar to how CNN's learn to recognize patterns in images: given a training set of images, CNN's look for distinguishing features in the images; they adjust the weights in the image filters that make up their convolutional layers, and adjust their final, fully-connected layer to accurately classify the training images (learning from any mistakes they make along the way). Building these layers from scratch, like you're doing, is a great way to learn the inner working of machine learning techniques, and you should be proud to have gotten this far!
+Further learning!
+
+Typically, CNN's are made of many convolutional layers and even include other processing layers whose job is to standardize data or reduce its dimensionality (for a faster network). If you are interested in learning more about CNN's and the complex layers that they can use, I recommend looking at this article as a reference.
+https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/

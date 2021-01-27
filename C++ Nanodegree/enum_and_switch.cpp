@@ -1,0 +1,30 @@
+#include <iostream>
+using std::cout;
+
+int main()
+{
+    enum class Direction {kUp, kDown, kLeft, kRight};
+
+    Direction a = Direction::kRight;
+
+    switch (a) {
+      case Direction::kUp : cout << "Going up!" << "\n";
+        break;
+      case Direction::kDown : cout << "Going down!" << "\n";
+        break;
+      case Direction::kLeft : cout << "Going left!" << "\n";
+        break;
+      case Direction::kRight : cout << "Going right!" << "\n";
+        break;
+    }
+
+    enum CPU {
+      kLoad = 0,
+      kOpen = 5,
+      kClosed = 4,
+    };
+
+    CPU test = CPU::kLoad;
+
+    std::cout << "\n" << test << "\n";
+}

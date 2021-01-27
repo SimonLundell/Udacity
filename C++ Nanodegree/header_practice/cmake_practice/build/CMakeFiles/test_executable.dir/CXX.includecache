@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/src/increment_and_sum.cpp
+vect_add_one.h
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/src/vect_add_one.h
+
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/src/increment_and_sum.h
+vector
+-
+
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/src/main.cpp
+iostream
+-
+vector
+-
+increment_and_sum.h
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/src/increment_and_sum.h
+
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/src/vect_add_one.cpp
+vect_add_one.h
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/src/vect_add_one.h
+
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/src/vect_add_one.h
+vector
+-
+

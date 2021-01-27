@@ -1,0 +1,10 @@
+In this example, seekg is used to move the position to the end of the file, and then back to the beginning.
+
+int main () {
+  std::ifstream is ("test.txt", std::ifstream::binary);
+  if (is) {
+    // get length of file:
+    is.seekg (0, is.end);
+    int length = is.tellg();
+    is.seekg (0, is.beg);
+

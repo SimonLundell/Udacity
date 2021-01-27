@@ -192,11 +192,11 @@ print('4th')
 v = Vector([2.118, 4.827])
 w = Vector([0, 0])
 print('Is orthogonal: ', v.is_orthogonal_to(w), 'Is parallel: ', v.is_parallel_to(w))
-"""
+
 v = Vector([7.887, 4.138])
 w = Vector([-8.802, 6.776])
-print v.dot_product(w)
-"""
+print(v.dot_product(w))
+
 v = Vector([-5.955, -4.904, -1.874])
 w = Vector([-4.496, -8.755, 7.103])
 print(v.dot_product(w))

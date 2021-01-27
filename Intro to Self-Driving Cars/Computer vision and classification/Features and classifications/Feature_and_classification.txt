@@ -1,0 +1,79 @@
+What is a Feature?
+
+A feature can easily be thought of as a "summarizer" of something. So features of images, are really just nice and concise summarizers of image data. Furthermore, just as how images are really just a collection of numbers in an array, features are also just another collection of numbers in an array, although usually, they are much smaller than images.
+
+So what does this mean? Let’s be even simpler: Forget images...consider humans! An individual person has many facets about themselves and it may be hard to describe someone in totality.
+
+What are, however, some "compact" features that we may extract about a person? Compact, because we want these features to describe something about this person, but we want this description to be a summary of what is relevant.
+
+For example, if we wanted to place boxers into their weight class, we may want to do feature extraction on each fighter, and we would extract a two dimensional feature: height and weight (both of which are used to determine a weight class).
+
+Those are "features" in this sense, because they nicely ignore the irrelevant; they describe a person’s weight and height, features that are useful for placing the boxer into their proper weight class, and they also ignore things like skin color, or say, hair length, etc. So, in this sense, you can think of feature extraction as a way to extract relevant information, while also smartly ignoring the irrelevant. A good feature is very succinct.
+
+Features are distinct and measurable pieces of information in an image. And we’ll go through examples of features and how to detect them. One of the breakthroughs in computer vision came from being able to automatically come up with features that are good. However you can also do this on your own, manually.
+
+Types of Features
+
+We've described features as measurable pieces of data in an image that help distinguish between different classes of images.
+
+There are two main types of features:
+
+    Color-based and
+    Shape-based
+
+Both of these are useful in different cases and they are often powerful together. For example, say I wanted to classify a stop sign. Stop signs are supposed to stand out in color and shape! A stop sign is an octagon (it has 8 flat sides) and it is very red. It's red color is often enough to distinguish it, but the sign can be obscured by trees or other artifacts and the shape ends up being important, too.
+
+As a different example, say I want to avoid crashing into a car (a very important avoidance case!). I'll want to classify the object as a car, or at least recognize the car's boundaries, which are determined by shape. Specifically, I'll want to identify the edges of the vehicle, so that I can track the car and avoid it. Color is not very useful in this case, but shape is critical.
+
+As you continue learning, keep in mind that selecting the right feature is an important computer vision task.
+
+
+Filters
+
+Now, we’ve seen how to use color to help isolate a desired portion of an image and even help classify an image!
+
+In addition to taking advantage of color information, we also have knowledge about patterns of grayscale intensity in an image. Intensity is a measure of light and dark similar to brightness, and we can use this knowledge to detect other areas or objects of interest. For example, you can often identify the edges of an object by looking at an abrupt change in intensity, which happens when an image changes from a very dark to light area, or vice versa.
+
+To detect these changes, you’ll be using and creating specific image filters that look at groups of pixels and detect big changes in intensity in an image. These filters produce an output that shows these edges.
+
+So, let’s take a closer look at these filters and see when they’re useful in processing images and identifying traits of interest.
+
+
+High-pass Filters
+
+High-pass filters detect big changes in intensity over a small area, and patterns of intensity can be best seen in a grayscale image.
+
+Grayscale car.
+
+The filters I’ll be talking about are in the form of matrices, often called convolution kernels, which are just grids of numbers that modify an image. Here is a resource if you'd like to see a wider variety of kernel types in action. Below is an example of a high-pass kernel that does edge detection. It’s a 3x3 kernel, whose elements all sum to zero.
+
+It’s important that, for edge detection, all of the elements sum to 0 because edge filters compute the difference or change between neighboring pixels; they are an approximation for the derivative of an image over space.
+
+High-pass kernel.
+Convolution
+
+During kernel convolution, the 3x3 kernel is slid over every pixel in the original, grayscale image. The weights in the kernel are multiplied pair-wise around a center pixel, and then added up. This sum becomes the value of a pixel in a new, filtered, output image.
+
+This operation is at the center of convolutional neural networks, which use multiple kernels to extract shape-based features and identify patterns that can accurately classify sets of images. These neural networks are trained on large sets of labelled data, and they learn the most effective kernel weights; the weights that help characterize each image correctly.
+
+Calculating one output pixel value (175) while performing convolution.
+
+To handle the edges of images, where the filter cannot exactly overlap, a variety of techniques are used. One of the most common is to extend the edge pixel values of the image out by one and use that to perform a convolution. Another is to pad the image with zeroes, though this creates a darker border in the resulting, filtered image.
+
+Frequency in images
+
+We have an intuition of what frequency means when it comes to sound. High-frequency is a high pitched noise, like a bird chirp or violin. And low frequency sounds are low pitch, like a deep voice or a bass drum. For sound, frequency actually refers to how fast a sound wave is oscillating; oscillations are usually measured in cycles/s (Hz), and high pitches and made by high-frequency waves. Examples of low and high-frequency sound waves are pictured below. On the y-axis is amplitude, which is a measure of sound pressure that corresponds to the perceived loudness of a sound and on the x-axis is time.
+
+(Top image) a low frequency sound wave (bottom) a high frequency sound wave.
+High and low frequency
+
+Similarly, frequency in images is a rate of change. But, what does it means for an image to change? Well, images change in space, and a high frequency image is one where the intensity changes a lot. And the level of brightness changes quickly from one pixel to the next. A low frequency image may be one that is relatively uniform in brightness or changes very slowly. This is easiest to see in an example.
+
+High and low frequency image patterns.
+
+Most images have both high-frequency and low-frequency components. In the image above, on the scarf and striped shirt, we have a high-frequency image pattern; this part changes very rapidly from one brightness to another. Higher up in this same image, we see parts of the sky and background that change very gradually, which is considered a smooth, low-frequency pattern.
+
+High-frequency components also correspond to the edges of objects in images, which can help us classify those objects.
+
+Please see this reference for information on the Roberts Cross operators. http://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm
+

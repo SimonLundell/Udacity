@@ -1,0 +1,3 @@
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/build/CMakeFiles/rebuild_cache.dir
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/build/CMakeFiles/test_executable.dir
+/home/simon/Udacity/C++ Nanodegree/header_practice/cmake_practice/build/CMakeFiles/edit_cache.dir
