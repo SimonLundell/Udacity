@@ -10,8 +10,7 @@ class GraphEdge
 {
 private:
     // data handles (not owned)
-     GraphNode *_childNode;
-    //std::shared_ptr<GraphNode> _childNode;
+    GraphNode *_childNode;
     GraphNode *_parentNode;
 
     // proprietary members

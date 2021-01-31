@@ -8,33 +8,25 @@
 #include "graphedge.h"
 #include "chatbot.h"
 
-// constructor WITHOUT memory allocation
 ChatBot::ChatBot()
 {
-    // invalidate data handles
     _image = NULL;
     _chatLogic = nullptr;
     _rootNode = nullptr;
 }
 
-// constructor WITH memory allocation
 ChatBot::ChatBot(std::string filename)
 {
     std::cout << "ChatBot Constructor" << std::endl;
     
-    // invalidate data handles
     _chatLogic = nullptr;
     _rootNode = nullptr;
-
-    // load image into heap memory
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
 }
 
 ChatBot::~ChatBot()
 {
-    //std::cout << "DELETING instance of ChatBot at " << this << std::endl;
     std::cout << "ChatBot Destructor" << "\n";
-    // deallocate heap memory
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
         delete _image;
@@ -42,9 +34,7 @@ ChatBot::~ChatBot()
     }
 }
 
-//// STUDENT CODE
-////
-ChatBot::ChatBot(const ChatBot &source) { // Copy constructor
+ChatBot::ChatBot(const ChatBot &source) {
     std::cout << "Copy constructor called" << "\n";
     _image = new wxBitmap(*source._image);
     _chatLogic = source._chatLogic;
@@ -52,8 +42,7 @@ ChatBot::ChatBot(const ChatBot &source) { // Copy constructor
     _currentNode = source._currentNode;
 }
 
-ChatBot &ChatBot::operator=(const ChatBot &source) { // Copy Assignment operator overloading
-    //std::cout << "Assigning content of " << &source << "to instance" << this << "\n";
+ChatBot &ChatBot::operator=(const ChatBot &source) {
     std::cout << "ChatBot Copy Assignment Operator" << "\n";
     if (this == &source) {
         return *this;
@@ -68,8 +57,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source) { // Copy Assignment operator
     return *this;
 }
 
-ChatBot::ChatBot(ChatBot &&source) { // Move constructor
-    //std::cout << "MOVING (c’tor) instance " << &source << " to instance " << this << std::endl;
+ChatBot::ChatBot(ChatBot &&source) { 
     std::cout << "ChatBot Move Constructor" << "\n";
     _image = source._image;
     _chatLogic = source._chatLogic;
@@ -80,8 +68,7 @@ ChatBot::ChatBot(ChatBot &&source) { // Move constructor
     source._image = NULL;
 }
 
-ChatBot &ChatBot::operator=(ChatBot &&source) { // Move assignment operator
-    //std::cout << "MOVING (assign) instance " << &source << " to instance " << this << std::endl;
+ChatBot &ChatBot::operator=(ChatBot &&source) {
     std::cout << "ChatBot Move Assignment Operator" << "\n";
     if (this == &source) {
         return *this;
@@ -102,8 +89,6 @@ ChatBot &ChatBot::operator=(ChatBot &&source) { // Move assignment operator
 
     return *this;
 }
-////
-//// EOF STUDENT CODE
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
