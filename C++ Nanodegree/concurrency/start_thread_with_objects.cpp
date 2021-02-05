@@ -14,7 +14,7 @@ public:
 int main()
 {
     // create thread 
-    //std::thread t0(Vehicle()); // C++'s most vexing parse. cant compile
+    //std::thread t0(Vehicle()); // C++'s most vexing parse.
     
     std::thread t1( (Vehicle()) ); // Add an extra pair of parantheses
     
