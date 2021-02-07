@@ -2,6 +2,8 @@
 #include <thread>
 #include <future>
 
+// Some cons with promises and futures are that they are one way communication (promise -> future) and they are of one-time use.
+
 void modifyMessage(std::promise<std::string> && prms, std::string message) //prms as rvalue reference due to move semantics
 {
     std::this_thread::sleep_for(std::chrono::milliseconds(4000)); // simulate work
