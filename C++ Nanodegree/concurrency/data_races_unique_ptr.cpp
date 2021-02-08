@@ -3,6 +3,14 @@
 #include <future>
 #include <memory>
 
+// Best way is to use unique ptr to avoid data races. This was the program will throw error if a thread is not the only object pointing to
+// data
+
+/*
+The key to thread safety is to use move semantics in conjunction with uniqueness. 
+It is the responsibility of the programmer to ensure that pointers to objects that are moved between threads are unique.
+*/
+
 class Vehicle
 {
 public:
