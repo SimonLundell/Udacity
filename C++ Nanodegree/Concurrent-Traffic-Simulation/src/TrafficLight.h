@@ -15,13 +15,16 @@ class Vehicle;
 // Send should take an rvalue reference of type TrafficLightPhase whereas receive should return this type. 
 // Also, the class should define an std::dequeue called _queue, which stores objects of type TrafficLightPhase. 
 // Also, there should be an std::condition_variable as well as an std::mutex as private members. 
+enum TrafficLightPhase {red, green};
 
 template <class T>
 class MessageQueue
 {
 public:
-
+    void send(T &&msg);
+    T receive();
 private:
+    std::deque<TrafficLightPhase> _queue;
     
 };
 
@@ -31,7 +34,7 @@ private:
 // can be either „red“ or „green“. Also, add the private method „void cycleThroughPhases()“. 
 // Furthermore, there shall be the private member _currentPhase which can take „red“ or „green“ as its value. 
 
-enum TrafficLightPhase {red, green};
+
 
 class TrafficLight : public TrafficObject
 {
@@ -56,6 +59,7 @@ private:
     std::mutex _mutex;
     virtual void cycleThroughPhases();
     TrafficLightPhase _currentPhase;
+    std::shared_ptr<MessageQueue<TrafficLightPhase>> queue;
     
 };
 
