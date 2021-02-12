@@ -59,7 +59,7 @@ private:
     std::mutex _mutex;
     virtual void cycleThroughPhases();
     TrafficLightPhase _currentPhase;
-    std::shared_ptr<MessageQueue<TrafficLightPhase>> queue;
+    std::shared_ptr<MessageQueue<TrafficLightPhase>> queue; // FP.4.b
     
 };
 
