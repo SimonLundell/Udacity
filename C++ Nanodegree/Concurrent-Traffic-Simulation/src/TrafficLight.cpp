@@ -8,7 +8,7 @@
 
 
 template <typename T>
-T MessageQueue<T>::receive()
+TrafficLightPhase MessageQueue<T>::receive()
 {
     // FP.5a : The method receive should use std::unique_lock<std::mutex> and _condition.wait() 
     // to wait for and receive new messages and pull them from the queue using move semantics. 
@@ -16,11 +16,14 @@ T MessageQueue<T>::receive()
 }
 
 template <typename T>
-void MessageQueue<T>::send(T &&msg)
+void MessageQueue<T>::send(TrafficLightPhase &&msg)
 {
     // FP.4a : The method send should use the mechanisms std::lock_guard<std::mutex> 
     // as well as _condition.notify_one() to add a new message to the queue and afterwards send a notification.
+    std::lock_guard(MessageQueue::_mtx);
+    _cond.notify_one(); // check this in Udacity class.
     _queue.push_back(std::move(msg));
+    std::cout << "Message in thread " << std::this_thread::get_id() << " entered the queue\n";
 }
 
 
