@@ -46,6 +46,13 @@ void TrafficLight::waitForGreen()
     // FP.5b : add the implementation of the method waitForGreen, in which an infinite while-loop 
     // runs and repeatedly calls the receive function on the message queue. 
     // Once it receives TrafficLightPhase::green, the method returns.
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        auto light = _queue->receive();
+        if (light == green) {
+            return;
+        }
+    }
 }
 
 TrafficLightPhase TrafficLight::getCurrentPhase()
@@ -91,7 +98,7 @@ void TrafficLight::cycleThroughPhases()
             }
             // start a thread as async, on function send in messagequeue with type TLP. Done on pointer in queue with
             // argument _currentPhase.
-            std::future<void> t = std::async(std::launch::async, &MessageQueue<TrafficLightPhase>::send, queue, std::move(_currentPhase));
+            std::future<void> t = std::async(std::launch::async, &MessageQueue<TrafficLightPhase>::send, _queue, std::move(_currentPhase));
             // Wait for the task to finish.
             t.wait();
             // set new start time for next iteration
