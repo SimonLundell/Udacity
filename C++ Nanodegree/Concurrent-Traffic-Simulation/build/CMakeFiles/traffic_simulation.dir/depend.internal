@@ -5,6 +5,7 @@ CMakeFiles/traffic_simulation.dir/src/Graphics.cpp.o
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Graphics.cpp
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Graphics.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Intersection.h
+ /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficLight.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficObject.h
  /home/simon/opencv/opencv-master/build/cv_cpu_config.h
  /home/simon/opencv/opencv-master/build/cvconfig.h
@@ -47,12 +48,14 @@ CMakeFiles/traffic_simulation.dir/src/Intersection.cpp.o
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Intersection.cpp
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Intersection.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Street.h
+ /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficLight.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficObject.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Vehicle.h
 CMakeFiles/traffic_simulation.dir/src/Street.cpp.o
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Intersection.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Street.cpp
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Street.h
+ /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficLight.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficObject.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Vehicle.h
 CMakeFiles/traffic_simulation.dir/src/TrafficLight.cpp.o
@@ -66,6 +69,7 @@ CMakeFiles/traffic_simulation.dir/src/TrafficSimulator-Final.cpp.o
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Graphics.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Intersection.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Street.h
+ /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficLight.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficObject.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficSimulator-Final.cpp
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Vehicle.h
@@ -104,6 +108,7 @@ CMakeFiles/traffic_simulation.dir/src/TrafficSimulator-Final.cpp.o
 CMakeFiles/traffic_simulation.dir/src/Vehicle.cpp.o
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Intersection.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Street.h
+ /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficLight.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficObject.h
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Vehicle.cpp
  /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Vehicle.h

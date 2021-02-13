@@ -8,28 +8,31 @@
 
 
 template <typename T>
-TrafficLightPhase MessageQueue<T>::receive()
+T MessageQueue<T>::receive()
 {
     // FP.5a : The method receive should use std::unique_lock<std::mutex> and _condition.wait() 
     // to wait for and receive new messages and pull them from the queue using move semantics. 
     // The received object should then be returned by the receive function.
     std::unique_lock<std::mutex> uLock(_mtx);
+    //std::cout << "timeout3\n";
     _cond.wait(uLock, [this](){ return !_queue.empty(); });
-    auto item = std::move(_queue.back());
-    _queue.pop_back();
+    //std::cout << "timeout4\n";
+    T item = std::move(_queue.back());
+    _queue.clear();
 
     return item;
 }
 
 template <typename T>
-void MessageQueue<T>::send(TrafficLightPhase &&msg)
+void MessageQueue<T>::send(T &&msg)
 {
     // FP.4a : The method send should use the mechanisms std::lock_guard<std::mutex> 
     // as well as _condition.notify_one() to add a new message to the queue and afterwards send a notification.
-    std::lock_guard<std::mutex> uLock(_mtx);
+    std::lock_guard<std::mutex> sLock(_mtx);
     _queue.push_back(std::move(msg));
-    std::cout << "Message in thread " << msg << " entered the queue\n";
     _cond.notify_one(); // check this in Udacity class.
+    //std::cout << "Thread " << msg << " entered the queue\n";
+    
 }
 
 
@@ -39,6 +42,9 @@ void MessageQueue<T>::send(TrafficLightPhase &&msg)
 TrafficLight::TrafficLight()
 {
     _currentPhase = TrafficLightPhase::red;
+    //_queue = std::make_shared<MessageQueue<TrafficLightPhase>>();
+    //_type = ObjectType::objectTrafficLight;
+    
 }
 
 void TrafficLight::waitForGreen()
@@ -47,8 +53,11 @@ void TrafficLight::waitForGreen()
     // runs and repeatedly calls the receive function on the message queue. 
     // Once it receives TrafficLightPhase::green, the method returns.
     while (true) {
+        //std::lock_guard<std::mutex> uLock2(_mtx);
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        auto light = _queue->receive();
+        //std::cout << "timeout\n";
+        auto light = _messageQueue.receive();
+        //std::cout << "timeout2\n";
         if (light == green) {
             return;
         }
@@ -64,7 +73,7 @@ void TrafficLight::simulate()
 {
     // FP.2b : Finally, the private method „cycleThroughPhases“ should be started in a thread when the public method „simulate“ is called. 
     // To do this, use the thread queue in the base class.
-    TrafficObject::threads.emplace_back(std::thread(&TrafficLight::cycleThroughPhases, this));
+    threads.emplace_back(std::thread(&TrafficLight::cycleThroughPhases, this));
 }
 
 // virtual function which is executed in a thread
@@ -75,22 +84,34 @@ void TrafficLight::cycleThroughPhases()
     // to the message queue using move semantics. The cycle duration should be a random value between 4 and 6 seconds. 
     // Also, the while-loop should use std::this_thread::sleep_for to wait 1ms between two cycles.
 
-    // Initate start time with current time
-    std::clock_t start = std::clock();
+    /*
     // define a random generator
     std::default_random_engine generator;
     // define a distribution
-    std::uniform_int_distribution<int> distribution(4,6);
+    std::uniform_int_distribution<int> distribution(10,15);
     // create variable with random value between 4-6
     int random = distribution(generator);
+    // Initate start time with current time
+    std::clock_t start = std::clock();
+    */
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_real_distribution<double> dist(4.0, 6.0);
+    float cycleTime = dist(mt);
+    auto start = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed;
     // infinite loop
     while (true) {
         // Call sleep for better CPU-usage 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
+        elapsed = std::chrono::high_resolution_clock::now() - start;
         // if current-time - start time is > random number
-        if ((((std::clock() - start) / CLOCKS_PER_SEC)) >= random) {
+        //if ((((std::clock() - start) / CLOCKS_PER_SEC)) >= random) {
+        if (elapsed.count() > cycleTime) {
             // Alternate traffic lights
+            start = std::chrono::high_resolution_clock::now();
+            cycleTime = dist(mt);
+            //std::cout << "clock > random\n";
             if (_currentPhase == red) {
                 _currentPhase = green;
             } else {
@@ -98,14 +119,15 @@ void TrafficLight::cycleThroughPhases()
             }
             // start a thread as async, on function send in messagequeue with type TLP. Done on pointer in queue with
             // argument _currentPhase.
-            std::future<void> t = std::async(std::launch::async, &MessageQueue<TrafficLightPhase>::send, _queue, std::move(_currentPhase));
+            auto msg = _currentPhase;
+            _messageQueue.send(std::move(msg));
+            //std::future<void> t = std::async(std::launch::async, &MessageQueue<TrafficLightPhase>::send, _queue, std::move(msg));
             // Wait for the task to finish.
-            t.wait();
+            //t.wait();
             // set new start time for next iteration
-            start = std::clock();
+            //start = std::clock();
             // generate new number
-            random = distribution(generator);
+            //random = distribution(generator);
         }
-        
     }
 }
