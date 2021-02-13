@@ -22,8 +22,6 @@ void MessageQueue<T>::send(T &&msg)
     std::lock_guard<std::mutex> uLock(_mtx);
     _queue.push_back(std::move(msg));
     _cond.notify_one();
-    std::cout << "Notification sent on TrafficLightPhase " << msg << std::endl;
-    
 }
 
 TrafficLight::TrafficLight()
