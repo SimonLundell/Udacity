@@ -31,7 +31,7 @@ void MessageQueue<T>::send(T &&msg)
     std::lock_guard<std::mutex> sLock(_mtx);
     _queue.push_back(std::move(msg));
     _cond.notify_one(); // check this in Udacity class.
-    //std::cout << "Thread " << msg << " entered the queue\n";
+    std::cout << "Thread " << msg << " entered the queue\n";
     
 }
 
@@ -41,23 +41,18 @@ void MessageQueue<T>::send(T &&msg)
 
 TrafficLight::TrafficLight()
 {
+    // Constructor instantiating as red.
     _currentPhase = TrafficLightPhase::red;
-    //_queue = std::make_shared<MessageQueue<TrafficLightPhase>>();
-    //_type = ObjectType::objectTrafficLight;
-    
 }
 
 void TrafficLight::waitForGreen()
 {
-    // FP.5b : add the implementation of the method waitForGreen, in which an infinite while-loop 
-    // runs and repeatedly calls the receive function on the message queue. 
-    // Once it receives TrafficLightPhase::green, the method returns.
+    // Infinite loop
     while (true) {
-        //std::lock_guard<std::mutex> uLock2(_mtx);
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        //std::cout << "timeout\n";
+        // receive the state of the traffic-light in the queue
         auto light = _messageQueue.receive();
-        //std::cout << "timeout2\n";
+        // if it is green, return
         if (light == green) {
             return;
         }
@@ -79,55 +74,36 @@ void TrafficLight::simulate()
 // virtual function which is executed in a thread
 void TrafficLight::cycleThroughPhases()
 {
-    // FP.2a : Implement the function with an infinite loop that measures the time between two loop cycles 
-    // and toggles the current phase of the traffic light between red and green and sends an update method 
-    // to the message queue using move semantics. The cycle duration should be a random value between 4 and 6 seconds. 
-    // Also, the while-loop should use std::this_thread::sleep_for to wait 1ms between two cycles.
-
-    /*
     // define a random generator
-    std::default_random_engine generator;
-    // define a distribution
-    std::uniform_int_distribution<int> distribution(10,15);
-    // create variable with random value between 4-6
-    int random = distribution(generator);
-    // Initate start time with current time
-    std::clock_t start = std::clock();
-    */
     std::random_device rd;
-    std::mt19937 mt(rd());
+    // define a distribution
     std::uniform_real_distribution<double> dist(4.0, 6.0);
-    float cycleTime = dist(mt);
+    // create a cycle-time with a true random distribution
+    float cycleTime = dist(rd);
+    // get current time
     auto start = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed;
+
     // infinite loop
     while (true) {
         // Call sleep for better CPU-usage 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        // Elapsed time from start
         elapsed = std::chrono::high_resolution_clock::now() - start;
-        // if current-time - start time is > random number
-        //if ((((std::clock() - start) / CLOCKS_PER_SEC)) >= random) {
         if (elapsed.count() > cycleTime) {
-            // Alternate traffic lights
+            // New start when condition is met
             start = std::chrono::high_resolution_clock::now();
-            cycleTime = dist(mt);
-            //std::cout << "clock > random\n";
+            // New cycle time
+            cycleTime = dist(rd);
+            // Alternate traffic lights
             if (_currentPhase == red) {
                 _currentPhase = green;
             } else {
                 _currentPhase = red;
             }
-            // start a thread as async, on function send in messagequeue with type TLP. Done on pointer in queue with
-            // argument _currentPhase.
+            // move trafficlightphase to the queue
             auto msg = _currentPhase;
             _messageQueue.send(std::move(msg));
-            //std::future<void> t = std::async(std::launch::async, &MessageQueue<TrafficLightPhase>::send, _queue, std::move(msg));
-            // Wait for the task to finish.
-            //t.wait();
-            // set new start time for next iteration
-            //start = std::clock();
-            // generate new number
-            //random = distribution(generator);
         }
     }
 }
