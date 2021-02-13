@@ -87,7 +87,7 @@ void Intersection::addVehicleToQueue(std::shared_ptr<Vehicle> vehicle)
     lck.lock();
     std::cout << "Intersection #" << _id << ": Vehicle #" << vehicle->getID() << " is granted entry." << std::endl;
     lck.unlock();
-    // FP.6b : use the methods TrafficLight::getCurrentPhase and TrafficLight::waitForGreen to block the execution until the traffic light turns green.
+    // Waiting for trafficLight to turn green
     if (_trafficLight.getCurrentPhase() == red) {
         _trafficLight.waitForGreen();
     }
@@ -97,8 +97,6 @@ void Intersection::addVehicleToQueue(std::shared_ptr<Vehicle> vehicle)
 
 void Intersection::vehicleHasLeft(std::shared_ptr<Vehicle> vehicle)
 {
-    //std::cout << "Intersection #" << _id << ": Vehicle #" << vehicle->getID() << " has left." << std::endl;
-
     // unblock queue processing
     this->setIsBlocked(false);
 }
@@ -106,15 +104,12 @@ void Intersection::vehicleHasLeft(std::shared_ptr<Vehicle> vehicle)
 void Intersection::setIsBlocked(bool isBlocked)
 {
     _isBlocked = isBlocked;
-    //std::cout << "Intersection #" << _id << " isBlocked=" << isBlocked << std::endl;
 }
 
-// virtual function which is executed in a thread
 void Intersection::simulate() // using threads + promises/futures + exceptions
 {
-    // FP.6a : In Intersection.h, add a private member _trafficLight of type TrafficLight. At this position, start the simulation of _trafficLight.
-    _trafficLight.simulate(); // making program crash...
-    // launch vehicle queue processing in a thread
+    // Starting the simulation
+    _trafficLight.simulate();
     threads.emplace_back(std::thread(&Intersection::processVehicleQueue, this));
 }
 
@@ -122,13 +117,12 @@ void Intersection::processVehicleQueue()
 {
     // print id of the current thread
     std::cout << "Intersection #" << _id << "::processVehicleQueue: thread id = " << std::this_thread::get_id() << std::endl;
-
+    
     // continuously process the vehicle queue
     while (true)
     {
         // sleep at every iteration to reduce CPU usage
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
         // only proceed when at least one vehicle is waiting in the queue
         if (_waitingVehicles.getSize() > 0 && !_isBlocked)
         {
@@ -143,13 +137,5 @@ void Intersection::processVehicleQueue()
 
 bool Intersection::trafficLightIsGreen()
 {
-   // please include this part once you have solved the final project tasks
-   
-   if (_trafficLight.getCurrentPhase() == TrafficLightPhase::green)
-       return true;
-   else
-       return false;
-   
-   
-  //return false; // makes traffic light permanently green
+   return (_trafficLight.getCurrentPhase() == green) ? true : false;
 } 

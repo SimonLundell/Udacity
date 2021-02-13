@@ -6,17 +6,43 @@
 
 #IncludeRegexTransform: 
 
-/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficLight.cpp
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Intersection.cpp
 iostream
+-
+thread
+-
+chrono
+-
+future
 -
 random
 -
+Street.h
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Street.h
+Intersection.h
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Intersection.h
+Vehicle.h
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Vehicle.h
 TrafficLight.h
 /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficLight.h
+
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Intersection.h
+vector
+-
 future
 -
-queue
+mutex
 -
+memory
+-
+TrafficObject.h
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficObject.h
+TrafficLight.h
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficLight.h
+
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Street.h
+TrafficObject.h
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficObject.h
 
 /home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficLight.h
 mutex
@@ -37,4 +63,8 @@ thread
 -
 mutex
 -
+
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/Vehicle.h
+TrafficObject.h
+/home/simon/Udacity/C++ Nanodegree/Concurrent-Traffic-Simulation/src/TrafficObject.h
 
