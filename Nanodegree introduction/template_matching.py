@@ -4,11 +4,12 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 
-image = mpimg.imread('bbox-example-image.jpg')
+image = mpimg.imread('curved_lane.jpg')
 #image = mpimg.imread('temp-matching-example-2.jpg')
-templist = ['templates/cutout1.jpg', 'templates/cutout2.jpg', 'templates/cutout3.jpg',
-            'templates/cutout4.jpg', 'templates/cutout5.jpg', 'templates/cutout6.jpg']
+#templist = ['templates/cutout1.jpg', 'templates/cutout2.jpg', 'templates/cutout3.jpg',
+#            'templates/cutout4.jpg', 'templates/cutout5.jpg', 'templates/cutout6.jpg']
 
+templist = ['templates/cutout1.jpg']
 # Here is your draw_boxes function from the previous exercise
 def draw_boxes(img, bboxes, color=(0, 0, 255), thick=6):
     # Make a copy of the image
@@ -34,7 +35,7 @@ def find_matches(img, template_list):
         temp = mpimg.imread(template)
         
         result = cv2.matchTemplate(img, temp, method)
-        
+        print(result)
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
         
         w, h = (temp.shape[1], temp.shape[0])

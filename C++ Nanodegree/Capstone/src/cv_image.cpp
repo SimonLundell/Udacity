@@ -1,0 +1,4 @@
+
+namespace cv_image {
+    
+};
