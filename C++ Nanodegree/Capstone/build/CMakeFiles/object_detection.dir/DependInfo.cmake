@@ -6,7 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/Image.cpp.o"
   "/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o"
-  "/home/simon/Udacity/C++ Nanodegree/Capstone/src/cv_image.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/cv_image.cpp.o"
+  "/home/simon/Udacity/C++ Nanodegree/Capstone/src/preProcessor.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/preProcessor.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

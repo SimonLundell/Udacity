@@ -58,10 +58,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/cmake/775/bin/cmake
+CMAKE_COMMAND = /snap/cmake/793/bin/cmake
 
 # The command to remove a file.
-RM = /snap/cmake/775/bin/cmake -E rm -f
+RM = /snap/cmake/793/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -78,7 +78,7 @@ CMAKE_BINARY_DIR = "/home/simon/Udacity/C++ Nanodegree/Capstone/build"
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/cmake/775/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/cmake/793/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -196,32 +196,32 @@ src/ObjectDetection-main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s
 .PHONY : src/ObjectDetection-main.cpp.s
 
-src/cv_image.o: src/cv_image.cpp.o
+src/preProcessor.o: src/preProcessor.cpp.o
 
-.PHONY : src/cv_image.o
+.PHONY : src/preProcessor.o
 
 # target to build an object file
-src/cv_image.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/cv_image.cpp.o
-.PHONY : src/cv_image.cpp.o
+src/preProcessor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/preProcessor.cpp.o
+.PHONY : src/preProcessor.cpp.o
 
-src/cv_image.i: src/cv_image.cpp.i
+src/preProcessor.i: src/preProcessor.cpp.i
 
-.PHONY : src/cv_image.i
+.PHONY : src/preProcessor.i
 
 # target to preprocess a source file
-src/cv_image.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/cv_image.cpp.i
-.PHONY : src/cv_image.cpp.i
+src/preProcessor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/preProcessor.cpp.i
+.PHONY : src/preProcessor.cpp.i
 
-src/cv_image.s: src/cv_image.cpp.s
+src/preProcessor.s: src/preProcessor.cpp.s
 
-.PHONY : src/cv_image.s
+.PHONY : src/preProcessor.s
 
 # target to generate assembly for a file
-src/cv_image.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/cv_image.cpp.s
-.PHONY : src/cv_image.cpp.s
+src/preProcessor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/preProcessor.cpp.s
+.PHONY : src/preProcessor.cpp.s
 
 # Help Target
 help:
@@ -238,9 +238,9 @@ help:
 	@echo "... src/ObjectDetection-main.o"
 	@echo "... src/ObjectDetection-main.i"
 	@echo "... src/ObjectDetection-main.s"
-	@echo "... src/cv_image.o"
-	@echo "... src/cv_image.i"
-	@echo "... src/cv_image.s"
+	@echo "... src/preProcessor.o"
+	@echo "... src/preProcessor.i"
+	@echo "... src/preProcessor.s"
 .PHONY : help
 
 

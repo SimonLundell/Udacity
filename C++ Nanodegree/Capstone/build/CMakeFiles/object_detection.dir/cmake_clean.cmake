@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/object_detection.dir/src/Image.cpp.o"
   "CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o"
-  "CMakeFiles/object_detection.dir/src/cv_image.cpp.o"
+  "CMakeFiles/object_detection.dir/src/preProcessor.cpp.o"
   "object_detection"
   "object_detection.pdb"
 )
