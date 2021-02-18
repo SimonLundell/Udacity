@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.cpp
-opencv2/core.hpp
--
-opencv2/opencv.hpp
--
-string
--
-Image.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
-
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
 string
 -
@@ -23,18 +13,6 @@ opencv2/core.hpp
 -
 opencv2/opencv.hpp
 -
-
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp
-iostream
--
-string
--
-memory
--
-Image.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
-preProcessor.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/preProcessor.h
 
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/preProcessor.cpp
 opencv2/core.hpp

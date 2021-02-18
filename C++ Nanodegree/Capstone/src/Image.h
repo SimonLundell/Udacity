@@ -8,7 +8,7 @@
 class Image {
   public:
     // Constructors
-    Image();
+    //Image();
     Image(const std::string filename);
     
     // Helpers

@@ -7,11 +7,13 @@
 
 int main() {
     //std::cout << image.width << "\n" << image.height << std::endl;
-    preProcessor p;
+    Image im("/home/simon/Udacity/C++ Nanodegree/Capstone/images/curved_lane.jpg");
+    Image * pim = &im;
+    preProcessor p(pim);
     p.colorTransformation();
     p.showHSVImage();
-    Image im("/home/simon/Udacity/C++ Nanodegree/Capstone/images/curved_lane.jpg");
-    std::cout << im.getChannels() << " " << im.getWidth() << " " << im.getHeight() << std::endl;
+    
+    std::cout << pim->getChannels() << " " << pim->getWidth() << " " << pim->getHeight() << std::endl;
 
     return 0;
 }

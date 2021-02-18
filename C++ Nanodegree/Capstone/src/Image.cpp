@@ -5,17 +5,18 @@
 #include "Image.h"
 
 // Constructor
-Image::Image() : _imagePath("/home/simon/Udacity/C++ Nanodegree/Capstone/images/curved_lane.jpg") {
+/*Image::Image() : _imagePath("/home/simon/Udacity/C++ Nanodegree/Capstone/images/curved_lane.jpg") {
   _image = cv::imread(_imagePath, cv::IMREAD_COLOR);
   _width = _image.cols;
   _height = _image.rows;
   _channels = _image.channels();
-}
+}*/
 
 Image::Image(const std::string filename) {
   _image = cv::imread(filename, cv::IMREAD_COLOR);
   if (_image.empty()) {
     std::cerr << "Image failed to read\n";
+    return;
   }
   std::cout << "Image read\n";
   _width = _image.cols;

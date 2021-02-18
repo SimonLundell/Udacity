@@ -3,16 +3,16 @@
 
 #include "preProcessor.h"
 
-preProcessor::preProcessor() {}
+preProcessor::preProcessor(Image * im) : _originalImage(im->getImage()) {}
 
 void preProcessor::standardize() {}
 
-void preProcessor::spatialTransformation() {}
+void preProcessor::HOGfeatures() {}
 
 void preProcessor::colorTransformation() {
-    cv::Mat HSV_img;
-    cv::cvtColor(getImage(), HSV_img, cv::COLOR_BGR2HSV);
-    _processedImg = HSV_img;
+    cv::Mat tempImg;
+    cv::cvtColor(_originalImage, tempImg, cv::COLOR_BGR2GRAY);
+    _processedImg = tempImg;
 }
 
 void preProcessor::showHSVImage() {

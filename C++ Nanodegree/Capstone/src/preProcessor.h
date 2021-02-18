@@ -7,18 +7,19 @@
 
 #include "Image.h"
 
-class preProcessor : public Image {
+class preProcessor {
   public:
     // Constructor
-    preProcessor();
+    preProcessor(Image * im);
 
     // Functions to standardize the image
     void standardize();
-    void spatialTransformation();
+    void HOGfeatures();
     void colorTransformation();
     void showHSVImage();
 
   private:
+    cv::Mat _originalImage{};
     cv::Mat _processedImg{};
 }; 
 #endif
