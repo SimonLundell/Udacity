@@ -28,6 +28,7 @@ def get_hog_features(img, orient, pix_per_cell, cell_per_block,
                        cells_per_block=(cell_per_block, cell_per_block), block_norm= 'L2-Hys',
                        transform_sqrt=True,
                        visualize=vis, feature_vector=feature_vec)
+        print(len(features))
         return features
 
 # Define a function to extract features from a list of images
@@ -65,6 +66,7 @@ def extract_features(imgs, cspace='RGB', orient=9,
         else:
             hog_features = get_hog_features(feature_image[:,:,hog_channel], orient,
                         pix_per_cell, cell_per_block, vis=False, feature_vec=True)
+        print(len(hog_features))
         # Append the new feature vector to the features list
         features.append(hog_features)
     # Return list of feature vectors
@@ -72,15 +74,15 @@ def extract_features(imgs, cspace='RGB', orient=9,
 
 
 # Divide up into cars and notcars
-images = glob.glob("cutouts/cutouts/*.jpg")
+not_car_images = glob.glob("non-vehicles/Extras/*.png")
+cars_images = glob.glob("vehicles/KITTI_extracted/*.png")
 cars = []
 notcars = []
-for image in images:
-    if 'image' in image or 'extra' in image:
-        notcars.append(image)
-    else:
-        print(image)
-        cars.append(image)
+for image in not_car_images:
+    #if 'image' in image or 'extra' in image:
+    notcars.append(image)
+for image in cars_images:    
+    cars.append(image)
 
 # Reduce the sample size because HOG features are slow to compute
 # The quiz evaluator times out after 13s of CPU time
@@ -108,7 +110,7 @@ print(len(car_features))
 print(len(notcar_features))
 # Create an array stack of feature vectors
 X = np.vstack((car_features, notcar_features)).astype(np.float64)
-
+print(X)
 # Define the labels vector
 y = np.hstack((np.ones(len(car_features)), np.zeros(len(notcar_features))))
 

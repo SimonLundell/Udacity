@@ -10,6 +10,7 @@ class Image {
     // Constructors
     //Image();
     Image(const std::string filename);
+    Image(const Image &source);
     
     // Helpers
     void showRawImg();

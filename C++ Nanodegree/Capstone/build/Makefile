@@ -196,32 +196,32 @@ src/ObjectDetection-main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s
 .PHONY : src/ObjectDetection-main.cpp.s
 
-src/preProcessor.o: src/preProcessor.cpp.o
+src/templateMatch.o: src/templateMatch.cpp.o
 
-.PHONY : src/preProcessor.o
+.PHONY : src/templateMatch.o
 
 # target to build an object file
-src/preProcessor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/preProcessor.cpp.o
-.PHONY : src/preProcessor.cpp.o
+src/templateMatch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/templateMatch.cpp.o
+.PHONY : src/templateMatch.cpp.o
 
-src/preProcessor.i: src/preProcessor.cpp.i
+src/templateMatch.i: src/templateMatch.cpp.i
 
-.PHONY : src/preProcessor.i
+.PHONY : src/templateMatch.i
 
 # target to preprocess a source file
-src/preProcessor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/preProcessor.cpp.i
-.PHONY : src/preProcessor.cpp.i
+src/templateMatch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/templateMatch.cpp.i
+.PHONY : src/templateMatch.cpp.i
 
-src/preProcessor.s: src/preProcessor.cpp.s
+src/templateMatch.s: src/templateMatch.cpp.s
 
-.PHONY : src/preProcessor.s
+.PHONY : src/templateMatch.s
 
 # target to generate assembly for a file
-src/preProcessor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/preProcessor.cpp.s
-.PHONY : src/preProcessor.cpp.s
+src/templateMatch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/templateMatch.cpp.s
+.PHONY : src/templateMatch.cpp.s
 
 # Help Target
 help:
@@ -238,9 +238,9 @@ help:
 	@echo "... src/ObjectDetection-main.o"
 	@echo "... src/ObjectDetection-main.i"
 	@echo "... src/ObjectDetection-main.s"
-	@echo "... src/preProcessor.o"
-	@echo "... src/preProcessor.i"
-	@echo "... src/preProcessor.s"
+	@echo "... src/templateMatch.o"
+	@echo "... src/templateMatch.i"
+	@echo "... src/templateMatch.s"
 .PHONY : help
 
 

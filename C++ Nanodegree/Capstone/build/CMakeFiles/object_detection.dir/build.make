@@ -102,31 +102,31 @@ CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp" -o CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s
 
-CMakeFiles/object_detection.dir/src/preProcessor.cpp.o: CMakeFiles/object_detection.dir/flags.make
-CMakeFiles/object_detection.dir/src/preProcessor.cpp.o: ../src/preProcessor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/object_detection.dir/src/preProcessor.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/object_detection.dir/src/preProcessor.cpp.o -c "/home/simon/Udacity/C++ Nanodegree/Capstone/src/preProcessor.cpp"
+CMakeFiles/object_detection.dir/src/templateMatch.cpp.o: CMakeFiles/object_detection.dir/flags.make
+CMakeFiles/object_detection.dir/src/templateMatch.cpp.o: ../src/templateMatch.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/object_detection.dir/src/templateMatch.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/object_detection.dir/src/templateMatch.cpp.o -c "/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.cpp"
 
-CMakeFiles/object_detection.dir/src/preProcessor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/object_detection.dir/src/preProcessor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/simon/Udacity/C++ Nanodegree/Capstone/src/preProcessor.cpp" > CMakeFiles/object_detection.dir/src/preProcessor.cpp.i
+CMakeFiles/object_detection.dir/src/templateMatch.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/object_detection.dir/src/templateMatch.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.cpp" > CMakeFiles/object_detection.dir/src/templateMatch.cpp.i
 
-CMakeFiles/object_detection.dir/src/preProcessor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/object_detection.dir/src/preProcessor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/simon/Udacity/C++ Nanodegree/Capstone/src/preProcessor.cpp" -o CMakeFiles/object_detection.dir/src/preProcessor.cpp.s
+CMakeFiles/object_detection.dir/src/templateMatch.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/object_detection.dir/src/templateMatch.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.cpp" -o CMakeFiles/object_detection.dir/src/templateMatch.cpp.s
 
 # Object files for target object_detection
 object_detection_OBJECTS = \
 "CMakeFiles/object_detection.dir/src/Image.cpp.o" \
 "CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o" \
-"CMakeFiles/object_detection.dir/src/preProcessor.cpp.o"
+"CMakeFiles/object_detection.dir/src/templateMatch.cpp.o"
 
 # External object files for target object_detection
 object_detection_EXTERNAL_OBJECTS =
 
 object_detection: CMakeFiles/object_detection.dir/src/Image.cpp.o
 object_detection: CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o
-object_detection: CMakeFiles/object_detection.dir/src/preProcessor.cpp.o
+object_detection: CMakeFiles/object_detection.dir/src/templateMatch.cpp.o
 object_detection: CMakeFiles/object_detection.dir/build.make
 object_detection: /home/simon/opencv/opencv-master/build/lib/libopencv_gapi.so.4.5.1
 object_detection: /home/simon/opencv/opencv-master/build/lib/libopencv_highgui.so.4.5.1
