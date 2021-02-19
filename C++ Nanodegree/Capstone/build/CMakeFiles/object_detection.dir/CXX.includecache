@@ -14,15 +14,15 @@ opencv2/core.hpp
 opencv2/opencv.hpp
 -
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp
-iostream
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.cpp
+opencv2/core.hpp
+-
+opencv2/opencv.hpp
+-
+dirent.h
 -
 string
 -
-memory
--
-Image.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
 templateMatch.h
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
 

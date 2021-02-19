@@ -18,10 +18,11 @@ class templateMatch {
     void showProcessedImage();
     std::vector<float> drawBoxes(Mat image, std::vector<std::string> templates);
     std::vector<std::string> templateImages();
+    void printTemplates();
 
   private:
-    cv::Mat _originalImage{};
-    std::vector<std::string> _templates{templateImages()};
+    Mat _originalImage{};
+    std::vector<std::string> _templates{};
     //cv::Mat _HOGfeats{};
 };
 #endif

@@ -7,10 +7,20 @@
 
 using namespace cv;
 
-templateMatch::templateMatch(Image im) : _originalImage(im.getImage()) {}
+templateMatch::templateMatch(Image im) : _originalImage(im.getImage()) {
+    _templates = templateImages();
+}
 
 std::vector<float> templateMatch::drawBoxes(Mat image, std::vector<std::string> templates) {
+    std::vector<float> boxes;
+    std::vector<float> results;
+    for (auto &temp : templates) {
+        auto readTemplate = imread(temp);
+        matchTemplate(image, readTemplate, results, TM_CCOEFF_NORMED);
+    }
+    //std::cout << results.size() << "\n";
 
+    return {};
 }
 
 std::vector<std::string> templateMatch::templateImages() {
@@ -21,12 +31,24 @@ std::vector<std::string> templateMatch::templateImages() {
     while ((file = readdir(directory)) != nullptr) {
         std::string filename = file->d_name;
         if (filename != "." && filename != "..") {
-            temp.push_back(filename);
+            temp.push_back(path + "/" + filename);
         }
     }
     closedir;
 
     return temp;
+}
+
+void templateMatch::printTemplates() { 
+    for (auto &i : _templates) {
+        Mat im = imread(i);
+        std::string named("template");
+        namedWindow(named);
+        imshow(named, im);
+        waitKey(0);
+        //std::cout << i << " "; std::cout << std::endl; 
+    }
+        
 }
 
 void templateMatch::showProcessedImage() {
