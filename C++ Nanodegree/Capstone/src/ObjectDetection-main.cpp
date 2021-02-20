@@ -7,10 +7,11 @@
 
 int main() {
     //std::cout << image.width << "\n" << image.height << std::endl;
-    Image im("/home/simon/Udacity/C++ Nanodegree/Capstone/images/1.png");
+    Image im("/home/simon/Udacity/C++ Nanodegree/Capstone/images/curved_lane.jpg");
     templateMatch p(im);
     
     p.printTemplates();
+    //p.createBoxes();
 
     /*
     Image im2 = im;

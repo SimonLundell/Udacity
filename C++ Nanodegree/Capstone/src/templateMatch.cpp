@@ -7,20 +7,29 @@
 
 using namespace cv;
 
-templateMatch::templateMatch(Image im) : _originalImage(im.getImage()) {
+templateMatch::templateMatch(Image im) : _originalImage(im._image) {
     _templates = templateImages();
+    _boxes = drawBoxes(_originalImage, _templates);
 }
 
-std::vector<float> templateMatch::drawBoxes(Mat image, std::vector<std::string> templates) {
-    std::vector<float> boxes;
-    std::vector<float> results;
+std::vector<Point> templateMatch::drawBoxes(Mat image, std::vector<std::string> templates) {
+    std::vector<Point> boxes;
+    Mat matchOutput;
+    double min_val, max_val;
+    Point min_loc, max_loc, top_left, bottom_right;
+    Mat readTemp;
     for (auto &temp : templates) {
-        auto readTemplate = imread(temp);
-        matchTemplate(image, readTemplate, results, TM_CCOEFF_NORMED);
+        readTemp = imread(temp, IMREAD_GRAYSCALE);
+        matchTemplate(image, readTemp, matchOutput, TM_CCOEFF_NORMED);
+        minMaxLoc(matchOutput, &min_val, &max_val, &min_loc, &max_loc);
+        top_left = max_loc;
+        bottom_right.x = top_left.x + readTemp.cols;
+        bottom_right.y = top_left.y + readTemp.rows;
+        boxes.emplace_back((top_left, bottom_right));
     }
     //std::cout << results.size() << "\n";
-
-    return {};
+    
+    return boxes;
 }
 
 std::vector<std::string> templateMatch::templateImages() {

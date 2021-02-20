@@ -16,13 +16,15 @@ class templateMatch {
 
     // Functions to standardize the image
     void showProcessedImage();
-    std::vector<float> drawBoxes(Mat image, std::vector<std::string> templates);
+    std::vector<Point> drawBoxes(Mat image, std::vector<std::string> templates);
     std::vector<std::string> templateImages();
     void printTemplates();
+    //void createBoxes() { _boxes =  }
 
   private:
     Mat _originalImage{};
     std::vector<std::string> _templates{};
+    std::vector<Point> _boxes{};
     //cv::Mat _HOGfeats{};
 };
 #endif
