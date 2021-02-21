@@ -12,19 +12,21 @@ using namespace cv;
 class templateMatch {
   public:
     // Constructor
-    templateMatch(Image im);
+    templateMatch(Image &im);
 
     // Functions to standardize the image
     void showProcessedImage();
-    std::vector<Point> drawBoxes(Mat image, std::vector<std::string> templates);
-    std::vector<std::string> templateImages();
+    std::vector<Mat> templateImages();
+    std::vector<std::vector<Point>> findMatches(std::vector<Mat> templates);
+    void drawBoxes(Image &image, std::vector<std::vector<Point>> boxes);
     void printTemplates();
-    //void createBoxes() { _boxes =  }
+    Image copiedIm(Image im, ImreadModes color);
 
   private:
+    Image &_orgIm;
     Mat _originalImage{};
-    std::vector<std::string> _templates{};
-    std::vector<Point> _boxes{};
+    std::vector<Mat> _templates{};
+    std::vector<std::vector<Point>> _boxes{};
     //cv::Mat _HOGfeats{};
 };
 #endif

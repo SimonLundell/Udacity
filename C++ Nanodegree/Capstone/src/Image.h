@@ -11,13 +11,15 @@ struct Image {
     //Image();
     Image(const std::string filename);
     Image(const Image &source);
+    Image(const Image &source, cv::ImreadModes colorScheme);
+    ~Image();
     
     // Helpers
     void showRawImg();
 
     // Variables
     cv::Mat _image{};
-    std::string const _imagePath{};
+    std::string _imagePath{};
     int _width;
     int _height;
     int _channels;

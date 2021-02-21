@@ -2,45 +2,74 @@
 #include <opencv2/opencv.hpp>
 #include <dirent.h>
 #include <string>
+#include <tuple>
 
 #include "templateMatch.h"
 
 using namespace cv;
 
-templateMatch::templateMatch(Image im) : _originalImage(im._image) {
+templateMatch::templateMatch(Image &im) : _orgIm(im), _originalImage(im._image) {
     _templates = templateImages();
-    _boxes = drawBoxes(_originalImage, _templates);
+    _boxes = findMatches(_templates);
+    drawBoxes(_orgIm, _boxes);
 }
 
-std::vector<Point> templateMatch::drawBoxes(Mat image, std::vector<std::string> templates) {
-    std::vector<Point> boxes;
+std::vector<std::vector<Point>> templateMatch::findMatches(std::vector<Mat> templates) {
+    std::vector<std::vector<Point>> boxes;
+    Image copied(_orgIm, IMREAD_GRAYSCALE); // New
+    Mat image = copied._image; // New
     Mat matchOutput;
-    double min_val, max_val;
     Point min_loc, max_loc, top_left, bottom_right;
-    Mat readTemp;
+    double min_val, max_val;
+    auto method = TM_CCOEFF_NORMED;
+
     for (auto &temp : templates) {
-        readTemp = imread(temp, IMREAD_GRAYSCALE);
-        matchTemplate(image, readTemp, matchOutput, TM_CCOEFF_NORMED);
+        std::vector<Point> points{};
+        matchTemplate(image, temp, matchOutput, method);
         minMaxLoc(matchOutput, &min_val, &max_val, &min_loc, &max_loc);
-        top_left = max_loc;
-        bottom_right.x = top_left.x + readTemp.cols;
-        bottom_right.y = top_left.y + readTemp.rows;
-        boxes.emplace_back((top_left, bottom_right));
+        if (method == TM_SQDIFF_NORMED || method == TM_SQDIFF) {
+            top_left = min_loc;
+        } else {
+            top_left = max_loc;
+        }
+        bottom_right.x = top_left.x + temp.cols;
+        bottom_right.y = top_left.y + temp.rows;
+        points.emplace_back(top_left);
+        points.emplace_back(bottom_right);
+        boxes.emplace_back(points);
     }
-    //std::cout << results.size() << "\n";
     
     return boxes;
 }
 
-std::vector<std::string> templateMatch::templateImages() {
-    std::vector<std::string> temp;
+void templateMatch::drawBoxes(Image &image, std::vector<std::vector<Point>> boxes) {
+    for (auto &i : boxes) {
+        rectangle(image._image, i[0], i[1], Scalar(0,255,0), 3);
+        //std::cout << i[0] << " " << i[1] <<"\n";
+        const std::string named_Window("HSV road");
+        namedWindow(named_Window);
+        imshow(named_Window, image._image);
+        waitKey(0);
+    }
+
+}
+
+std::vector<Mat> templateMatch::templateImages() {
+    std::vector<Mat> temp;
     std::string path = "/home/simon/Udacity/C++ Nanodegree/Capstone/images/templates";
     DIR* directory = opendir(path.c_str());
     struct dirent* file;
     while ((file = readdir(directory)) != nullptr) {
         std::string filename = file->d_name;
-        if (filename != "." && filename != "..") {
-            temp.push_back(path + "/" + filename);
+        //if (filename != "." && filename != ".." && filename != ".DS_Store") {
+        if (filename.find(".jpg") != std::string::npos || filename.find(".png") != std::string::npos ||
+            filename.find(".jpeg") != std::string::npos) {
+            Mat img = imread((path+"/"+filename), IMREAD_GRAYSCALE);
+            if (img.empty()) {
+                std::cerr << "Couldn't load template image\n";
+                return {};
+            }
+            temp.emplace_back(img);
         }
     }
     closedir;
@@ -50,12 +79,10 @@ std::vector<std::string> templateMatch::templateImages() {
 
 void templateMatch::printTemplates() { 
     for (auto &i : _templates) {
-        Mat im = imread(i);
         std::string named("template");
         namedWindow(named);
-        imshow(named, im);
+        imshow(named, i);
         waitKey(0);
-        //std::cout << i << " "; std::cout << std::endl; 
     }
         
 }

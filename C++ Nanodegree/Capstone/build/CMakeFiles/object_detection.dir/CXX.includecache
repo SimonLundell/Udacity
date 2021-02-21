@@ -23,6 +23,8 @@ dirent.h
 -
 string
 -
+tuple
+-
 templateMatch.h
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
 

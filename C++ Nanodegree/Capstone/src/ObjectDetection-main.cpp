@@ -8,9 +8,11 @@
 int main() {
     //std::cout << image.width << "\n" << image.height << std::endl;
     Image im("/home/simon/Udacity/C++ Nanodegree/Capstone/images/curved_lane.jpg");
+    //Image basicCopy = im;
+    //Image colorCopy(im, cv::IMREAD_GRAYSCALE);
     templateMatch p(im);
     
-    p.printTemplates();
+    //p.printTemplates();
     //p.createBoxes();
 
     /*
