@@ -4,14 +4,15 @@
 
 #include "Image.h"
 #include "templateMatch.h"
+#include "whiteCarDetector.h"
 
 int main() {
     //std::cout << image.width << "\n" << image.height << std::endl;
-    Image im("/home/simon/Udacity/C++ Nanodegree/Capstone/images/curved_lane.jpg");
-    //Image basicCopy = im;
-    //Image colorCopy(im, cv::IMREAD_GRAYSCALE);
-    templateMatch p(im);
-    
+    Image im;
+    //Image im("/home/simon/Udacity/C++ Nanodegree/Capstone/images/bbox-example-image.jpg");
+    //templateMatch p(im);
+    //im.showRawImg();
+    CarDetector k(im);
     //p.printTemplates();
     //p.createBoxes();
 

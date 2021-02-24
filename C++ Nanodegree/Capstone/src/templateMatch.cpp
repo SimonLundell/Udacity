@@ -8,24 +8,28 @@
 
 using namespace cv;
 
-templateMatch::templateMatch(Image &im) : _orgIm(im), _originalImage(im._image) {
+templateMatch::templateMatch(Image &im) : _inputIm(im) {
     _templates = templateImages();
     _boxes = findMatches(_templates);
-    drawBoxes(_orgIm, _boxes);
+    drawBoxes(_inputIm, _boxes);
 }
 
 std::vector<std::vector<Point>> templateMatch::findMatches(std::vector<Mat> templates) {
     std::vector<std::vector<Point>> boxes;
-    Image copied(_orgIm, IMREAD_GRAYSCALE); // New
-    Mat image = copied._image; // New
+    //Image copied(_inputIm, IMREAD_GRAYSCALE); // New
+    Mat image;
+    cvtColor(_inputIm._image,image, COLOR_RGB2HSV); // New
     Mat matchOutput;
+    Mat result;
+    inRange(image, Scalar(0, 225, 0), Scalar(180, 225, 255), matchOutput);
     Point min_loc, max_loc, top_left, bottom_right;
     double min_val, max_val;
-    auto method = TM_CCOEFF_NORMED;
+    auto method = TM_CCORR_NORMED;
 
     for (auto &temp : templates) {
         std::vector<Point> points{};
-        matchTemplate(image, temp, matchOutput, method);
+        //matchTemplate(image, temp, matchOutput, method);
+        matchTemplate(matchOutput, temp, result, method);
         minMaxLoc(matchOutput, &min_val, &max_val, &min_loc, &max_loc);
         if (method == TM_SQDIFF_NORMED || method == TM_SQDIFF) {
             top_left = min_loc;
@@ -62,8 +66,8 @@ std::vector<Mat> templateMatch::templateImages() {
     while ((file = readdir(directory)) != nullptr) {
         std::string filename = file->d_name;
         //if (filename != "." && filename != ".." && filename != ".DS_Store") {
-        if (filename.find(".jpg") != std::string::npos || filename.find(".png") != std::string::npos ||
-            filename.find(".jpeg") != std::string::npos) {
+        if (/*filename.find(".jpg") != std::string::npos || filename.find(".png") != std::string::npos ||
+            filename.find(".jpeg") != std::string::npos ||*/ filename.find("StopTemplate.jpg") != std::string::npos) {
             Mat img = imread((path+"/"+filename), IMREAD_GRAYSCALE);
             if (img.empty()) {
                 std::cerr << "Couldn't load template image\n";
@@ -73,7 +77,7 @@ std::vector<Mat> templateMatch::templateImages() {
         }
     }
     closedir;
-
+    
     return temp;
 }
 
@@ -90,8 +94,9 @@ void templateMatch::printTemplates() {
 void templateMatch::showProcessedImage() {
   const std::string named_Window("HSV road");
   namedWindow(named_Window);
-  imshow(named_Window, _originalImage);
+  imshow(named_Window, _inputIm._image);
   waitKey(0);
+  
 }
 
 

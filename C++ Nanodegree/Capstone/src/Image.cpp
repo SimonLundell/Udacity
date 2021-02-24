@@ -4,6 +4,21 @@
 
 #include "Image.h"
 
+// Default constructor
+Image::Image() {
+  _image = cv::imread("/home/simon/Udacity/C++ Nanodegree/Capstone/images/27.jpg", cv::IMREAD_COLOR);
+    if (_image.empty()) {
+    std::cerr << "Image failed to read\n";
+    return;
+    }
+  _imagePath = "/home/simon/Udacity/C++ Nanodegree/Capstone/images/bbox-example-image.jpg";
+  _width = _image.cols;
+  _height = _image.rows;
+  _channels = _image.channels();
+  std::cout << "Image read, width: " << _width << " height: " << _height << " and channels: " << _channels << "at " << this 
+  << std::endl;
+}
+
 // Constructor
 Image::Image(const std::string filename) {
   _image = cv::imread(filename, cv::IMREAD_COLOR);
@@ -15,7 +30,8 @@ Image::Image(const std::string filename) {
   _width = _image.cols;
   _height = _image.rows;
   _channels = _image.channels();
-  std::cout << "Image read, width: " << _width << " height: " << _height << " and channels: " << _channels << std::endl;
+  std::cout << "Image read, width: " << _width << " height: " << _height << " and channels: " << _channels << "at " << this 
+  << std::endl;
 }
 
 // Copy constructor
@@ -24,7 +40,7 @@ Image::Image(const Image &source) {
   this->_width = source._width;
   this->_height = source._height;
   this->_channels = source._channels;
-  std::cout << "Image copied\n";
+  std::cout << "Image copied at " << this << std::endl;
 }
 // Copy with new color
 Image::Image(const Image &source, cv::ImreadModes colorScheme) {
@@ -36,11 +52,11 @@ Image::Image(const Image &source, cv::ImreadModes colorScheme) {
   this->_width = source._width;
   this->_height = source._height;
   this->_channels = this->_image.channels();
-  std::cout << "Image copied with new color-scheme\n";
+  std::cout << "Image copied with new color-scheme at " << this << std::endl;
 }
 
 Image::~Image() {
-  std::cout << "Destructor called \n";
+  std::cout << "Destructor called " << this << std::endl;
 }
 
 // Basic functions

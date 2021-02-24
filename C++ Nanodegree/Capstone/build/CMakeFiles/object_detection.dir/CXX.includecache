@@ -6,37 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
-string
--
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.cpp
 opencv2/core.hpp
 -
 opencv2/opencv.hpp
 -
-
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.cpp
-opencv2/core.hpp
--
-opencv2/opencv.hpp
--
-dirent.h
--
 string
--
-tuple
--
-templateMatch.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
-
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
-string
--
-opencv2/core.hpp
--
-opencv2/opencv.hpp
 -
 Image.h
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
+
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
+string
+-
+opencv2/core.hpp
+-
+opencv2/opencv.hpp
+-
 
 /home/simon/opencv/opencv-master/build/cv_cpu_config.h
 

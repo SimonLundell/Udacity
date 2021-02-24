@@ -223,6 +223,33 @@ src/templateMatch.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/templateMatch.cpp.s
 .PHONY : src/templateMatch.cpp.s
 
+src/whiteCarDetector.o: src/whiteCarDetector.cpp.o
+
+.PHONY : src/whiteCarDetector.o
+
+# target to build an object file
+src/whiteCarDetector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/whiteCarDetector.cpp.o
+.PHONY : src/whiteCarDetector.cpp.o
+
+src/whiteCarDetector.i: src/whiteCarDetector.cpp.i
+
+.PHONY : src/whiteCarDetector.i
+
+# target to preprocess a source file
+src/whiteCarDetector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/whiteCarDetector.cpp.i
+.PHONY : src/whiteCarDetector.cpp.i
+
+src/whiteCarDetector.s: src/whiteCarDetector.cpp.s
+
+.PHONY : src/whiteCarDetector.s
+
+# target to generate assembly for a file
+src/whiteCarDetector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/whiteCarDetector.cpp.s
+.PHONY : src/whiteCarDetector.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -241,6 +268,9 @@ help:
 	@echo "... src/templateMatch.o"
 	@echo "... src/templateMatch.i"
 	@echo "... src/templateMatch.s"
+	@echo "... src/whiteCarDetector.o"
+	@echo "... src/whiteCarDetector.i"
+	@echo "... src/whiteCarDetector.s"
 .PHONY : help
 
 

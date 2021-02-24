@@ -8,7 +8,7 @@
 struct Image {
   public:
     // Constructors
-    //Image();
+    Image();
     Image(const std::string filename);
     Image(const Image &source);
     Image(const Image &source, cv::ImreadModes colorScheme);

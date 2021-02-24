@@ -20,11 +20,10 @@ class templateMatch {
     std::vector<std::vector<Point>> findMatches(std::vector<Mat> templates);
     void drawBoxes(Image &image, std::vector<std::vector<Point>> boxes);
     void printTemplates();
-    Image copiedIm(Image im, ImreadModes color);
+    //Image copiedIm(Image im, ImreadModes color);
 
   private:
-    Image &_orgIm;
-    Mat _originalImage{};
+    Image &_inputIm;
     std::vector<Mat> _templates{};
     std::vector<std::vector<Point>> _boxes{};
     //cv::Mat _HOGfeats{};
