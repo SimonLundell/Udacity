@@ -55,7 +55,7 @@ static void on_V_High( int, void* )
    setTrackbarPos("high_V", "HSV", high_V);
 }
 
-CarDetector::CarDetector(Image& im) : _img(im), _copiedImage(im) {
+CarDetector::CarDetector(std::shared_ptr<Image> im) : _img(im), _copiedImage(*im) {
     applyMask(_copiedImage);
     //std::cout << "Linetracker " << &_img << std::endl;
 }
@@ -72,8 +72,8 @@ std::vector<Point> CarDetector::contoursConvexHull( std::vector<std::vector<Poin
     return result;
 }
 
-void CarDetector::applyMask(Image &img) {
-    src = _img._image;
+void CarDetector::applyMask(Image &copiedImg) {
+    src = copiedImg._image;
     namedWindow("HSV", WINDOW_AUTOSIZE); // Create Window
     createTrackbar( "low_H", "HSV", &low_H, H_max, on_H_Low );
     createTrackbar( "high_H", "HSV", &high_H, H_max, on_H_High );
@@ -81,7 +81,7 @@ void CarDetector::applyMask(Image &img) {
     createTrackbar( "high_S", "HSV", &high_S, S_max, on_S_High );
     createTrackbar( "low_V", "HSV", &low_V, V_max, on_V_Low );
     createTrackbar( "high_V", "HSV", &high_V, V_max, on_V_High );
-
+    
     //on_trackbar( alpha_slider, 0 );
     //on_trackbar2( alpha_slider, 0 );
     //on_trackbar3( alpha_slider, 0 );
@@ -103,27 +103,27 @@ void CarDetector::applyMask(Image &img) {
         }
         
 
-    }
+    }219
     */
-    inRange(hsvImage, Scalar(113, 208, 70), Scalar(180, 255, 255), output);
+    inRange(hsvImage, Scalar(113, 190, 70), Scalar(180, 255, 255), output);
     
-    Canny(output, canny,100,200);
+    Canny(output, canny,150,200);
     findContours(canny, contours, RETR_TREE, CHAIN_APPROX_SIMPLE);
     //for (auto &i : contours) std::cout << i << "\n";
     //imshow("test", canny);
 
     Mat drawing = Mat::zeros(canny.size(), CV_8UC3);
 
-    for (int i = 0; i< contours.size(); i++)
+    /*for (int i = 0; i< contours.size(); i++)
     {
-        Scalar color = Scalar( 255,255,255);
-        drawContours( _img._image, contours, i, color, 2 );
-    }
+        Scalar color = Scalar(255,255,255);
+        drawContours( _img->_image, contours, i, color, 2 );
+    }*/
 
     std::vector<Point> ConvexHullPoints = contoursConvexHull(contours);
 
-    polylines( _img._image, ConvexHullPoints, true, Scalar(0,255,0), 4 );
-    imshow("Contours", _img._image);
+    polylines( _img->_image, ConvexHullPoints, true, Scalar(0,255,0), 4 );
+    imshow("Contours", _img->_image);
     
     waitKey(0);
     

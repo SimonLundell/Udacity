@@ -18,7 +18,7 @@ struct Image {
     void showRawImg();
 
     // Variables
-    cv::Mat _image{};
+    cv::Mat _image;
     std::string _imagePath{};
     int _width;
     int _height;

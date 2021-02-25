@@ -12,7 +12,7 @@ using namespace cv;
 
 class CarDetector {
   public:
-    CarDetector(Image &im);
+    CarDetector(std::shared_ptr<Image> im);
 
     void applyMask(Image &img);
     void createEdges();
@@ -20,8 +20,8 @@ class CarDetector {
     std::vector<Point> contoursConvexHull( std::vector<std::vector<Point> > contours );
 
   private:
-    Image _img;
-    Image _copiedImage{};
+    std::shared_ptr<Image> _img;
+    Image _copiedImage;
     //Image _edgeImage;
 };
 #endif

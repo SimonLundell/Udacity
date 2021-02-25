@@ -5,15 +5,46 @@
 #include <tuple>
 
 #include "templateMatch.h"
+#include "whiteCarDetector.h"
 
 using namespace cv;
 
-templateMatch::templateMatch(Image &im) : _inputIm(im) {
-    _templates = templateImages();
-    _boxes = findMatches(_templates);
-    drawBoxes(_inputIm, _boxes);
+templateMatch::templateMatch() {
+    templateImages();
+    stopSignDetector(_templates);
+    //_boxes = findMatches(_templates);
+    //drawBoxes(_inputIm, _boxes);
 }
 
+void templateMatch::templateImages() {
+    //std::vector<Image> temp{};
+    std::string path = "/home/simon/Udacity/C++ Nanodegree/Capstone/images/";
+    DIR* directory = opendir(path.c_str());
+    struct dirent* file;
+    while ((file = readdir(directory)) != nullptr) {
+        std::string filename = file->d_name;
+        if (filename.find(".jpg") != std::string::npos || filename.find(".png") != std::string::npos ||
+            filename.find(".jpeg") != std::string::npos || filename.find(".JPG") != std::string::npos) {
+            //Mat img = imread((path+"/"+filename), IMREAD_COLOR);
+            _img = std::make_shared<Image>(path+filename);
+            /*if (img.empty()) {
+                std::cerr << "Couldn't load template image\n";
+                return {};
+            }*/
+            _templates.emplace_back(_img);
+        }
+    }
+    closedir;
+    std::cout << _templates[0]->_imagePath << " " << std::endl; //_templates[1]->_imagePath << std::endl;
+    return;
+}
+
+void templateMatch::stopSignDetector(std::vector<std::shared_ptr<Image>> stopsigns) {
+    for (int i = 0; i < stopsigns.size(); i++) {
+        CarDetector car(stopsigns[i]);
+    }
+}
+/*
 std::vector<std::vector<Point>> templateMatch::findMatches(std::vector<Mat> templates) {
     std::vector<std::vector<Point>> boxes;
     //Image copied(_inputIm, IMREAD_GRAYSCALE); // New
@@ -46,6 +77,7 @@ std::vector<std::vector<Point>> templateMatch::findMatches(std::vector<Mat> temp
     return boxes;
 }
 
+
 void templateMatch::drawBoxes(Image &image, std::vector<std::vector<Point>> boxes) {
     for (auto &i : boxes) {
         rectangle(image._image, i[0], i[1], Scalar(0,255,0), 3);
@@ -57,35 +89,14 @@ void templateMatch::drawBoxes(Image &image, std::vector<std::vector<Point>> boxe
     }
 
 }
+*/
 
-std::vector<Mat> templateMatch::templateImages() {
-    std::vector<Mat> temp;
-    std::string path = "/home/simon/Udacity/C++ Nanodegree/Capstone/images/templates";
-    DIR* directory = opendir(path.c_str());
-    struct dirent* file;
-    while ((file = readdir(directory)) != nullptr) {
-        std::string filename = file->d_name;
-        //if (filename != "." && filename != ".." && filename != ".DS_Store") {
-        if (/*filename.find(".jpg") != std::string::npos || filename.find(".png") != std::string::npos ||
-            filename.find(".jpeg") != std::string::npos ||*/ filename.find("StopTemplate.jpg") != std::string::npos) {
-            Mat img = imread((path+"/"+filename), IMREAD_GRAYSCALE);
-            if (img.empty()) {
-                std::cerr << "Couldn't load template image\n";
-                return {};
-            }
-            temp.emplace_back(img);
-        }
-    }
-    closedir;
-    
-    return temp;
-}
-
+/*
 void templateMatch::printTemplates() { 
     for (auto &i : _templates) {
         std::string named("template");
         namedWindow(named);
-        imshow(named, i);
+        imshow(named, i._image);
         waitKey(0);
     }
         
@@ -98,8 +109,7 @@ void templateMatch::showProcessedImage() {
   waitKey(0);
   
 }
-
-
+*/
 
 
 

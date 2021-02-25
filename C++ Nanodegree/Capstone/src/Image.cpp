@@ -6,7 +6,8 @@
 
 // Default constructor
 Image::Image() {
-  _image = cv::imread("/home/simon/Udacity/C++ Nanodegree/Capstone/images/27.jpg", cv::IMREAD_COLOR);
+  std::cout << "Default constructor\n";
+  _image = cv::imread("/home/simon/Udacity/C++ Nanodegree/Capstone/images/3.jpg", cv::IMREAD_COLOR);
     if (_image.empty()) {
     std::cerr << "Image failed to read\n";
     return;
@@ -26,6 +27,7 @@ Image::Image(const std::string filename) {
     std::cerr << "Image failed to read\n";
     return;
   }
+  resize(_image, _image, cv::Size(640,480));
   _imagePath = filename;
   _width = _image.cols;
   _height = _image.rows;
@@ -44,7 +46,7 @@ Image::Image(const Image &source) {
 }
 // Copy with new color
 Image::Image(const Image &source, cv::ImreadModes colorScheme) {
-  this->_image = cv::imread(source._imagePath, colorScheme);
+  _image = cv::imread(source._imagePath, colorScheme);
   if (this->_image.empty()) {
     std::cerr << "Failed to copy image with new color-scheme\n";
     return;

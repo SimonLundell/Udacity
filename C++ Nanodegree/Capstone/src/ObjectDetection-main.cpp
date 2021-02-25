@@ -8,11 +8,15 @@
 
 int main() {
     //std::cout << image.width << "\n" << image.height << std::endl;
-    Image im;
+    templateMatch t; 
+    std::vector<std::shared_ptr<Image>> imageVector = t.getImages();
+    
+    
+    std::cout << imageVector.size() << std::endl;
     //Image im("/home/simon/Udacity/C++ Nanodegree/Capstone/images/bbox-example-image.jpg");
     //templateMatch p(im);
     //im.showRawImg();
-    CarDetector k(im);
+    //CarDetector k(im);
     //p.printTemplates();
     //p.createBoxes();
 

@@ -220,6 +220,7 @@ CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o: /home/simon/open
 CMakeFiles/object_detection.dir/src/templateMatch.cpp.o: ../src/Image.h
 CMakeFiles/object_detection.dir/src/templateMatch.cpp.o: ../src/templateMatch.cpp
 CMakeFiles/object_detection.dir/src/templateMatch.cpp.o: ../src/templateMatch.h
+CMakeFiles/object_detection.dir/src/templateMatch.cpp.o: ../src/whiteCarDetector.h
 CMakeFiles/object_detection.dir/src/templateMatch.cpp.o: /home/simon/opencv/opencv-master/build/cv_cpu_config.h
 CMakeFiles/object_detection.dir/src/templateMatch.cpp.o: /home/simon/opencv/opencv-master/build/cvconfig.h
 CMakeFiles/object_detection.dir/src/templateMatch.cpp.o: /home/simon/opencv/opencv-master/build/opencv2/opencv_modules.hpp
