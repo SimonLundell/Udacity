@@ -11,12 +11,9 @@ struct Image {
     Image();
     Image(const std::string filename);
     Image(const Image &source);
-    Image(const Image &source, cv::ImreadModes colorScheme);
+    Image &operator=(const Image &source);
     ~Image();
     
-    // Helpers
-    void showRawImg();
-
     // Variables
     cv::Mat _image;
     std::string _imagePath{};

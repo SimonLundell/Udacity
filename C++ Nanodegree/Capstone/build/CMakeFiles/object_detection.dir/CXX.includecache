@@ -14,7 +14,7 @@ opencv2/core.hpp
 opencv2/opencv.hpp
 -
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/whiteCarDetector.cpp
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.cpp
 opencv2/core.hpp
 -
 opencv2/opencv.hpp
@@ -23,10 +23,22 @@ dirent.h
 -
 string
 -
-iostream
+tuple
 -
+templateMatch.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
 whiteCarDetector.h
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/whiteCarDetector.h
+
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
+string
+-
+opencv2/core.hpp
+-
+opencv2/opencv.hpp
+-
+Image.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
 
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/whiteCarDetector.h
 opencv2/core.hpp

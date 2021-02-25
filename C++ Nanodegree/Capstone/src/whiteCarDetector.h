@@ -15,13 +15,10 @@ class CarDetector {
     CarDetector(std::shared_ptr<Image> im);
 
     void applyMask(Image &img);
-    void createEdges();
-    // new
     std::vector<Point> contoursConvexHull( std::vector<std::vector<Point> > contours );
 
   private:
     std::shared_ptr<Image> _img;
     Image _copiedImage;
-    //Image _edgeImage;
 };
 #endif
