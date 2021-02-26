@@ -14,23 +14,11 @@ opencv2/core.hpp
 opencv2/opencv.hpp
 -
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.cpp
-opencv2/core.hpp
--
-opencv2/opencv.hpp
--
-dirent.h
--
-string
--
-tuple
--
-templateMatch.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
-whiteCarDetector.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/whiteCarDetector.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp
+imageDetector.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
 string
 -
 opencv2/core.hpp
@@ -40,7 +28,21 @@ opencv2/opencv.hpp
 Image.h
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/whiteCarDetector.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.cpp
+opencv2/core.hpp
+-
+opencv2/opencv.hpp
+-
+dirent.h
+-
+string
+-
+iostream
+-
+stopSignContours.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.h
+
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.h
 opencv2/core.hpp
 -
 opencv2/opencv.hpp

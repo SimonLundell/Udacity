@@ -111,7 +111,7 @@ CMakeFiles/object_detection.dir/src/Image.cpp.o
 CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o
  /home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
  /home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp
- /home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
+ /home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
  /home/simon/opencv/opencv-master/build/cv_cpu_config.h
  /home/simon/opencv/opencv-master/build/cvconfig.h
  /home/simon/opencv/opencv-master/build/opencv2/opencv_modules.hpp
@@ -216,11 +216,11 @@ CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o
  /home/simon/opencv/opencv-master/modules/video/include/opencv2/video/background_segm.hpp
  /home/simon/opencv/opencv-master/modules/video/include/opencv2/video/tracking.hpp
  /home/simon/opencv/opencv-master/modules/videoio/include/opencv2/videoio.hpp
-CMakeFiles/object_detection.dir/src/templateMatch.cpp.o
+CMakeFiles/object_detection.dir/src/imageDetector.cpp.o
  /home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
- /home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.cpp
- /home/simon/Udacity/C++ Nanodegree/Capstone/src/templateMatch.h
- /home/simon/Udacity/C++ Nanodegree/Capstone/src/whiteCarDetector.h
+ /home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.cpp
+ /home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
+ /home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.h
  /home/simon/opencv/opencv-master/build/cv_cpu_config.h
  /home/simon/opencv/opencv-master/build/cvconfig.h
  /home/simon/opencv/opencv-master/build/opencv2/opencv_modules.hpp
@@ -325,10 +325,10 @@ CMakeFiles/object_detection.dir/src/templateMatch.cpp.o
  /home/simon/opencv/opencv-master/modules/video/include/opencv2/video/background_segm.hpp
  /home/simon/opencv/opencv-master/modules/video/include/opencv2/video/tracking.hpp
  /home/simon/opencv/opencv-master/modules/videoio/include/opencv2/videoio.hpp
-CMakeFiles/object_detection.dir/src/whiteCarDetector.cpp.o
+CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o
  /home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
- /home/simon/Udacity/C++ Nanodegree/Capstone/src/whiteCarDetector.cpp
- /home/simon/Udacity/C++ Nanodegree/Capstone/src/whiteCarDetector.h
+ /home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.cpp
+ /home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.h
  /home/simon/opencv/opencv-master/build/cv_cpu_config.h
  /home/simon/opencv/opencv-master/build/cvconfig.h
  /home/simon/opencv/opencv-master/build/opencv2/opencv_modules.hpp

@@ -9,10 +9,10 @@
 
 using namespace cv;
 
-class templateMatch {
+class imageDetector {
   public:
     // Constructor
-    templateMatch();
+    imageDetector();
 
     // Functions
     void templateImages();
@@ -23,7 +23,7 @@ class templateMatch {
     std::vector<std::shared_ptr<Image>> getImages() { return _templates; }
 
   private:
-    std::shared_ptr<Image> _img;
+    std::shared_ptr<Image> _img{};
     std::vector<std::shared_ptr<Image>> _templates{};
 };
 #endif

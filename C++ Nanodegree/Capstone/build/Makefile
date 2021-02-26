@@ -58,10 +58,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/cmake/793/bin/cmake
+CMAKE_COMMAND = /snap/cmake/805/bin/cmake
 
 # The command to remove a file.
-RM = /snap/cmake/793/bin/cmake -E rm -f
+RM = /snap/cmake/805/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -78,7 +78,7 @@ CMAKE_BINARY_DIR = "/home/simon/Udacity/C++ Nanodegree/Capstone/build"
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/cmake/793/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/cmake/805/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -196,59 +196,59 @@ src/ObjectDetection-main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s
 .PHONY : src/ObjectDetection-main.cpp.s
 
-src/templateMatch.o: src/templateMatch.cpp.o
+src/imageDetector.o: src/imageDetector.cpp.o
 
-.PHONY : src/templateMatch.o
-
-# target to build an object file
-src/templateMatch.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/templateMatch.cpp.o
-.PHONY : src/templateMatch.cpp.o
-
-src/templateMatch.i: src/templateMatch.cpp.i
-
-.PHONY : src/templateMatch.i
-
-# target to preprocess a source file
-src/templateMatch.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/templateMatch.cpp.i
-.PHONY : src/templateMatch.cpp.i
-
-src/templateMatch.s: src/templateMatch.cpp.s
-
-.PHONY : src/templateMatch.s
-
-# target to generate assembly for a file
-src/templateMatch.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/templateMatch.cpp.s
-.PHONY : src/templateMatch.cpp.s
-
-src/whiteCarDetector.o: src/whiteCarDetector.cpp.o
-
-.PHONY : src/whiteCarDetector.o
+.PHONY : src/imageDetector.o
 
 # target to build an object file
-src/whiteCarDetector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/whiteCarDetector.cpp.o
-.PHONY : src/whiteCarDetector.cpp.o
+src/imageDetector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/imageDetector.cpp.o
+.PHONY : src/imageDetector.cpp.o
 
-src/whiteCarDetector.i: src/whiteCarDetector.cpp.i
+src/imageDetector.i: src/imageDetector.cpp.i
 
-.PHONY : src/whiteCarDetector.i
+.PHONY : src/imageDetector.i
 
 # target to preprocess a source file
-src/whiteCarDetector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/whiteCarDetector.cpp.i
-.PHONY : src/whiteCarDetector.cpp.i
+src/imageDetector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/imageDetector.cpp.i
+.PHONY : src/imageDetector.cpp.i
 
-src/whiteCarDetector.s: src/whiteCarDetector.cpp.s
+src/imageDetector.s: src/imageDetector.cpp.s
 
-.PHONY : src/whiteCarDetector.s
+.PHONY : src/imageDetector.s
 
 # target to generate assembly for a file
-src/whiteCarDetector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/whiteCarDetector.cpp.s
-.PHONY : src/whiteCarDetector.cpp.s
+src/imageDetector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/imageDetector.cpp.s
+.PHONY : src/imageDetector.cpp.s
+
+src/stopSignContours.o: src/stopSignContours.cpp.o
+
+.PHONY : src/stopSignContours.o
+
+# target to build an object file
+src/stopSignContours.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o
+.PHONY : src/stopSignContours.cpp.o
+
+src/stopSignContours.i: src/stopSignContours.cpp.i
+
+.PHONY : src/stopSignContours.i
+
+# target to preprocess a source file
+src/stopSignContours.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/stopSignContours.cpp.i
+.PHONY : src/stopSignContours.cpp.i
+
+src/stopSignContours.s: src/stopSignContours.cpp.s
+
+.PHONY : src/stopSignContours.s
+
+# target to generate assembly for a file
+src/stopSignContours.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/stopSignContours.cpp.s
+.PHONY : src/stopSignContours.cpp.s
 
 # Help Target
 help:
@@ -265,12 +265,12 @@ help:
 	@echo "... src/ObjectDetection-main.o"
 	@echo "... src/ObjectDetection-main.i"
 	@echo "... src/ObjectDetection-main.s"
-	@echo "... src/templateMatch.o"
-	@echo "... src/templateMatch.i"
-	@echo "... src/templateMatch.s"
-	@echo "... src/whiteCarDetector.o"
-	@echo "... src/whiteCarDetector.i"
-	@echo "... src/whiteCarDetector.s"
+	@echo "... src/imageDetector.o"
+	@echo "... src/imageDetector.i"
+	@echo "... src/imageDetector.s"
+	@echo "... src/stopSignContours.o"
+	@echo "... src/stopSignContours.i"
+	@echo "... src/stopSignContours.s"
 .PHONY : help
 
 

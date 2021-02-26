@@ -37,20 +37,22 @@ Image::Image(const std::string filename) {
 
 // Copy constructor
 Image::Image(const Image &source) {
-  this->_image = source._image;
+  this->_image = cv::imread(source._imagePath, cv::IMREAD_COLOR);
+  resize(this->_image, this->_image, cv::Size(640,480));
+  this->_imagePath = source._imagePath;
   this->_width = source._width;
   this->_height = source._height;
   this->_channels = source._channels;
-  std::cout << "Image copied from " << &source << " to " << this << std::endl;
+  std::cout << "Image " << source._imagePath << " copied from " << &source << " to " << this << std::endl;
 }
 
 Image &Image::operator=(const Image &source) {
   std::cout << "Assigning content at " << &source << " to " << this << std::endl;
   if (this == &source) {
-    std::cout << _image.size() << std::endl;
     return *this;
     }
-  this->_image = source._image;
+  this->_image = cv::imread(source._imagePath, cv::IMREAD_COLOR);
+  resize(this->_image, this->_image, cv::Size(640,480));
   this->_width = source._width;
   this->_height = source._height;
   this->_channels = source._channels;
@@ -60,5 +62,5 @@ Image &Image::operator=(const Image &source) {
 }
 
 Image::~Image() {
-  std::cout << "Destructor called " << this << std::endl;
+  std::cout << "Destroying image " << this->_imagePath  << " at address " << this << std::endl;
 }

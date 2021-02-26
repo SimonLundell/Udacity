@@ -10,15 +10,21 @@
 
 using namespace cv;
 
-class CarDetector {
+class StopSignContours {
   public:
-    CarDetector(std::shared_ptr<Image> im);
+    // Constructor
+    StopSignContours(std::shared_ptr<Image> im);
 
+    // Functions
     void applyMask(Image &img);
     std::vector<Point> contoursConvexHull( std::vector<std::vector<Point> > contours );
 
+    // Accessors / mutators
+    char getKey(){ return _key; }
+
   private:
-    std::shared_ptr<Image> _img;
-    Image _copiedImage;
+    std::shared_ptr<Image> _img{};
+    Image _copiedImage{*_img};
+    char _key{};
 };
 #endif

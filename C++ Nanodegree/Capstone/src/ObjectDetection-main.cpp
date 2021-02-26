@@ -1,7 +1,7 @@
-#include "templateMatch.h"
+#include "imageDetector.h"
 
 int main() {
-    templateMatch t; 
+    imageDetector(); 
 
     return 0;
 }

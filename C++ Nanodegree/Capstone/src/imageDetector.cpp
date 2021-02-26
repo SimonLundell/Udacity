@@ -4,18 +4,18 @@
 #include <string>
 #include <tuple>
 
-#include "templateMatch.h"
-#include "whiteCarDetector.h"
+#include "imageDetector.h"
+#include "stopSignContours.h"
 
 using namespace cv;
 
-templateMatch::templateMatch() {
+imageDetector::imageDetector() {
     templateImages();
     stopSignDetector(_templates);
 }
 
-void templateMatch::templateImages() {
-    std::string path = "/home/simon/Udacity/C++ Nanodegree/Capstone/images/";
+void imageDetector::templateImages() {
+    std::string path = "../images/";
     DIR* directory = opendir(path.c_str());
     if (directory == nullptr) {
         std::cerr << "No valid directory given, abort" << std::endl;
@@ -33,8 +33,7 @@ void templateMatch::templateImages() {
     return;
 }
 
-bool templateMatch::pathCheck(std::string path) {
-    //char c;
+bool imageDetector::pathCheck(std::string path) {
     std::for_each(path.begin(), path.end(), [](char &c){ c = ::tolower(c); });
     if (path.find(".jpeg") != std::string::npos) { return true; } 
     else if (path.find(".jpg") != std::string::npos) { return true; }
@@ -43,9 +42,20 @@ bool templateMatch::pathCheck(std::string path) {
     else { return false; }
 }
 
-void templateMatch::stopSignDetector(std::vector<std::shared_ptr<Image>> stopsigns) {
-    for (int i = 0; i < stopsigns.size(); i++) {
-        CarDetector car(stopsigns[i]);
+void imageDetector::stopSignDetector(std::vector<std::shared_ptr<Image>> stopsigns) {
+    char condition;
+    int i = 0;
+    
+    while (condition != 'q') {
+        if (i == stopsigns.size()) {
+            i = 0;
+        }
+        StopSignContours sign(stopsigns[i]);
+        condition = sign.getKey();
+        i++;
+
+        
     }
+
     return;
 }
