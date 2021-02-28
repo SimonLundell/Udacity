@@ -12,14 +12,15 @@ struct Image {
     Image(const std::string filename);
     Image(const Image &source);
     Image &operator=(const Image &source);
+    Image(Image &&source);
+    Image &operator=(Image &&source);
     ~Image();
     
     // Variables
-    cv::Mat _image;
+    cv::Mat _image{};
     std::string _imagePath{};
-    int _width;
-    int _height;
-    int _channels;
-
+    int _width{};
+    int _height{};
+    int _channels{};
 };
 #endif

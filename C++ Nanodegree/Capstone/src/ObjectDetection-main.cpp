@@ -1,7 +1,7 @@
 #include "imageDetector.h"
 
 int main() {
-    imageDetector(); 
+    imageDetector();
 
     return 0;
 }

@@ -9,7 +9,7 @@
 using namespace cv;
 
 StopSignContours::StopSignContours(std::shared_ptr<Image> im) : _img(im) {
-    applyMask(_copiedImage);
+    applyMask();
 }
 
 std::vector<Point> StopSignContours::contoursConvexHull( std::vector<std::vector<Point>> contours)
@@ -24,12 +24,12 @@ std::vector<Point> StopSignContours::contoursConvexHull( std::vector<std::vector
     return result;
 }
 
-void StopSignContours::applyMask(Image &copiedImg) {
-   
+void StopSignContours::applyMask() {
+    Image _copiedImage = *_img;
     Mat3b hsvImage;
     Mat1b output, mask1, mask2;
     Mat canny, drawing;
-    cvtColor(copiedImg._image, hsvImage, COLOR_BGR2HSV);
+    cvtColor(_copiedImage._image, hsvImage, COLOR_BGR2HSV);
     
     std::vector<std::vector<Point>>contours;
 
@@ -38,16 +38,14 @@ void StopSignContours::applyMask(Image &copiedImg) {
 
     output = mask1 | mask2;
 
-    Canny(output, canny,100,200);
+    Canny(output, canny, 150, 250);
     findContours(canny, contours, RETR_TREE, CHAIN_APPROX_SIMPLE);
     
     if (contours.size() == 0) {
         std::cout << this->_img->_imagePath << " didn't detect any contours. Skipping" << std::endl;
     } else {
-        drawing = Mat::zeros(canny.size(), CV_8UC3);
 
         std::vector<Point> ConvexHullPoints = contoursConvexHull(contours);
-
         polylines(_copiedImage._image, ConvexHullPoints, true, Scalar(0,255,0), 4 );
         imshow("Contours", _copiedImage._image);
         

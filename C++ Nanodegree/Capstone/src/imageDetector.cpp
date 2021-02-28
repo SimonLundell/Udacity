@@ -25,7 +25,7 @@ void imageDetector::templateImages() {
     while ((file = readdir(directory)) != nullptr) {
         std::string filename = file->d_name;
         if (pathCheck(filename)) {
-            _img = std::make_shared<Image>(path+filename);
+            _img = std::make_unique<Image>(path+filename);
             _templates.emplace_back(_img);
         }
     }

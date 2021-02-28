@@ -16,15 +16,14 @@ class StopSignContours {
     StopSignContours(std::shared_ptr<Image> im);
 
     // Functions
-    void applyMask(Image &img);
+    void applyMask();
     std::vector<Point> contoursConvexHull( std::vector<std::vector<Point> > contours );
 
     // Accessors / mutators
     char getKey(){ return _key; }
 
   private:
-    std::shared_ptr<Image> _img{};
-    Image _copiedImage{*_img};
+    std::shared_ptr<Image> _img;
     char _key{};
 };
 #endif
