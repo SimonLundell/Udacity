@@ -14,14 +14,12 @@ class imageDetector {
     // Constructor
     imageDetector();
 
-    // Functions
+    // Functions to find images, check valid path to image and detect stop signs
     void templateImages();
-    void stopSignDetector(std::vector<std::shared_ptr<Image>> stopsigns);
     bool pathCheck(std::string path);
+    void stopSignDetector(std::vector<std::shared_ptr<Image>> stopsigns);
 
-    // Accessor / mutators
-    std::vector<std::shared_ptr<Image>> getImages() { return _templates; }
-
+    // Initializing private variables
   private:
     std::shared_ptr<Image> _img{};
     std::vector<std::shared_ptr<Image>> _templates{};

@@ -5,6 +5,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
 
+// Image struct which contains default image constructors and variables
 struct Image {
   public:
     // Constructors

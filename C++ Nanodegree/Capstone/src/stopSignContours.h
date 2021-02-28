@@ -15,11 +15,11 @@ class StopSignContours {
     // Constructor
     StopSignContours(std::shared_ptr<Image> im);
 
-    // Functions
-    void applyMask();
-    std::vector<Point> contoursConvexHull( std::vector<std::vector<Point> > contours );
+    // Functions to find process the image and extract suitable points
+    void drawContours();
+    std::vector<Point> contoursConvexHull(std::vector<std::vector<Point>> contours);
 
-    // Accessors / mutators
+    // Accessor to user input
     char getKey(){ return _key; }
 
   private:
