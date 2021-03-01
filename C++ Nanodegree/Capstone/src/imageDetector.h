@@ -17,11 +17,12 @@ class imageDetector {
     // Functions to find images, check valid path to image and detect stop signs
     void templateImages();
     bool pathCheck(std::string path);
-    void stopSignDetector(std::vector<std::shared_ptr<Image>> stopsigns);
+    void stopSignDetector(std::vector<std::string> stopsigns);
 
     // Initializing private variables
   private:
     std::shared_ptr<Image> _img{};
-    std::vector<std::shared_ptr<Image>> _templates{};
+    std::vector<std::string> _templates{};
+    const std::string _path{};
 };
 #endif

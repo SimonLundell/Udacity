@@ -18,12 +18,14 @@ class StopSignContours {
     // Functions to find process the image and extract suitable points
     void drawContours();
     std::vector<Point> contoursConvexHull(std::vector<std::vector<Point>> contours);
+    bool waitGoodKey();
 
     // Accessor to user input
     char getKey(){ return _key; }
 
   private:
     std::shared_ptr<Image> _img;
+    Image _copiedImage{};
     char _key{};
 };
 #endif

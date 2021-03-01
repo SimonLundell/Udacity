@@ -9,7 +9,7 @@
 using namespace cv;
 
 // Constructor
-imageDetector::imageDetector() {
+imageDetector::imageDetector() : _path("../images/") {
     templateImages();
     stopSignDetector(_templates);
 }
@@ -17,8 +17,8 @@ imageDetector::imageDetector() {
 // Browse through image-folder and appends shared pointers to valid images
 void imageDetector::templateImages() {
     // Browse through relative images path for images to draw on
-    std::string path = "../images/";
-    DIR* directory = opendir(path.c_str());
+    //std::string path = "../images/";
+    DIR* directory = opendir(_path.c_str());
     
     // If no directory found, write error
     if (directory == nullptr) {
@@ -32,13 +32,13 @@ void imageDetector::templateImages() {
         
         // If valid image, make a shared pointer to the Image object and add to template vector
         if (pathCheck(filename)) {
-            _img = std::make_shared<Image>(path+filename);
-            _templates.emplace_back(_img);
+            _templates.emplace_back(_path+filename);
         } else {
             std::cout << "'" << filename << "'" << " doesn't have a valid format" << std::endl;
         }
     }
     closedir;
+
     return;
 }
 
@@ -57,28 +57,40 @@ bool imageDetector::pathCheck(std::string path) {
 }
 
 // Detect stop-signs on images pointed to in vector until user abort
-void imageDetector::stopSignDetector(std::vector<std::shared_ptr<Image>> stopsigns) {
+void imageDetector::stopSignDetector(std::vector<std::string> stopSigns) {
     char condition;
     int i = 0;
+    
+    // Checking so that stopsign vector is populated
+    if (stopSigns.empty()) {
+        std::cerr << "No images found, check path" << std::endl;
+        return;
+    }
     
     // Loop until user presses "q"
     while (condition != 'q') {
         
-        // Restart loop if end reached
-        if (i == stopsigns.size()) {
+        // Restart loop if end or beginning reached
+        if (condition == 'd' && i == stopSigns.size()) {
             i = 0;
+        } else if (condition == 'a' && i == -1) {
+            i = stopSigns.size() - 1;
         }
-
-        // Create object with pointer to image
-        StopSignContours sign(stopsigns[i]);
+        
+        // Create Image object with pointer to image
+        _img = std::make_shared<Image>(stopSigns[i]);
+        
+        // Create stop-sign object with image pointed to
+        StopSignContours stopSign(_img);
 
         // Draw contours around stop-sign pointed to
-        sign.drawContours();
+        stopSign.drawContours();
 
-        // Retrieve user-input
-        condition = sign.getKey();
-        i++;
+        // Retrieve user input
+        condition = stopSign.getKey();
+
+        // Increase or decrease counter depending on user input
+        (condition == 'd') ? i++ : i--;
     }
-
     return;
 }

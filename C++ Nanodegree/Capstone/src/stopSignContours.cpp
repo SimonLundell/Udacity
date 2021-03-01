@@ -9,7 +9,7 @@
 using namespace cv;
 
 // Constructor
-StopSignContours::StopSignContours(std::shared_ptr<Image> im) : _img(im) {}
+StopSignContours::StopSignContours(std::shared_ptr<Image> im) : _img(im), _copiedImage(*im) {}
 
 // Take vector of contours and return a new vector of points using convexHull method
 std::vector<Point> StopSignContours::contoursConvexHull( std::vector<std::vector<Point>> contours)
@@ -26,8 +26,6 @@ std::vector<Point> StopSignContours::contoursConvexHull( std::vector<std::vector
 
 // Copy current image pointed to, apply filter and draw lines on copy. Destroy copy when done.
 void StopSignContours::drawContours() {
-    // Copy image (copy constructor called)
-    Image _copiedImage = *_img;
     Mat3b hsvImage;
     Mat1b output, mask1, mask2;
     Mat canny, drawing;
@@ -49,18 +47,27 @@ void StopSignContours::drawContours() {
     
     // If no contours found, skip image
     if (contours.size() == 0) {
-        std::cout << this->_img->_imagePath << " didn't detect any contours. Skipping" << std::endl;
+        std::cout << _copiedImage._imagePath << " didn't detect any contours. Go to next!" << std::endl;
     } else {
+        
         // Otherwise, make points between contours using convexHull function and draw lines between points on copied image
         std::vector<Point> ConvexHullPoints = contoursConvexHull(contours);
         polylines(_copiedImage._image, ConvexHullPoints, true, Scalar(0,255,0), 4 );
         
         // Show copied image with lines around stopsign
-        imshow("Contours", _copiedImage._image);
-        
-        // wait for user input to proceed
-        std::cout << "Next image, press any key! \nQuit program, press 'q'" << std::endl;
-
-        _key = waitKey(0);
+        imshow("Stop sign", _copiedImage._image);
     }
+    std::cout << "'d' : next image. 'a' : previous image. 'q' : quit" << std::endl;
+    
+    // Wait for a valid key input
+    while (!waitGoodKey());
+}
+
+// Wait for a valid key input from user
+bool StopSignContours::waitGoodKey() {
+    _key = waitKey(0);
+    if (_key == 'a' || _key == 'd' || _key == 'q') {
+        return true;
+    }
+    std::cout << "Invalid key" << std::endl;
 }
