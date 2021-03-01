@@ -9,7 +9,7 @@ This is the final project for the Udacity C++ Nanodegree. The purpose of this pr
 
 The purpose is _not_ to make a perfect sign detection
 
-Example result:
+**Example result:**
 
 ![Stop sign example](https://user-images.githubusercontent.com/58783863/109550893-2657b300-7ad0-11eb-961c-753e8468b6e8.jpg)
 
