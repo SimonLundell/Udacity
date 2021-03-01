@@ -18,38 +18,12 @@ opencv2/opencv.hpp
 imageDetector.h
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.cpp
-opencv2/core.hpp
--
-opencv2/opencv.hpp
--
-dirent.h
--
-string
--
-imageDetector.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
-stopSignContours.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.h
-
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
 string
 -
 opencv2/core.hpp
 -
 opencv2/opencv.hpp
--
-Image.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
-
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.h
-opencv2/core.hpp
--
-opencv2/opencv.hpp
--
-dirent.h
--
-string
 -
 Image.h
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h

@@ -53,7 +53,7 @@ Image &Image::operator=(const Image &source) {
   if (this == &source) {
     return *this;
     }
-  this->_image.release();
+  this->_image = Mat();
 
   this->_image = source._image.clone();
   this->_imagePath = source._imagePath;
@@ -67,6 +67,11 @@ Image &Image::operator=(const Image &source) {
 // Move constructor
 Image::Image(Image &&source) {
   std::cout << "Moving from " << &source << " to " << this << std::endl;
+  this->_image = Mat();
+  this->_imagePath = {};
+  this->_width = {};
+  this->_height = {};
+  this->_channels = {};
   swap(source._image, this->_image);
   swap(source._imagePath, this->_imagePath);
   swap(source._width, this->_width);
@@ -80,7 +85,11 @@ Image &Image::operator=(Image &&source) {
   if (this == &source) {
     return *this;
   }
-
+  this->_image = Mat();
+  this->_imagePath = {};
+  this->_width = {};
+  this->_height = {};
+  this->_channels = {};
   swap(source._image, this->_image);
   swap(source._imagePath, this->_imagePath);
   swap(source._width, this->_width);
@@ -93,7 +102,11 @@ Image &Image::operator=(Image &&source) {
 // Destructor
 Image::~Image() {
   if (!_image.empty()) {
-    _image.release();
+    this->_image = Mat();
+    this->_imagePath = {};
+    this->_width = {};
+    this->_height = {};
+    this->_channels = {};
   }
   std::cout << "Destroying image " << this->_imagePath  << " at address " << this << std::endl;
 }
