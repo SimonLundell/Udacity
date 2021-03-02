@@ -1,3 +1,0 @@
-/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/rebuild_cache.dir
-/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir
-/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/edit_cache.dir
