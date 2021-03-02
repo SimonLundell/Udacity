@@ -39,3 +39,26 @@ The project consists of:
    * Will find the stop-sign images in "/images", create Image-structs from them and passing shared_ptr of Image to "StopSignContours" for detection and drawing
 * StopSignContours.h / StopSignContours.cpp
    * Takes a shared_ptr to an Image as an argument, copies this image, extracts the relevant features and displays the Image copy with drawn contours around the stop-sign
+
+# The project fulfills the following criterias
+__Please find the ID in the code as specified below__
+## Loops, Functions, I/O
+**Criteria**
+* LFIO-1: The project demonstrates an understanding of C++ functions and control structures.
+* LFIO-2: The project reads data from a file and process the data, or the program writes data to a file.
+* LFIO-3: The project accepts user input and processes the input.
+
+## Object Oriented Programming
+**Criteria**
+* OOP-1: The project uses Object Oriented Programming techniques.
+* OOP-2: Classes use appropriate access specifiers for class members.
+* OOP-3: Class constructors utilize member initialization lists.
+* OOP-4: Classes abstract implementation details from their interfaces.
+* OOP-5: Classes encapsulate behavior.
+
+## Memory Management
+**Criteria**
+* MM-1: The project makes use of references in function declarations.
+* MM-2: The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate.
+* MM-3: The project follows the Rule of 5.
+* MM-4: The project uses smart pointers instead of raw pointers.
