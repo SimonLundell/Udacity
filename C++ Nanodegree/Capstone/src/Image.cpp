@@ -6,6 +6,8 @@
 
 using namespace cv;
 
+// Req. ID LFIO-2
+// Req. ID MM-3
 // Default constructor
 Image::Image() {
   _image = Mat::zeros(Size(640,480), CV_8UC3);
@@ -34,7 +36,7 @@ Image::Image(const std::string filename) {
   _height = _image.rows;
   _channels = _image.channels();
   std::cout << "Image read. Width: " << _width << ", height: " << _height << " and channels: " << _channels << " at " << this 
-  << std::endl;
+  << "\n";
 }
 
 // Copy constructor
@@ -44,12 +46,12 @@ Image::Image(const Image &source) {
   this->_width = source._width;
   this->_height = source._height;
   this->_channels = source._channels;
-  std::cout << "Image " << source._imagePath << " copied from " << &source << " to " << this << std::endl;
+  std::cout << "Image " << source._imagePath << " copied from " << &source << " to " << this << "\n";
 }
 
 // Assignment operator
 Image &Image::operator=(const Image &source) {
-  std::cout << "Assigning content at " << &source << " to " << this << std::endl;
+  std::cout << "Assigning content at " << &source << " to " << this << "\n";
   if (this == &source) {
     return *this;
     }
@@ -66,7 +68,7 @@ Image &Image::operator=(const Image &source) {
 
 // Move constructor
 Image::Image(Image &&source) {
-  std::cout << "Moving from " << &source << " to " << this << std::endl;
+  std::cout << "Moving from " << &source << " to " << this << "\n";
   this->_image = Mat();
   this->_imagePath = {};
   this->_width = {};
@@ -81,7 +83,7 @@ Image::Image(Image &&source) {
 
 // Move assignment operator
 Image &Image::operator=(Image &&source) {
-  std::cout << "Moving and assigning " << &source << " to " << this << std::endl;
+  std::cout << "Moving and assigning " << &source << " to " << this << "\n";
   if (this == &source) {
     return *this;
   }

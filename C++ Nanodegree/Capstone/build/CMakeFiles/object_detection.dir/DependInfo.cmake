@@ -5,9 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/Image.cpp.o"
+  "/home/simon/Udacity/C++ Nanodegree/Capstone/src/ImageDetector.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/ImageDetector.cpp.o"
   "/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o"
-  "/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/imageDetector.cpp.o"
-  "/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o"
+  "/home/simon/Udacity/C++ Nanodegree/Capstone/src/StopSignContours.cpp" "/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles/object_detection.dir/src/StopSignContours.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

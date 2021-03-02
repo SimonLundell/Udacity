@@ -89,9 +89,22 @@ CMakeFiles/object_detection.dir/src/Image.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/object_detection.dir/src/Image.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.cpp" -o CMakeFiles/object_detection.dir/src/Image.cpp.s
 
+CMakeFiles/object_detection.dir/src/ImageDetector.cpp.o: CMakeFiles/object_detection.dir/flags.make
+CMakeFiles/object_detection.dir/src/ImageDetector.cpp.o: ../src/ImageDetector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/object_detection.dir/src/ImageDetector.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/object_detection.dir/src/ImageDetector.cpp.o -c "/home/simon/Udacity/C++ Nanodegree/Capstone/src/ImageDetector.cpp"
+
+CMakeFiles/object_detection.dir/src/ImageDetector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/object_detection.dir/src/ImageDetector.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/simon/Udacity/C++ Nanodegree/Capstone/src/ImageDetector.cpp" > CMakeFiles/object_detection.dir/src/ImageDetector.cpp.i
+
+CMakeFiles/object_detection.dir/src/ImageDetector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/object_detection.dir/src/ImageDetector.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/simon/Udacity/C++ Nanodegree/Capstone/src/ImageDetector.cpp" -o CMakeFiles/object_detection.dir/src/ImageDetector.cpp.s
+
 CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o: CMakeFiles/object_detection.dir/flags.make
 CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o: ../src/ObjectDetection-main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o -c "/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp"
 
 CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.i: cmake_force
@@ -102,46 +115,33 @@ CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp" -o CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s
 
-CMakeFiles/object_detection.dir/src/imageDetector.cpp.o: CMakeFiles/object_detection.dir/flags.make
-CMakeFiles/object_detection.dir/src/imageDetector.cpp.o: ../src/imageDetector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/object_detection.dir/src/imageDetector.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/object_detection.dir/src/imageDetector.cpp.o -c "/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.cpp"
+CMakeFiles/object_detection.dir/src/StopSignContours.cpp.o: CMakeFiles/object_detection.dir/flags.make
+CMakeFiles/object_detection.dir/src/StopSignContours.cpp.o: ../src/StopSignContours.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/object_detection.dir/src/StopSignContours.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/object_detection.dir/src/StopSignContours.cpp.o -c "/home/simon/Udacity/C++ Nanodegree/Capstone/src/StopSignContours.cpp"
 
-CMakeFiles/object_detection.dir/src/imageDetector.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/object_detection.dir/src/imageDetector.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.cpp" > CMakeFiles/object_detection.dir/src/imageDetector.cpp.i
+CMakeFiles/object_detection.dir/src/StopSignContours.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/object_detection.dir/src/StopSignContours.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/simon/Udacity/C++ Nanodegree/Capstone/src/StopSignContours.cpp" > CMakeFiles/object_detection.dir/src/StopSignContours.cpp.i
 
-CMakeFiles/object_detection.dir/src/imageDetector.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/object_detection.dir/src/imageDetector.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.cpp" -o CMakeFiles/object_detection.dir/src/imageDetector.cpp.s
-
-CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o: CMakeFiles/object_detection.dir/flags.make
-CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o: ../src/stopSignContours.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/simon/Udacity/C++ Nanodegree/Capstone/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o -c "/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.cpp"
-
-CMakeFiles/object_detection.dir/src/stopSignContours.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/object_detection.dir/src/stopSignContours.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.cpp" > CMakeFiles/object_detection.dir/src/stopSignContours.cpp.i
-
-CMakeFiles/object_detection.dir/src/stopSignContours.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/object_detection.dir/src/stopSignContours.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.cpp" -o CMakeFiles/object_detection.dir/src/stopSignContours.cpp.s
+CMakeFiles/object_detection.dir/src/StopSignContours.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/object_detection.dir/src/StopSignContours.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/simon/Udacity/C++ Nanodegree/Capstone/src/StopSignContours.cpp" -o CMakeFiles/object_detection.dir/src/StopSignContours.cpp.s
 
 # Object files for target object_detection
 object_detection_OBJECTS = \
 "CMakeFiles/object_detection.dir/src/Image.cpp.o" \
+"CMakeFiles/object_detection.dir/src/ImageDetector.cpp.o" \
 "CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o" \
-"CMakeFiles/object_detection.dir/src/imageDetector.cpp.o" \
-"CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o"
+"CMakeFiles/object_detection.dir/src/StopSignContours.cpp.o"
 
 # External object files for target object_detection
 object_detection_EXTERNAL_OBJECTS =
 
 object_detection: CMakeFiles/object_detection.dir/src/Image.cpp.o
+object_detection: CMakeFiles/object_detection.dir/src/ImageDetector.cpp.o
 object_detection: CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o
-object_detection: CMakeFiles/object_detection.dir/src/imageDetector.cpp.o
-object_detection: CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o
+object_detection: CMakeFiles/object_detection.dir/src/StopSignContours.cpp.o
 object_detection: CMakeFiles/object_detection.dir/build.make
 object_detection: /home/simon/opencv/opencv-master/build/lib/libopencv_gapi.so.4.5.1
 object_detection: /home/simon/opencv/opencv-master/build/lib/libopencv_highgui.so.4.5.1

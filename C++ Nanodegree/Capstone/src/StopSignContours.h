@@ -10,6 +10,10 @@
 
 using namespace cv;
 
+// Req. ID LFIO-2
+// Req. ID OOP-1
+// Req. ID OOP-4
+// Req. ID OOP-5
 class StopSignContours {
   public:
     // Constructor
@@ -20,8 +24,12 @@ class StopSignContours {
     std::vector<Point> contoursConvexHull(std::vector<std::vector<Point>> contours);
     bool waitGoodKey();
 
+    // Req. ID OOP-2
+    // Req. ID MM-1
     // Accessor to user input
     char getKey(){ return _key; }
+    Mat& getCopiedImage() { return _copiedImage._image; }
+    std::string& getCopiedImagePath() { return _copiedImage._imagePath; }
 
   private:
     std::shared_ptr<Image> _img;

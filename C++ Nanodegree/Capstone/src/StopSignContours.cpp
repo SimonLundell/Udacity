@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 
-#include "stopSignContours.h"
+#include "StopSignContours.h"
 
 using namespace cv;
 
@@ -32,7 +32,7 @@ void StopSignContours::drawContours() {
     std::vector<std::vector<Point>>contours;
 
     // Creating HSV image from copy
-    cvtColor(_copiedImage._image, hsvImage, COLOR_BGR2HSV);
+    cvtColor(getCopiedImage(), hsvImage, COLOR_BGR2HSV);
     
     // Defining ranges for red (need 2 since red wraps 180)
     inRange(hsvImage, Scalar(0, 210, 82), Scalar(10, 255, 255), mask1);
@@ -47,27 +47,28 @@ void StopSignContours::drawContours() {
     
     // If no contours found, skip image
     if (contours.size() == 0) {
-        std::cout << _copiedImage._imagePath << " didn't detect any contours. Go to next!" << std::endl;
+        std::cout << getCopiedImagePath() << " didn't detect any contours. Go to next!" << "\n";
     } else {
         
         // Otherwise, make points between contours using convexHull function and draw lines between points on copied image
         std::vector<Point> ConvexHullPoints = contoursConvexHull(contours);
-        polylines(_copiedImage._image, ConvexHullPoints, true, Scalar(0,255,0), 4 );
+        polylines(getCopiedImage(), ConvexHullPoints, true, Scalar(0,255,0), 4 );
         
         // Show copied image with lines around stopsign
-        imshow("Stop sign", _copiedImage._image);
+        imshow("Stop sign", getCopiedImage());
     }
-    std::cout << "'d' : next image. 'a' : previous image. 'q' : quit" << std::endl;
+    std::cout << "'d' : next image. 'a' : previous image. 'q' : quit" << "\n";
     
     // Wait for a valid key input
     while (!waitGoodKey());
 }
 
+// Req. ID LFIO-3
 // Wait for a valid key input from user
 bool StopSignContours::waitGoodKey() {
     _key = waitKey(0);
     if (_key == 'a' || _key == 'd' || _key == 'q') {
         return true;
     }
-    std::cout << "Invalid key" << std::endl;
+    std::cout << "Invalid key" << "\n";
 }

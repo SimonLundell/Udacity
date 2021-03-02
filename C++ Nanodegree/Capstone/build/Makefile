@@ -169,6 +169,33 @@ src/Image.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/Image.cpp.s
 .PHONY : src/Image.cpp.s
 
+src/ImageDetector.o: src/ImageDetector.cpp.o
+
+.PHONY : src/ImageDetector.o
+
+# target to build an object file
+src/ImageDetector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/ImageDetector.cpp.o
+.PHONY : src/ImageDetector.cpp.o
+
+src/ImageDetector.i: src/ImageDetector.cpp.i
+
+.PHONY : src/ImageDetector.i
+
+# target to preprocess a source file
+src/ImageDetector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/ImageDetector.cpp.i
+.PHONY : src/ImageDetector.cpp.i
+
+src/ImageDetector.s: src/ImageDetector.cpp.s
+
+.PHONY : src/ImageDetector.s
+
+# target to generate assembly for a file
+src/ImageDetector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/ImageDetector.cpp.s
+.PHONY : src/ImageDetector.cpp.s
+
 src/ObjectDetection-main.o: src/ObjectDetection-main.cpp.o
 
 .PHONY : src/ObjectDetection-main.o
@@ -196,59 +223,32 @@ src/ObjectDetection-main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.s
 .PHONY : src/ObjectDetection-main.cpp.s
 
-src/imageDetector.o: src/imageDetector.cpp.o
+src/StopSignContours.o: src/StopSignContours.cpp.o
 
-.PHONY : src/imageDetector.o
-
-# target to build an object file
-src/imageDetector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/imageDetector.cpp.o
-.PHONY : src/imageDetector.cpp.o
-
-src/imageDetector.i: src/imageDetector.cpp.i
-
-.PHONY : src/imageDetector.i
-
-# target to preprocess a source file
-src/imageDetector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/imageDetector.cpp.i
-.PHONY : src/imageDetector.cpp.i
-
-src/imageDetector.s: src/imageDetector.cpp.s
-
-.PHONY : src/imageDetector.s
-
-# target to generate assembly for a file
-src/imageDetector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/imageDetector.cpp.s
-.PHONY : src/imageDetector.cpp.s
-
-src/stopSignContours.o: src/stopSignContours.cpp.o
-
-.PHONY : src/stopSignContours.o
+.PHONY : src/StopSignContours.o
 
 # target to build an object file
-src/stopSignContours.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o
-.PHONY : src/stopSignContours.cpp.o
+src/StopSignContours.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/StopSignContours.cpp.o
+.PHONY : src/StopSignContours.cpp.o
 
-src/stopSignContours.i: src/stopSignContours.cpp.i
+src/StopSignContours.i: src/StopSignContours.cpp.i
 
-.PHONY : src/stopSignContours.i
+.PHONY : src/StopSignContours.i
 
 # target to preprocess a source file
-src/stopSignContours.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/stopSignContours.cpp.i
-.PHONY : src/stopSignContours.cpp.i
+src/StopSignContours.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/StopSignContours.cpp.i
+.PHONY : src/StopSignContours.cpp.i
 
-src/stopSignContours.s: src/stopSignContours.cpp.s
+src/StopSignContours.s: src/StopSignContours.cpp.s
 
-.PHONY : src/stopSignContours.s
+.PHONY : src/StopSignContours.s
 
 # target to generate assembly for a file
-src/stopSignContours.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/stopSignContours.cpp.s
-.PHONY : src/stopSignContours.cpp.s
+src/StopSignContours.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/object_detection.dir/build.make CMakeFiles/object_detection.dir/src/StopSignContours.cpp.s
+.PHONY : src/StopSignContours.cpp.s
 
 # Help Target
 help:
@@ -262,15 +262,15 @@ help:
 	@echo "... src/Image.o"
 	@echo "... src/Image.i"
 	@echo "... src/Image.s"
+	@echo "... src/ImageDetector.o"
+	@echo "... src/ImageDetector.i"
+	@echo "... src/ImageDetector.s"
 	@echo "... src/ObjectDetection-main.o"
 	@echo "... src/ObjectDetection-main.i"
 	@echo "... src/ObjectDetection-main.s"
-	@echo "... src/imageDetector.o"
-	@echo "... src/imageDetector.i"
-	@echo "... src/imageDetector.s"
-	@echo "... src/stopSignContours.o"
-	@echo "... src/stopSignContours.i"
-	@echo "... src/stopSignContours.s"
+	@echo "... src/StopSignContours.o"
+	@echo "... src/StopSignContours.i"
+	@echo "... src/StopSignContours.s"
 .PHONY : help
 
 

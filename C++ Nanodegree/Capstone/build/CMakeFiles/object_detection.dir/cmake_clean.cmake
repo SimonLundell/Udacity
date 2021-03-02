@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/object_detection.dir/src/Image.cpp.o"
+  "CMakeFiles/object_detection.dir/src/ImageDetector.cpp.o"
   "CMakeFiles/object_detection.dir/src/ObjectDetection-main.cpp.o"
-  "CMakeFiles/object_detection.dir/src/imageDetector.cpp.o"
-  "CMakeFiles/object_detection.dir/src/stopSignContours.cpp.o"
+  "CMakeFiles/object_detection.dir/src/StopSignContours.cpp.o"
   "object_detection"
   "object_detection.pdb"
 )

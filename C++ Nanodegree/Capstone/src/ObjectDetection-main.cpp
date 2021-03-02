@@ -1,4 +1,4 @@
-#include "imageDetector.h"
+#include "ImageDetector.h"
 
 int main() {
     // Start the program

@@ -3,12 +3,15 @@
 #include <dirent.h>
 #include <string>
 
-#include "imageDetector.h"
-#include "stopSignContours.h"
+#include "ImageDetector.h"
+#include "StopSignContours.h"
 
 using namespace cv;
 
 // Constructor
+// Req. ID OOP-3
+// Req. ID OOP-4
+// Req. ID OOP-5
 imageDetector::imageDetector() : _path("../images/") {
     templateImages();
     stopSignDetector(_templates);
@@ -34,7 +37,7 @@ void imageDetector::templateImages() {
         if (pathCheck(filename)) {
             _templates.emplace_back(_path+filename);
         } else {
-            std::cout << "'" << filename << "'" << " doesn't have a valid format" << std::endl;
+            std::cout << "'" << filename << "'" << " doesn't have a valid format" << "\n";
         }
     }
     closedir;
@@ -56,6 +59,7 @@ bool imageDetector::pathCheck(std::string path) {
     else { return false; }
 }
 
+// Req. ID MM-2
 // Detect stop-signs on images pointed to in vector until user abort
 void imageDetector::stopSignDetector(std::vector<std::string> stopSigns) {
     char condition;

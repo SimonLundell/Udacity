@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.cpp
+opencv2/core.hpp
+-
+opencv2/opencv.hpp
+-
+string
+-
+Image.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
+
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
 string
 -
@@ -14,11 +24,7 @@ opencv2/core.hpp
 opencv2/opencv.hpp
 -
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp
-imageDetector.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
-
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.cpp
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/ImageDetector.cpp
 opencv2/core.hpp
 -
 opencv2/opencv.hpp
@@ -27,12 +33,12 @@ dirent.h
 -
 string
 -
-imageDetector.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
-stopSignContours.h
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.h
+ImageDetector.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/ImageDetector.h
+StopSignContours.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/StopSignContours.h
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/imageDetector.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/ImageDetector.h
 string
 -
 opencv2/core.hpp
@@ -42,7 +48,25 @@ opencv2/opencv.hpp
 Image.h
 /home/simon/Udacity/C++ Nanodegree/Capstone/src/Image.h
 
-/home/simon/Udacity/C++ Nanodegree/Capstone/src/stopSignContours.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/ObjectDetection-main.cpp
+ImageDetector.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/ImageDetector.h
+
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/StopSignContours.cpp
+opencv2/core.hpp
+-
+opencv2/opencv.hpp
+-
+dirent.h
+-
+string
+-
+iostream
+-
+StopSignContours.h
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/StopSignContours.h
+
+/home/simon/Udacity/C++ Nanodegree/Capstone/src/StopSignContours.h
 opencv2/core.hpp
 -
 opencv2/opencv.hpp
