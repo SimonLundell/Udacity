@@ -28,7 +28,6 @@ def get_hog_features(img, orient, pix_per_cell, cell_per_block,
                        cells_per_block=(cell_per_block, cell_per_block), block_norm= 'L2-Hys',
                        transform_sqrt=True,
                        visualize=vis, feature_vector=feature_vec)
-        print(len(features))
         return features
 
 # Define a function to extract features from a list of images
@@ -66,7 +65,6 @@ def extract_features(imgs, cspace='RGB', orient=9,
         else:
             hog_features = get_hog_features(feature_image[:,:,hog_channel], orient,
                         pix_per_cell, cell_per_block, vis=False, feature_vec=True)
-        print(len(hog_features))
         # Append the new feature vector to the features list
         features.append(hog_features)
     # Return list of feature vectors
